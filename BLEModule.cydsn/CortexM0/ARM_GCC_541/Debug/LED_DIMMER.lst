@@ -1,0 +1,2677 @@
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"LED_DIMMER.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	LED_DIMMER_initVar
+  20              		.bss
+  21              		.type	LED_DIMMER_initVar, %object
+  22              		.size	LED_DIMMER_initVar, 1
+  23              	LED_DIMMER_initVar:
+  24 0000 00       		.space	1
+  25              		.section	.text.LED_DIMMER_Start,"ax",%progbits
+  26              		.align	2
+  27              		.global	LED_DIMMER_Start
+  28              		.code	16
+  29              		.thumb_func
+  30              		.type	LED_DIMMER_Start, %function
+  31              	LED_DIMMER_Start:
+  32              	.LFB2:
+  33              		.file 1 "Generated_Source\\PSoC4\\LED_DIMMER.c"
+   1:Generated_Source\PSoC4/LED_DIMMER.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/LED_DIMMER.c **** * File Name: LED_DIMMER.c
+   3:Generated_Source\PSoC4/LED_DIMMER.c **** * Version 3.30
+   4:Generated_Source\PSoC4/LED_DIMMER.c **** *
+   5:Generated_Source\PSoC4/LED_DIMMER.c **** * Description:
+   6:Generated_Source\PSoC4/LED_DIMMER.c **** *  The PWM User Module consist of an 8 or 16-bit counter with two 8 or 16-bit
+   7:Generated_Source\PSoC4/LED_DIMMER.c **** *  comparitors. Each instance of this user module is capable of generating
+   8:Generated_Source\PSoC4/LED_DIMMER.c **** *  two PWM outputs with the same period. The pulse width is selectable between
+   9:Generated_Source\PSoC4/LED_DIMMER.c **** *  1 and 255/65535. The period is selectable between 2 and 255/65536 clocks.
+  10:Generated_Source\PSoC4/LED_DIMMER.c **** *  The compare value output may be configured to be active when the present
+  11:Generated_Source\PSoC4/LED_DIMMER.c **** *  counter is less than or less than/equal to the compare value.
+  12:Generated_Source\PSoC4/LED_DIMMER.c **** *  A terminal count output is also provided. It generates a pulse one clock
+  13:Generated_Source\PSoC4/LED_DIMMER.c **** *  width wide when the counter is equal to zero.
+  14:Generated_Source\PSoC4/LED_DIMMER.c **** *
+  15:Generated_Source\PSoC4/LED_DIMMER.c **** * Note:
+  16:Generated_Source\PSoC4/LED_DIMMER.c **** *
+  17:Generated_Source\PSoC4/LED_DIMMER.c **** *******************************************************************************
+  18:Generated_Source\PSoC4/LED_DIMMER.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  19:Generated_Source\PSoC4/LED_DIMMER.c **** * You may use this file only in accordance with the license, terms, conditions,
+  20:Generated_Source\PSoC4/LED_DIMMER.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  21:Generated_Source\PSoC4/LED_DIMMER.c **** * the software package with which this file was provided.
+  22:Generated_Source\PSoC4/LED_DIMMER.c **** ********************************************************************************/
+  23:Generated_Source\PSoC4/LED_DIMMER.c **** 
+  24:Generated_Source\PSoC4/LED_DIMMER.c **** #include "LED_DIMMER.h"
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 2
+
+
+  25:Generated_Source\PSoC4/LED_DIMMER.c **** 
+  26:Generated_Source\PSoC4/LED_DIMMER.c **** /* Error message for removed <resource> through optimization */
+  27:Generated_Source\PSoC4/LED_DIMMER.c **** #ifdef LED_DIMMER_PWMUDB_genblk1_ctrlreg__REMOVED
+  28:Generated_Source\PSoC4/LED_DIMMER.c ****     #error PWM_v3_30 detected with a constant 0 for the enable or \
+  29:Generated_Source\PSoC4/LED_DIMMER.c ****          constant 1 for reset. This will prevent the component from operating.
+  30:Generated_Source\PSoC4/LED_DIMMER.c **** #endif /* LED_DIMMER_PWMUDB_genblk1_ctrlreg__REMOVED */
+  31:Generated_Source\PSoC4/LED_DIMMER.c **** 
+  32:Generated_Source\PSoC4/LED_DIMMER.c **** uint8 LED_DIMMER_initVar = 0u;
+  33:Generated_Source\PSoC4/LED_DIMMER.c **** 
+  34:Generated_Source\PSoC4/LED_DIMMER.c **** 
+  35:Generated_Source\PSoC4/LED_DIMMER.c **** /*******************************************************************************
+  36:Generated_Source\PSoC4/LED_DIMMER.c **** * Function Name: LED_DIMMER_Start
+  37:Generated_Source\PSoC4/LED_DIMMER.c **** ********************************************************************************
+  38:Generated_Source\PSoC4/LED_DIMMER.c **** *
+  39:Generated_Source\PSoC4/LED_DIMMER.c **** * Summary:
+  40:Generated_Source\PSoC4/LED_DIMMER.c **** *  The start function initializes the pwm with the default values, the
+  41:Generated_Source\PSoC4/LED_DIMMER.c **** *  enables the counter to begin counting.  It does not enable interrupts,
+  42:Generated_Source\PSoC4/LED_DIMMER.c **** *  the EnableInt command should be called if interrupt generation is required.
+  43:Generated_Source\PSoC4/LED_DIMMER.c **** *
+  44:Generated_Source\PSoC4/LED_DIMMER.c **** * Parameters:
+  45:Generated_Source\PSoC4/LED_DIMMER.c **** *  None
+  46:Generated_Source\PSoC4/LED_DIMMER.c **** *
+  47:Generated_Source\PSoC4/LED_DIMMER.c **** * Return:
+  48:Generated_Source\PSoC4/LED_DIMMER.c **** *  None
+  49:Generated_Source\PSoC4/LED_DIMMER.c **** *
+  50:Generated_Source\PSoC4/LED_DIMMER.c **** * Global variables:
+  51:Generated_Source\PSoC4/LED_DIMMER.c **** *  LED_DIMMER_initVar: Is modified when this function is called for the
+  52:Generated_Source\PSoC4/LED_DIMMER.c **** *   first time. Is used to ensure that initialization happens only once.
+  53:Generated_Source\PSoC4/LED_DIMMER.c **** *
+  54:Generated_Source\PSoC4/LED_DIMMER.c **** *******************************************************************************/
+  55:Generated_Source\PSoC4/LED_DIMMER.c **** void LED_DIMMER_Start(void) 
+  56:Generated_Source\PSoC4/LED_DIMMER.c **** {
+  34              		.loc 1 56 0
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 0
+  37              		@ frame_needed = 1, uses_anonymous_args = 0
+  38 0000 80B5     		push	{r7, lr}
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 7, -8
+  41              		.cfi_offset 14, -4
+  42 0002 00AF     		add	r7, sp, #0
+  43              		.cfi_def_cfa_register 7
+  57:Generated_Source\PSoC4/LED_DIMMER.c ****     /* If not Initialized then initialize all required hardware and software */
+  58:Generated_Source\PSoC4/LED_DIMMER.c ****     if(LED_DIMMER_initVar == 0u)
+  44              		.loc 1 58 0
+  45 0004 064B     		ldr	r3, .L3
+  46 0006 1B78     		ldrb	r3, [r3]
+  47 0008 002B     		cmp	r3, #0
+  48 000a 04D1     		bne	.L2
+  59:Generated_Source\PSoC4/LED_DIMMER.c ****     {
+  60:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_Init();
+  49              		.loc 1 60 0
+  50 000c FFF7FEFF 		bl	LED_DIMMER_Init
+  61:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_initVar = 1u;
+  51              		.loc 1 61 0
+  52 0010 034B     		ldr	r3, .L3
+  53 0012 0122     		movs	r2, #1
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 3
+
+
+  54 0014 1A70     		strb	r2, [r3]
+  55              	.L2:
+  62:Generated_Source\PSoC4/LED_DIMMER.c ****     }
+  63:Generated_Source\PSoC4/LED_DIMMER.c ****     LED_DIMMER_Enable();
+  56              		.loc 1 63 0
+  57 0016 FFF7FEFF 		bl	LED_DIMMER_Enable
+  64:Generated_Source\PSoC4/LED_DIMMER.c **** 
+  65:Generated_Source\PSoC4/LED_DIMMER.c **** }
+  58              		.loc 1 65 0
+  59 001a C046     		nop
+  60 001c BD46     		mov	sp, r7
+  61              		@ sp needed
+  62 001e 80BD     		pop	{r7, pc}
+  63              	.L4:
+  64              		.align	2
+  65              	.L3:
+  66 0020 00000000 		.word	LED_DIMMER_initVar
+  67              		.cfi_endproc
+  68              	.LFE2:
+  69              		.size	LED_DIMMER_Start, .-LED_DIMMER_Start
+  70              		.section	.text.LED_DIMMER_Init,"ax",%progbits
+  71              		.align	2
+  72              		.global	LED_DIMMER_Init
+  73              		.code	16
+  74              		.thumb_func
+  75              		.type	LED_DIMMER_Init, %function
+  76              	LED_DIMMER_Init:
+  77              	.LFB3:
+  66:Generated_Source\PSoC4/LED_DIMMER.c **** 
+  67:Generated_Source\PSoC4/LED_DIMMER.c **** 
+  68:Generated_Source\PSoC4/LED_DIMMER.c **** /*******************************************************************************
+  69:Generated_Source\PSoC4/LED_DIMMER.c **** * Function Name: LED_DIMMER_Init
+  70:Generated_Source\PSoC4/LED_DIMMER.c **** ********************************************************************************
+  71:Generated_Source\PSoC4/LED_DIMMER.c **** *
+  72:Generated_Source\PSoC4/LED_DIMMER.c **** * Summary:
+  73:Generated_Source\PSoC4/LED_DIMMER.c **** *  Initialize component's parameters to the parameters set by user in the
+  74:Generated_Source\PSoC4/LED_DIMMER.c **** *  customizer of the component placed onto schematic. Usually called in
+  75:Generated_Source\PSoC4/LED_DIMMER.c **** *  LED_DIMMER_Start().
+  76:Generated_Source\PSoC4/LED_DIMMER.c **** *
+  77:Generated_Source\PSoC4/LED_DIMMER.c **** * Parameters:
+  78:Generated_Source\PSoC4/LED_DIMMER.c **** *  None
+  79:Generated_Source\PSoC4/LED_DIMMER.c **** *
+  80:Generated_Source\PSoC4/LED_DIMMER.c **** * Return:
+  81:Generated_Source\PSoC4/LED_DIMMER.c **** *  None
+  82:Generated_Source\PSoC4/LED_DIMMER.c **** *
+  83:Generated_Source\PSoC4/LED_DIMMER.c **** *******************************************************************************/
+  84:Generated_Source\PSoC4/LED_DIMMER.c **** void LED_DIMMER_Init(void) 
+  85:Generated_Source\PSoC4/LED_DIMMER.c **** {
+  78              		.loc 1 85 0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 8
+  81              		@ frame_needed = 1, uses_anonymous_args = 0
+  82 0000 90B5     		push	{r4, r7, lr}
+  83              		.cfi_def_cfa_offset 12
+  84              		.cfi_offset 4, -12
+  85              		.cfi_offset 7, -8
+  86              		.cfi_offset 14, -4
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 4
+
+
+  87 0002 83B0     		sub	sp, sp, #12
+  88              		.cfi_def_cfa_offset 24
+  89 0004 00AF     		add	r7, sp, #0
+  90              		.cfi_def_cfa_register 7
+  86:Generated_Source\PSoC4/LED_DIMMER.c ****     #if (LED_DIMMER_UsingFixedFunction || LED_DIMMER_UseControl)
+  87:Generated_Source\PSoC4/LED_DIMMER.c ****         uint8 ctrl;
+  88:Generated_Source\PSoC4/LED_DIMMER.c ****     #endif /* (LED_DIMMER_UsingFixedFunction || LED_DIMMER_UseControl) */
+  89:Generated_Source\PSoC4/LED_DIMMER.c **** 
+  90:Generated_Source\PSoC4/LED_DIMMER.c ****     #if(!LED_DIMMER_UsingFixedFunction)
+  91:Generated_Source\PSoC4/LED_DIMMER.c ****         #if(LED_DIMMER_UseStatus)
+  92:Generated_Source\PSoC4/LED_DIMMER.c ****             /* Interrupt State Backup for Critical Region*/
+  93:Generated_Source\PSoC4/LED_DIMMER.c ****             uint8 LED_DIMMER_interruptState;
+  94:Generated_Source\PSoC4/LED_DIMMER.c ****         #endif /* (LED_DIMMER_UseStatus) */
+  95:Generated_Source\PSoC4/LED_DIMMER.c ****     #endif /* (!LED_DIMMER_UsingFixedFunction) */
+  96:Generated_Source\PSoC4/LED_DIMMER.c **** 
+  97:Generated_Source\PSoC4/LED_DIMMER.c ****     #if (LED_DIMMER_UsingFixedFunction)
+  98:Generated_Source\PSoC4/LED_DIMMER.c ****         /* You are allowed to write the compare value (FF only) */
+  99:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_CONTROL |= LED_DIMMER_CFG0_MODE;
+ 100:Generated_Source\PSoC4/LED_DIMMER.c ****         #if (LED_DIMMER_DeadBand2_4)
+ 101:Generated_Source\PSoC4/LED_DIMMER.c ****             LED_DIMMER_CONTROL |= LED_DIMMER_CFG0_DB;
+ 102:Generated_Source\PSoC4/LED_DIMMER.c ****         #endif /* (LED_DIMMER_DeadBand2_4) */
+ 103:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 104:Generated_Source\PSoC4/LED_DIMMER.c ****         ctrl = LED_DIMMER_CONTROL3 & ((uint8 )(~LED_DIMMER_CTRL_CMPMODE1_MASK));
+ 105:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_CONTROL3 = ctrl | LED_DIMMER_DEFAULT_COMPARE1_MODE;
+ 106:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 107:Generated_Source\PSoC4/LED_DIMMER.c ****          /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+ 108:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_RT1 &= ((uint8)(~LED_DIMMER_RT1_MASK));
+ 109:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_RT1 |= LED_DIMMER_SYNC;
+ 110:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 111:Generated_Source\PSoC4/LED_DIMMER.c ****         /*Enable DSI Sync all all inputs of the PWM*/
+ 112:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_RT1 &= ((uint8)(~LED_DIMMER_SYNCDSI_MASK));
+ 113:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_RT1 |= LED_DIMMER_SYNCDSI_EN;
+ 114:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 115:Generated_Source\PSoC4/LED_DIMMER.c ****     #elif (LED_DIMMER_UseControl)
+ 116:Generated_Source\PSoC4/LED_DIMMER.c ****         /* Set the default compare mode defined in the parameter */
+ 117:Generated_Source\PSoC4/LED_DIMMER.c ****         ctrl = LED_DIMMER_CONTROL & ((uint8)(~LED_DIMMER_CTRL_CMPMODE2_MASK)) &
+  91              		.loc 1 117 0
+  92 0006 224B     		ldr	r3, .L6
+  93 0008 1B78     		ldrb	r3, [r3]
+  94 000a DAB2     		uxtb	r2, r3
+  95 000c FB1D     		adds	r3, r7, #7
+  96 000e 3F21     		movs	r1, #63
+  97 0010 8A43     		bics	r2, r1
+  98 0012 1A70     		strb	r2, [r3]
+ 118:Generated_Source\PSoC4/LED_DIMMER.c ****                 ((uint8)(~LED_DIMMER_CTRL_CMPMODE1_MASK));
+ 119:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_CONTROL = ctrl | LED_DIMMER_DEFAULT_COMPARE2_MODE |
+  99              		.loc 1 119 0
+ 100 0014 1E4A     		ldr	r2, .L6
+ 101 0016 FB1D     		adds	r3, r7, #7
+ 102 0018 1B78     		ldrb	r3, [r3]
+ 103 001a 0921     		movs	r1, #9
+ 104 001c 0B43     		orrs	r3, r1
+ 105 001e DBB2     		uxtb	r3, r3
+ 106 0020 1370     		strb	r3, [r2]
+ 120:Generated_Source\PSoC4/LED_DIMMER.c ****                                    LED_DIMMER_DEFAULT_COMPARE1_MODE;
+ 121:Generated_Source\PSoC4/LED_DIMMER.c ****     #endif /* (LED_DIMMER_UsingFixedFunction) */
+ 122:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 5
+
+
+ 123:Generated_Source\PSoC4/LED_DIMMER.c ****     #if (!LED_DIMMER_UsingFixedFunction)
+ 124:Generated_Source\PSoC4/LED_DIMMER.c ****         #if (LED_DIMMER_Resolution == 8)
+ 125:Generated_Source\PSoC4/LED_DIMMER.c ****             /* Set FIFO 0 to 1 byte register for period*/
+ 126:Generated_Source\PSoC4/LED_DIMMER.c ****             LED_DIMMER_AUX_CONTROLDP0 |= (LED_DIMMER_AUX_CTRL_FIFO0_CLR);
+ 127:Generated_Source\PSoC4/LED_DIMMER.c ****         #else /* (LED_DIMMER_Resolution == 16)*/
+ 128:Generated_Source\PSoC4/LED_DIMMER.c ****             /* Set FIFO 0 to 1 byte register for period */
+ 129:Generated_Source\PSoC4/LED_DIMMER.c ****             LED_DIMMER_AUX_CONTROLDP0 |= (LED_DIMMER_AUX_CTRL_FIFO0_CLR);
+ 107              		.loc 1 129 0
+ 108 0022 1C4A     		ldr	r2, .L6+4
+ 109 0024 1B4B     		ldr	r3, .L6+4
+ 110 0026 1B78     		ldrb	r3, [r3]
+ 111 0028 DBB2     		uxtb	r3, r3
+ 112 002a 0121     		movs	r1, #1
+ 113 002c 0B43     		orrs	r3, r1
+ 114 002e DBB2     		uxtb	r3, r3
+ 115 0030 1370     		strb	r3, [r2]
+ 130:Generated_Source\PSoC4/LED_DIMMER.c ****             LED_DIMMER_AUX_CONTROLDP1 |= (LED_DIMMER_AUX_CTRL_FIFO0_CLR);
+ 116              		.loc 1 130 0
+ 117 0032 194A     		ldr	r2, .L6+8
+ 118 0034 184B     		ldr	r3, .L6+8
+ 119 0036 1B78     		ldrb	r3, [r3]
+ 120 0038 DBB2     		uxtb	r3, r3
+ 121 003a 0121     		movs	r1, #1
+ 122 003c 0B43     		orrs	r3, r1
+ 123 003e DBB2     		uxtb	r3, r3
+ 124 0040 1370     		strb	r3, [r2]
+ 131:Generated_Source\PSoC4/LED_DIMMER.c ****         #endif /* (LED_DIMMER_Resolution == 8) */
+ 132:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 133:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_WriteCounter(LED_DIMMER_INIT_PERIOD_VALUE);
+ 125              		.loc 1 133 0
+ 126 0042 164B     		ldr	r3, .L6+12
+ 127 0044 1800     		movs	r0, r3
+ 128 0046 FFF7FEFF 		bl	LED_DIMMER_WriteCounter
+ 134:Generated_Source\PSoC4/LED_DIMMER.c ****     #endif /* (!LED_DIMMER_UsingFixedFunction) */
+ 135:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 136:Generated_Source\PSoC4/LED_DIMMER.c ****     LED_DIMMER_WritePeriod(LED_DIMMER_INIT_PERIOD_VALUE);
+ 129              		.loc 1 136 0
+ 130 004a 144B     		ldr	r3, .L6+12
+ 131 004c 1800     		movs	r0, r3
+ 132 004e FFF7FEFF 		bl	LED_DIMMER_WritePeriod
+ 137:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 138:Generated_Source\PSoC4/LED_DIMMER.c ****         #if (LED_DIMMER_UseOneCompareMode)
+ 139:Generated_Source\PSoC4/LED_DIMMER.c ****             LED_DIMMER_WriteCompare(LED_DIMMER_INIT_COMPARE_VALUE1);
+ 133              		.loc 1 139 0
+ 134 0052 124B     		ldr	r3, .L6+12
+ 135 0054 1800     		movs	r0, r3
+ 136 0056 FFF7FEFF 		bl	LED_DIMMER_WriteCompare
+ 140:Generated_Source\PSoC4/LED_DIMMER.c ****         #else
+ 141:Generated_Source\PSoC4/LED_DIMMER.c ****             LED_DIMMER_WriteCompare1(LED_DIMMER_INIT_COMPARE_VALUE1);
+ 142:Generated_Source\PSoC4/LED_DIMMER.c ****             LED_DIMMER_WriteCompare2(LED_DIMMER_INIT_COMPARE_VALUE2);
+ 143:Generated_Source\PSoC4/LED_DIMMER.c ****         #endif /* (LED_DIMMER_UseOneCompareMode) */
+ 144:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 145:Generated_Source\PSoC4/LED_DIMMER.c ****         #if (LED_DIMMER_KillModeMinTime)
+ 146:Generated_Source\PSoC4/LED_DIMMER.c ****             LED_DIMMER_WriteKillTime(LED_DIMMER_MinimumKillTime);
+ 147:Generated_Source\PSoC4/LED_DIMMER.c ****         #endif /* (LED_DIMMER_KillModeMinTime) */
+ 148:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 149:Generated_Source\PSoC4/LED_DIMMER.c ****         #if (LED_DIMMER_DeadBandUsed)
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 6
+
+
+ 150:Generated_Source\PSoC4/LED_DIMMER.c ****             LED_DIMMER_WriteDeadTime(LED_DIMMER_INIT_DEAD_TIME);
+ 151:Generated_Source\PSoC4/LED_DIMMER.c ****         #endif /* (LED_DIMMER_DeadBandUsed) */
+ 152:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 153:Generated_Source\PSoC4/LED_DIMMER.c ****     #if (LED_DIMMER_UseStatus || LED_DIMMER_UsingFixedFunction)
+ 154:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_SetInterruptMode(LED_DIMMER_INIT_INTERRUPTS_MODE);
+ 137              		.loc 1 154 0
+ 138 005a 0020     		movs	r0, #0
+ 139 005c FFF7FEFF 		bl	LED_DIMMER_SetInterruptMode
+ 155:Generated_Source\PSoC4/LED_DIMMER.c ****     #endif /* (LED_DIMMER_UseStatus || LED_DIMMER_UsingFixedFunction) */
+ 156:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 157:Generated_Source\PSoC4/LED_DIMMER.c ****     #if (LED_DIMMER_UsingFixedFunction)
+ 158:Generated_Source\PSoC4/LED_DIMMER.c ****         /* Globally Enable the Fixed Function Block chosen */
+ 159:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_GLOBAL_ENABLE |= LED_DIMMER_BLOCK_EN_MASK;
+ 160:Generated_Source\PSoC4/LED_DIMMER.c ****         /* Set the Interrupt source to come from the status register */
+ 161:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_CONTROL2 |= LED_DIMMER_CTRL2_IRQ_SEL;
+ 162:Generated_Source\PSoC4/LED_DIMMER.c ****     #else
+ 163:Generated_Source\PSoC4/LED_DIMMER.c ****         #if(LED_DIMMER_UseStatus)
+ 164:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 165:Generated_Source\PSoC4/LED_DIMMER.c ****             /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region cri
+ 166:Generated_Source\PSoC4/LED_DIMMER.c ****             /* Enter Critical Region*/
+ 167:Generated_Source\PSoC4/LED_DIMMER.c ****             LED_DIMMER_interruptState = CyEnterCriticalSection();
+ 140              		.loc 1 167 0
+ 141 0060 BC1D     		adds	r4, r7, #6
+ 142 0062 FFF7FEFF 		bl	CyEnterCriticalSection
+ 143 0066 0300     		movs	r3, r0
+ 144 0068 2370     		strb	r3, [r4]
+ 168:Generated_Source\PSoC4/LED_DIMMER.c ****             /* Use the interrupt output of the status register for IRQ output */
+ 169:Generated_Source\PSoC4/LED_DIMMER.c ****             LED_DIMMER_STATUS_AUX_CTRL |= LED_DIMMER_STATUS_ACTL_INT_EN_MASK;
+ 145              		.loc 1 169 0
+ 146 006a 0B4A     		ldr	r2, .L6+8
+ 147 006c 0A4B     		ldr	r3, .L6+8
+ 148 006e 1B78     		ldrb	r3, [r3]
+ 149 0070 DBB2     		uxtb	r3, r3
+ 150 0072 1021     		movs	r1, #16
+ 151 0074 0B43     		orrs	r3, r1
+ 152 0076 DBB2     		uxtb	r3, r3
+ 153 0078 1370     		strb	r3, [r2]
+ 170:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 171:Generated_Source\PSoC4/LED_DIMMER.c ****              /* Exit Critical Region*/
+ 172:Generated_Source\PSoC4/LED_DIMMER.c ****             CyExitCriticalSection(LED_DIMMER_interruptState);
+ 154              		.loc 1 172 0
+ 155 007a BB1D     		adds	r3, r7, #6
+ 156 007c 1B78     		ldrb	r3, [r3]
+ 157 007e 1800     		movs	r0, r3
+ 158 0080 FFF7FEFF 		bl	CyExitCriticalSection
+ 173:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 174:Generated_Source\PSoC4/LED_DIMMER.c ****             /* Clear the FIFO to enable the LED_DIMMER_STATUS_FIFOFULL
+ 175:Generated_Source\PSoC4/LED_DIMMER.c ****                    bit to be set on FIFO full. */
+ 176:Generated_Source\PSoC4/LED_DIMMER.c ****             LED_DIMMER_ClearFIFO();
+ 159              		.loc 1 176 0
+ 160 0084 FFF7FEFF 		bl	LED_DIMMER_ClearFIFO
+ 177:Generated_Source\PSoC4/LED_DIMMER.c ****         #endif /* (LED_DIMMER_UseStatus) */
+ 178:Generated_Source\PSoC4/LED_DIMMER.c ****     #endif /* (LED_DIMMER_UsingFixedFunction) */
+ 179:Generated_Source\PSoC4/LED_DIMMER.c **** }
+ 161              		.loc 1 179 0
+ 162 0088 C046     		nop
+ 163 008a BD46     		mov	sp, r7
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 7
+
+
+ 164 008c 03B0     		add	sp, sp, #12
+ 165              		@ sp needed
+ 166 008e 90BD     		pop	{r4, r7, pc}
+ 167              	.L7:
+ 168              		.align	2
+ 169              	.L6:
+ 170 0090 72000F40 		.word	1074724978
+ 171 0094 92000F40 		.word	1074725010
+ 172 0098 93000F40 		.word	1074725011
+ 173 009c E02E0000 		.word	12000
+ 174              		.cfi_endproc
+ 175              	.LFE3:
+ 176              		.size	LED_DIMMER_Init, .-LED_DIMMER_Init
+ 177              		.section	.text.LED_DIMMER_Enable,"ax",%progbits
+ 178              		.align	2
+ 179              		.global	LED_DIMMER_Enable
+ 180              		.code	16
+ 181              		.thumb_func
+ 182              		.type	LED_DIMMER_Enable, %function
+ 183              	LED_DIMMER_Enable:
+ 184              	.LFB4:
+ 180:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 181:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 182:Generated_Source\PSoC4/LED_DIMMER.c **** /*******************************************************************************
+ 183:Generated_Source\PSoC4/LED_DIMMER.c **** * Function Name: LED_DIMMER_Enable
+ 184:Generated_Source\PSoC4/LED_DIMMER.c **** ********************************************************************************
+ 185:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ 186:Generated_Source\PSoC4/LED_DIMMER.c **** * Summary:
+ 187:Generated_Source\PSoC4/LED_DIMMER.c **** *  Enables the PWM block operation
+ 188:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ 189:Generated_Source\PSoC4/LED_DIMMER.c **** * Parameters:
+ 190:Generated_Source\PSoC4/LED_DIMMER.c **** *  None
+ 191:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ 192:Generated_Source\PSoC4/LED_DIMMER.c **** * Return:
+ 193:Generated_Source\PSoC4/LED_DIMMER.c **** *  None
+ 194:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ 195:Generated_Source\PSoC4/LED_DIMMER.c **** * Side Effects:
+ 196:Generated_Source\PSoC4/LED_DIMMER.c **** *  This works only if software enable mode is chosen
+ 197:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ 198:Generated_Source\PSoC4/LED_DIMMER.c **** *******************************************************************************/
+ 199:Generated_Source\PSoC4/LED_DIMMER.c **** void LED_DIMMER_Enable(void) 
+ 200:Generated_Source\PSoC4/LED_DIMMER.c **** {
+ 185              		.loc 1 200 0
+ 186              		.cfi_startproc
+ 187              		@ args = 0, pretend = 0, frame = 0
+ 188              		@ frame_needed = 1, uses_anonymous_args = 0
+ 189 0000 80B5     		push	{r7, lr}
+ 190              		.cfi_def_cfa_offset 8
+ 191              		.cfi_offset 7, -8
+ 192              		.cfi_offset 14, -4
+ 193 0002 00AF     		add	r7, sp, #0
+ 194              		.cfi_def_cfa_register 7
+ 201:Generated_Source\PSoC4/LED_DIMMER.c ****     /* Globally Enable the Fixed Function Block chosen */
+ 202:Generated_Source\PSoC4/LED_DIMMER.c ****     #if (LED_DIMMER_UsingFixedFunction)
+ 203:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_GLOBAL_ENABLE |= LED_DIMMER_BLOCK_EN_MASK;
+ 204:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_GLOBAL_STBY_ENABLE |= LED_DIMMER_BLOCK_STBY_EN_MASK;
+ 205:Generated_Source\PSoC4/LED_DIMMER.c ****     #endif /* (LED_DIMMER_UsingFixedFunction) */
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 8
+
+
+ 206:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 207:Generated_Source\PSoC4/LED_DIMMER.c ****     /* Enable the PWM from the control register  */
+ 208:Generated_Source\PSoC4/LED_DIMMER.c ****     #if (LED_DIMMER_UseControl || LED_DIMMER_UsingFixedFunction)
+ 209:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_CONTROL |= LED_DIMMER_CTRL_ENABLE;
+ 195              		.loc 1 209 0
+ 196 0004 0549     		ldr	r1, .L9
+ 197 0006 054B     		ldr	r3, .L9
+ 198 0008 1B78     		ldrb	r3, [r3]
+ 199 000a DBB2     		uxtb	r3, r3
+ 200 000c 8022     		movs	r2, #128
+ 201 000e 5242     		rsbs	r2, r2, #0
+ 202 0010 1343     		orrs	r3, r2
+ 203 0012 DBB2     		uxtb	r3, r3
+ 204 0014 0B70     		strb	r3, [r1]
+ 210:Generated_Source\PSoC4/LED_DIMMER.c ****     #endif /* (LED_DIMMER_UseControl || LED_DIMMER_UsingFixedFunction) */
+ 211:Generated_Source\PSoC4/LED_DIMMER.c **** }
+ 205              		.loc 1 211 0
+ 206 0016 C046     		nop
+ 207 0018 BD46     		mov	sp, r7
+ 208              		@ sp needed
+ 209 001a 80BD     		pop	{r7, pc}
+ 210              	.L10:
+ 211              		.align	2
+ 212              	.L9:
+ 213 001c 72000F40 		.word	1074724978
+ 214              		.cfi_endproc
+ 215              	.LFE4:
+ 216              		.size	LED_DIMMER_Enable, .-LED_DIMMER_Enable
+ 217              		.section	.text.LED_DIMMER_Stop,"ax",%progbits
+ 218              		.align	2
+ 219              		.global	LED_DIMMER_Stop
+ 220              		.code	16
+ 221              		.thumb_func
+ 222              		.type	LED_DIMMER_Stop, %function
+ 223              	LED_DIMMER_Stop:
+ 224              	.LFB5:
+ 212:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 213:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 214:Generated_Source\PSoC4/LED_DIMMER.c **** /*******************************************************************************
+ 215:Generated_Source\PSoC4/LED_DIMMER.c **** * Function Name: LED_DIMMER_Stop
+ 216:Generated_Source\PSoC4/LED_DIMMER.c **** ********************************************************************************
+ 217:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ 218:Generated_Source\PSoC4/LED_DIMMER.c **** * Summary:
+ 219:Generated_Source\PSoC4/LED_DIMMER.c **** *  The stop function halts the PWM, but does not change any modes or disable
+ 220:Generated_Source\PSoC4/LED_DIMMER.c **** *  interrupts.
+ 221:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ 222:Generated_Source\PSoC4/LED_DIMMER.c **** * Parameters:
+ 223:Generated_Source\PSoC4/LED_DIMMER.c **** *  None
+ 224:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ 225:Generated_Source\PSoC4/LED_DIMMER.c **** * Return:
+ 226:Generated_Source\PSoC4/LED_DIMMER.c **** *  None
+ 227:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ 228:Generated_Source\PSoC4/LED_DIMMER.c **** * Side Effects:
+ 229:Generated_Source\PSoC4/LED_DIMMER.c **** *  If the Enable mode is set to Hardware only then this function
+ 230:Generated_Source\PSoC4/LED_DIMMER.c **** *  has no effect on the operation of the PWM
+ 231:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ 232:Generated_Source\PSoC4/LED_DIMMER.c **** *******************************************************************************/
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 9
+
+
+ 233:Generated_Source\PSoC4/LED_DIMMER.c **** void LED_DIMMER_Stop(void) 
+ 234:Generated_Source\PSoC4/LED_DIMMER.c **** {
+ 225              		.loc 1 234 0
+ 226              		.cfi_startproc
+ 227              		@ args = 0, pretend = 0, frame = 0
+ 228              		@ frame_needed = 1, uses_anonymous_args = 0
+ 229 0000 80B5     		push	{r7, lr}
+ 230              		.cfi_def_cfa_offset 8
+ 231              		.cfi_offset 7, -8
+ 232              		.cfi_offset 14, -4
+ 233 0002 00AF     		add	r7, sp, #0
+ 234              		.cfi_def_cfa_register 7
+ 235:Generated_Source\PSoC4/LED_DIMMER.c ****     #if (LED_DIMMER_UseControl || LED_DIMMER_UsingFixedFunction)
+ 236:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_CONTROL &= ((uint8)(~LED_DIMMER_CTRL_ENABLE));
+ 235              		.loc 1 236 0
+ 236 0004 054A     		ldr	r2, .L12
+ 237 0006 054B     		ldr	r3, .L12
+ 238 0008 1B78     		ldrb	r3, [r3]
+ 239 000a DBB2     		uxtb	r3, r3
+ 240 000c 7F21     		movs	r1, #127
+ 241 000e 0B40     		ands	r3, r1
+ 242 0010 DBB2     		uxtb	r3, r3
+ 243 0012 1370     		strb	r3, [r2]
+ 237:Generated_Source\PSoC4/LED_DIMMER.c ****     #endif /* (LED_DIMMER_UseControl || LED_DIMMER_UsingFixedFunction) */
+ 238:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 239:Generated_Source\PSoC4/LED_DIMMER.c ****     /* Globally disable the Fixed Function Block chosen */
+ 240:Generated_Source\PSoC4/LED_DIMMER.c ****     #if (LED_DIMMER_UsingFixedFunction)
+ 241:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_GLOBAL_ENABLE &= ((uint8)(~LED_DIMMER_BLOCK_EN_MASK));
+ 242:Generated_Source\PSoC4/LED_DIMMER.c ****         LED_DIMMER_GLOBAL_STBY_ENABLE &= ((uint8)(~LED_DIMMER_BLOCK_STBY_EN_MASK));
+ 243:Generated_Source\PSoC4/LED_DIMMER.c ****     #endif /* (LED_DIMMER_UsingFixedFunction) */
+ 244:Generated_Source\PSoC4/LED_DIMMER.c **** }
+ 244              		.loc 1 244 0
+ 245 0014 C046     		nop
+ 246 0016 BD46     		mov	sp, r7
+ 247              		@ sp needed
+ 248 0018 80BD     		pop	{r7, pc}
+ 249              	.L13:
+ 250 001a C046     		.align	2
+ 251              	.L12:
+ 252 001c 72000F40 		.word	1074724978
+ 253              		.cfi_endproc
+ 254              	.LFE5:
+ 255              		.size	LED_DIMMER_Stop, .-LED_DIMMER_Stop
+ 256              		.section	.text.LED_DIMMER_WriteCounter,"ax",%progbits
+ 257              		.align	2
+ 258              		.global	LED_DIMMER_WriteCounter
+ 259              		.code	16
+ 260              		.thumb_func
+ 261              		.type	LED_DIMMER_WriteCounter, %function
+ 262              	LED_DIMMER_WriteCounter:
+ 263              	.LFB6:
+ 245:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 246:Generated_Source\PSoC4/LED_DIMMER.c **** #if (LED_DIMMER_UseOneCompareMode)
+ 247:Generated_Source\PSoC4/LED_DIMMER.c ****     #if (LED_DIMMER_CompareMode1SW)
+ 248:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 249:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 250:Generated_Source\PSoC4/LED_DIMMER.c ****         /*******************************************************************************
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 10
+
+
+ 251:Generated_Source\PSoC4/LED_DIMMER.c ****         * Function Name: LED_DIMMER_SetCompareMode
+ 252:Generated_Source\PSoC4/LED_DIMMER.c ****         ********************************************************************************
+ 253:Generated_Source\PSoC4/LED_DIMMER.c ****         *
+ 254:Generated_Source\PSoC4/LED_DIMMER.c ****         * Summary:
+ 255:Generated_Source\PSoC4/LED_DIMMER.c ****         *  This function writes the Compare Mode for the pwm output when in Dither mode,
+ 256:Generated_Source\PSoC4/LED_DIMMER.c ****         *  Center Align Mode or One Output Mode.
+ 257:Generated_Source\PSoC4/LED_DIMMER.c ****         *
+ 258:Generated_Source\PSoC4/LED_DIMMER.c ****         * Parameters:
+ 259:Generated_Source\PSoC4/LED_DIMMER.c ****         *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 260:Generated_Source\PSoC4/LED_DIMMER.c ****         *                defined in the H file as input arguments.
+ 261:Generated_Source\PSoC4/LED_DIMMER.c ****         *
+ 262:Generated_Source\PSoC4/LED_DIMMER.c ****         * Return:
+ 263:Generated_Source\PSoC4/LED_DIMMER.c ****         *  None
+ 264:Generated_Source\PSoC4/LED_DIMMER.c ****         *
+ 265:Generated_Source\PSoC4/LED_DIMMER.c ****         *******************************************************************************/
+ 266:Generated_Source\PSoC4/LED_DIMMER.c ****         void LED_DIMMER_SetCompareMode(uint8 comparemode) 
+ 267:Generated_Source\PSoC4/LED_DIMMER.c ****         {
+ 268:Generated_Source\PSoC4/LED_DIMMER.c ****             #if(LED_DIMMER_UsingFixedFunction)
+ 269:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 270:Generated_Source\PSoC4/LED_DIMMER.c ****                 #if(0 != LED_DIMMER_CTRL_CMPMODE1_SHIFT)
+ 271:Generated_Source\PSoC4/LED_DIMMER.c ****                     uint8 comparemodemasked = ((uint8)((uint8)comparemode << LED_DIMMER_CTRL_CMPMOD
+ 272:Generated_Source\PSoC4/LED_DIMMER.c ****                 #else
+ 273:Generated_Source\PSoC4/LED_DIMMER.c ****                     uint8 comparemodemasked = comparemode;
+ 274:Generated_Source\PSoC4/LED_DIMMER.c ****                 #endif /* (0 != LED_DIMMER_CTRL_CMPMODE1_SHIFT) */
+ 275:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 276:Generated_Source\PSoC4/LED_DIMMER.c ****                 LED_DIMMER_CONTROL3 &= ((uint8)(~LED_DIMMER_CTRL_CMPMODE1_MASK)); /*Clear Existing 
+ 277:Generated_Source\PSoC4/LED_DIMMER.c ****                 LED_DIMMER_CONTROL3 |= comparemodemasked;
+ 278:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 279:Generated_Source\PSoC4/LED_DIMMER.c ****             #elif (LED_DIMMER_UseControl)
+ 280:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 281:Generated_Source\PSoC4/LED_DIMMER.c ****                 #if(0 != LED_DIMMER_CTRL_CMPMODE1_SHIFT)
+ 282:Generated_Source\PSoC4/LED_DIMMER.c ****                     uint8 comparemode1masked = ((uint8)((uint8)comparemode << LED_DIMMER_CTRL_CMPMO
+ 283:Generated_Source\PSoC4/LED_DIMMER.c ****                                                 LED_DIMMER_CTRL_CMPMODE1_MASK;
+ 284:Generated_Source\PSoC4/LED_DIMMER.c ****                 #else
+ 285:Generated_Source\PSoC4/LED_DIMMER.c ****                     uint8 comparemode1masked = comparemode & LED_DIMMER_CTRL_CMPMODE1_MASK;
+ 286:Generated_Source\PSoC4/LED_DIMMER.c ****                 #endif /* (0 != LED_DIMMER_CTRL_CMPMODE1_SHIFT) */
+ 287:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 288:Generated_Source\PSoC4/LED_DIMMER.c ****                 #if(0 != LED_DIMMER_CTRL_CMPMODE2_SHIFT)
+ 289:Generated_Source\PSoC4/LED_DIMMER.c ****                     uint8 comparemode2masked = ((uint8)((uint8)comparemode << LED_DIMMER_CTRL_CMPMO
+ 290:Generated_Source\PSoC4/LED_DIMMER.c ****                                                LED_DIMMER_CTRL_CMPMODE2_MASK;
+ 291:Generated_Source\PSoC4/LED_DIMMER.c ****                 #else
+ 292:Generated_Source\PSoC4/LED_DIMMER.c ****                     uint8 comparemode2masked = comparemode & LED_DIMMER_CTRL_CMPMODE2_MASK;
+ 293:Generated_Source\PSoC4/LED_DIMMER.c ****                 #endif /* (0 != LED_DIMMER_CTRL_CMPMODE2_SHIFT) */
+ 294:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 295:Generated_Source\PSoC4/LED_DIMMER.c ****                 /*Clear existing mode */
+ 296:Generated_Source\PSoC4/LED_DIMMER.c ****                 LED_DIMMER_CONTROL &= ((uint8)(~(LED_DIMMER_CTRL_CMPMODE1_MASK |
+ 297:Generated_Source\PSoC4/LED_DIMMER.c ****                                             LED_DIMMER_CTRL_CMPMODE2_MASK)));
+ 298:Generated_Source\PSoC4/LED_DIMMER.c ****                 LED_DIMMER_CONTROL |= (comparemode1masked | comparemode2masked);
+ 299:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 300:Generated_Source\PSoC4/LED_DIMMER.c ****             #else
+ 301:Generated_Source\PSoC4/LED_DIMMER.c ****                 uint8 temp = comparemode;
+ 302:Generated_Source\PSoC4/LED_DIMMER.c ****             #endif /* (LED_DIMMER_UsingFixedFunction) */
+ 303:Generated_Source\PSoC4/LED_DIMMER.c ****         }
+ 304:Generated_Source\PSoC4/LED_DIMMER.c ****     #endif /* LED_DIMMER_CompareMode1SW */
+ 305:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 306:Generated_Source\PSoC4/LED_DIMMER.c **** #else /* UseOneCompareMode */
+ 307:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 11
+
+
+ 308:Generated_Source\PSoC4/LED_DIMMER.c ****     #if (LED_DIMMER_CompareMode1SW)
+ 309:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 310:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 311:Generated_Source\PSoC4/LED_DIMMER.c ****         /*******************************************************************************
+ 312:Generated_Source\PSoC4/LED_DIMMER.c ****         * Function Name: LED_DIMMER_SetCompareMode1
+ 313:Generated_Source\PSoC4/LED_DIMMER.c ****         ********************************************************************************
+ 314:Generated_Source\PSoC4/LED_DIMMER.c ****         *
+ 315:Generated_Source\PSoC4/LED_DIMMER.c ****         * Summary:
+ 316:Generated_Source\PSoC4/LED_DIMMER.c ****         *  This function writes the Compare Mode for the pwm or pwm1 output
+ 317:Generated_Source\PSoC4/LED_DIMMER.c ****         *
+ 318:Generated_Source\PSoC4/LED_DIMMER.c ****         * Parameters:
+ 319:Generated_Source\PSoC4/LED_DIMMER.c ****         *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 320:Generated_Source\PSoC4/LED_DIMMER.c ****         *                defined in the H file as input arguments.
+ 321:Generated_Source\PSoC4/LED_DIMMER.c ****         *
+ 322:Generated_Source\PSoC4/LED_DIMMER.c ****         * Return:
+ 323:Generated_Source\PSoC4/LED_DIMMER.c ****         *  None
+ 324:Generated_Source\PSoC4/LED_DIMMER.c ****         *
+ 325:Generated_Source\PSoC4/LED_DIMMER.c ****         *******************************************************************************/
+ 326:Generated_Source\PSoC4/LED_DIMMER.c ****         void LED_DIMMER_SetCompareMode1(uint8 comparemode) 
+ 327:Generated_Source\PSoC4/LED_DIMMER.c ****         {
+ 328:Generated_Source\PSoC4/LED_DIMMER.c ****             #if(0 != LED_DIMMER_CTRL_CMPMODE1_SHIFT)
+ 329:Generated_Source\PSoC4/LED_DIMMER.c ****                 uint8 comparemodemasked = ((uint8)((uint8)comparemode << LED_DIMMER_CTRL_CMPMODE1_S
+ 330:Generated_Source\PSoC4/LED_DIMMER.c ****                                            LED_DIMMER_CTRL_CMPMODE1_MASK;
+ 331:Generated_Source\PSoC4/LED_DIMMER.c ****             #else
+ 332:Generated_Source\PSoC4/LED_DIMMER.c ****                 uint8 comparemodemasked = comparemode & LED_DIMMER_CTRL_CMPMODE1_MASK;
+ 333:Generated_Source\PSoC4/LED_DIMMER.c ****             #endif /* (0 != LED_DIMMER_CTRL_CMPMODE1_SHIFT) */
+ 334:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 335:Generated_Source\PSoC4/LED_DIMMER.c ****             #if (LED_DIMMER_UseControl)
+ 336:Generated_Source\PSoC4/LED_DIMMER.c ****                 LED_DIMMER_CONTROL &= ((uint8)(~LED_DIMMER_CTRL_CMPMODE1_MASK)); /*Clear existing m
+ 337:Generated_Source\PSoC4/LED_DIMMER.c ****                 LED_DIMMER_CONTROL |= comparemodemasked;
+ 338:Generated_Source\PSoC4/LED_DIMMER.c ****             #endif /* (LED_DIMMER_UseControl) */
+ 339:Generated_Source\PSoC4/LED_DIMMER.c ****         }
+ 340:Generated_Source\PSoC4/LED_DIMMER.c ****     #endif /* LED_DIMMER_CompareMode1SW */
+ 341:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 342:Generated_Source\PSoC4/LED_DIMMER.c **** #if (LED_DIMMER_CompareMode2SW)
+ 343:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 344:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 345:Generated_Source\PSoC4/LED_DIMMER.c ****     /*******************************************************************************
+ 346:Generated_Source\PSoC4/LED_DIMMER.c ****     * Function Name: LED_DIMMER_SetCompareMode2
+ 347:Generated_Source\PSoC4/LED_DIMMER.c ****     ********************************************************************************
+ 348:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 349:Generated_Source\PSoC4/LED_DIMMER.c ****     * Summary:
+ 350:Generated_Source\PSoC4/LED_DIMMER.c ****     *  This function writes the Compare Mode for the pwm or pwm2 output
+ 351:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 352:Generated_Source\PSoC4/LED_DIMMER.c ****     * Parameters:
+ 353:Generated_Source\PSoC4/LED_DIMMER.c ****     *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 354:Generated_Source\PSoC4/LED_DIMMER.c ****     *                defined in the H file as input arguments.
+ 355:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 356:Generated_Source\PSoC4/LED_DIMMER.c ****     * Return:
+ 357:Generated_Source\PSoC4/LED_DIMMER.c ****     *  None
+ 358:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 359:Generated_Source\PSoC4/LED_DIMMER.c ****     *******************************************************************************/
+ 360:Generated_Source\PSoC4/LED_DIMMER.c ****     void LED_DIMMER_SetCompareMode2(uint8 comparemode) 
+ 361:Generated_Source\PSoC4/LED_DIMMER.c ****     {
+ 362:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 363:Generated_Source\PSoC4/LED_DIMMER.c ****         #if(0 != LED_DIMMER_CTRL_CMPMODE2_SHIFT)
+ 364:Generated_Source\PSoC4/LED_DIMMER.c ****             uint8 comparemodemasked = ((uint8)((uint8)comparemode << LED_DIMMER_CTRL_CMPMODE2_SHIFT
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 12
+
+
+ 365:Generated_Source\PSoC4/LED_DIMMER.c ****                                                  LED_DIMMER_CTRL_CMPMODE2_MASK;
+ 366:Generated_Source\PSoC4/LED_DIMMER.c ****         #else
+ 367:Generated_Source\PSoC4/LED_DIMMER.c ****             uint8 comparemodemasked = comparemode & LED_DIMMER_CTRL_CMPMODE2_MASK;
+ 368:Generated_Source\PSoC4/LED_DIMMER.c ****         #endif /* (0 != LED_DIMMER_CTRL_CMPMODE2_SHIFT) */
+ 369:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 370:Generated_Source\PSoC4/LED_DIMMER.c ****         #if (LED_DIMMER_UseControl)
+ 371:Generated_Source\PSoC4/LED_DIMMER.c ****             LED_DIMMER_CONTROL &= ((uint8)(~LED_DIMMER_CTRL_CMPMODE2_MASK)); /*Clear existing mode 
+ 372:Generated_Source\PSoC4/LED_DIMMER.c ****             LED_DIMMER_CONTROL |= comparemodemasked;
+ 373:Generated_Source\PSoC4/LED_DIMMER.c ****         #endif /* (LED_DIMMER_UseControl) */
+ 374:Generated_Source\PSoC4/LED_DIMMER.c ****     }
+ 375:Generated_Source\PSoC4/LED_DIMMER.c ****     #endif /*LED_DIMMER_CompareMode2SW */
+ 376:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 377:Generated_Source\PSoC4/LED_DIMMER.c **** #endif /* UseOneCompareMode */
+ 378:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 379:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 380:Generated_Source\PSoC4/LED_DIMMER.c **** #if (!LED_DIMMER_UsingFixedFunction)
+ 381:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 382:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 383:Generated_Source\PSoC4/LED_DIMMER.c ****     /*******************************************************************************
+ 384:Generated_Source\PSoC4/LED_DIMMER.c ****     * Function Name: LED_DIMMER_WriteCounter
+ 385:Generated_Source\PSoC4/LED_DIMMER.c ****     ********************************************************************************
+ 386:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 387:Generated_Source\PSoC4/LED_DIMMER.c ****     * Summary:
+ 388:Generated_Source\PSoC4/LED_DIMMER.c ****     *  Writes a new counter value directly to the counter register. This will be
+ 389:Generated_Source\PSoC4/LED_DIMMER.c ****     *  implemented for that currently running period and only that period. This API
+ 390:Generated_Source\PSoC4/LED_DIMMER.c ****     *  is valid only for UDB implementation and not available for fixed function
+ 391:Generated_Source\PSoC4/LED_DIMMER.c ****     *  PWM implementation.
+ 392:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 393:Generated_Source\PSoC4/LED_DIMMER.c ****     * Parameters:
+ 394:Generated_Source\PSoC4/LED_DIMMER.c ****     *  counter:  The period new period counter value.
+ 395:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 396:Generated_Source\PSoC4/LED_DIMMER.c ****     * Return:
+ 397:Generated_Source\PSoC4/LED_DIMMER.c ****     *  None
+ 398:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 399:Generated_Source\PSoC4/LED_DIMMER.c ****     * Side Effects:
+ 400:Generated_Source\PSoC4/LED_DIMMER.c ****     *  The PWM Period will be reloaded when a counter value will be a zero
+ 401:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 402:Generated_Source\PSoC4/LED_DIMMER.c ****     *******************************************************************************/
+ 403:Generated_Source\PSoC4/LED_DIMMER.c ****     void LED_DIMMER_WriteCounter(uint16 counter) \
+ 404:Generated_Source\PSoC4/LED_DIMMER.c ****                                        
+ 405:Generated_Source\PSoC4/LED_DIMMER.c ****     {
+ 264              		.loc 1 405 0
+ 265              		.cfi_startproc
+ 266              		@ args = 0, pretend = 0, frame = 8
+ 267              		@ frame_needed = 1, uses_anonymous_args = 0
+ 268 0000 80B5     		push	{r7, lr}
+ 269              		.cfi_def_cfa_offset 8
+ 270              		.cfi_offset 7, -8
+ 271              		.cfi_offset 14, -4
+ 272 0002 82B0     		sub	sp, sp, #8
+ 273              		.cfi_def_cfa_offset 16
+ 274 0004 00AF     		add	r7, sp, #0
+ 275              		.cfi_def_cfa_register 7
+ 276 0006 0200     		movs	r2, r0
+ 277 0008 BB1D     		adds	r3, r7, #6
+ 278 000a 1A80     		strh	r2, [r3]
+ 406:Generated_Source\PSoC4/LED_DIMMER.c ****         CY_SET_REG16(LED_DIMMER_COUNTER_LSB_PTR, counter);
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 13
+
+
+ 279              		.loc 1 406 0
+ 280 000c 034A     		ldr	r2, .L15
+ 281 000e BB1D     		adds	r3, r7, #6
+ 282 0010 1B88     		ldrh	r3, [r3]
+ 283 0012 1380     		strh	r3, [r2]
+ 407:Generated_Source\PSoC4/LED_DIMMER.c ****     }
+ 284              		.loc 1 407 0
+ 285 0014 C046     		nop
+ 286 0016 BD46     		mov	sp, r7
+ 287 0018 02B0     		add	sp, sp, #8
+ 288              		@ sp needed
+ 289 001a 80BD     		pop	{r7, pc}
+ 290              	.L16:
+ 291              		.align	2
+ 292              	.L15:
+ 293 001c 04100F40 		.word	1074728964
+ 294              		.cfi_endproc
+ 295              	.LFE6:
+ 296              		.size	LED_DIMMER_WriteCounter, .-LED_DIMMER_WriteCounter
+ 297              		.section	.text.LED_DIMMER_ReadCounter,"ax",%progbits
+ 298              		.align	2
+ 299              		.global	LED_DIMMER_ReadCounter
+ 300              		.code	16
+ 301              		.thumb_func
+ 302              		.type	LED_DIMMER_ReadCounter, %function
+ 303              	LED_DIMMER_ReadCounter:
+ 304              	.LFB7:
+ 408:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 409:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 410:Generated_Source\PSoC4/LED_DIMMER.c ****     /*******************************************************************************
+ 411:Generated_Source\PSoC4/LED_DIMMER.c ****     * Function Name: LED_DIMMER_ReadCounter
+ 412:Generated_Source\PSoC4/LED_DIMMER.c ****     ********************************************************************************
+ 413:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 414:Generated_Source\PSoC4/LED_DIMMER.c ****     * Summary:
+ 415:Generated_Source\PSoC4/LED_DIMMER.c ****     *  This function returns the current value of the counter.  It doesn't matter
+ 416:Generated_Source\PSoC4/LED_DIMMER.c ****     *  if the counter is enabled or running.
+ 417:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 418:Generated_Source\PSoC4/LED_DIMMER.c ****     * Parameters:
+ 419:Generated_Source\PSoC4/LED_DIMMER.c ****     *  None
+ 420:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 421:Generated_Source\PSoC4/LED_DIMMER.c ****     * Return:
+ 422:Generated_Source\PSoC4/LED_DIMMER.c ****     *  The current value of the counter.
+ 423:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 424:Generated_Source\PSoC4/LED_DIMMER.c ****     *******************************************************************************/
+ 425:Generated_Source\PSoC4/LED_DIMMER.c ****     uint16 LED_DIMMER_ReadCounter(void) 
+ 426:Generated_Source\PSoC4/LED_DIMMER.c ****     {
+ 305              		.loc 1 426 0
+ 306              		.cfi_startproc
+ 307              		@ args = 0, pretend = 0, frame = 0
+ 308              		@ frame_needed = 1, uses_anonymous_args = 0
+ 309 0000 80B5     		push	{r7, lr}
+ 310              		.cfi_def_cfa_offset 8
+ 311              		.cfi_offset 7, -8
+ 312              		.cfi_offset 14, -4
+ 313 0002 00AF     		add	r7, sp, #0
+ 314              		.cfi_def_cfa_register 7
+ 427:Generated_Source\PSoC4/LED_DIMMER.c ****         /* Force capture by reading Accumulator */
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 14
+
+
+ 428:Generated_Source\PSoC4/LED_DIMMER.c ****         /* Must first do a software capture to be able to read the counter */
+ 429:Generated_Source\PSoC4/LED_DIMMER.c ****         /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ 430:Generated_Source\PSoC4/LED_DIMMER.c ****           (void)CY_GET_REG8(LED_DIMMER_COUNTERCAP_LSB_PTR_8BIT);
+ 315              		.loc 1 430 0
+ 316 0004 034B     		ldr	r3, .L19
+ 317 0006 1B78     		ldrb	r3, [r3]
+ 431:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 432:Generated_Source\PSoC4/LED_DIMMER.c ****         /* Read the data from the FIFO */
+ 433:Generated_Source\PSoC4/LED_DIMMER.c ****         return (CY_GET_REG16(LED_DIMMER_CAPTURE_LSB_PTR));
+ 318              		.loc 1 433 0
+ 319 0008 034B     		ldr	r3, .L19+4
+ 320 000a 1B88     		ldrh	r3, [r3]
+ 321 000c 9BB2     		uxth	r3, r3
+ 434:Generated_Source\PSoC4/LED_DIMMER.c ****     }
+ 322              		.loc 1 434 0
+ 323 000e 1800     		movs	r0, r3
+ 324 0010 BD46     		mov	sp, r7
+ 325              		@ sp needed
+ 326 0012 80BD     		pop	{r7, pc}
+ 327              	.L20:
+ 328              		.align	2
+ 329              	.L19:
+ 330 0014 12000F40 		.word	1074724882
+ 331 0018 A4100F40 		.word	1074729124
+ 332              		.cfi_endproc
+ 333              	.LFE7:
+ 334              		.size	LED_DIMMER_ReadCounter, .-LED_DIMMER_ReadCounter
+ 335              		.section	.text.LED_DIMMER_ClearFIFO,"ax",%progbits
+ 336              		.align	2
+ 337              		.global	LED_DIMMER_ClearFIFO
+ 338              		.code	16
+ 339              		.thumb_func
+ 340              		.type	LED_DIMMER_ClearFIFO, %function
+ 341              	LED_DIMMER_ClearFIFO:
+ 342              	.LFB8:
+ 435:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 436:Generated_Source\PSoC4/LED_DIMMER.c ****     #if (LED_DIMMER_UseStatus)
+ 437:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 438:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 439:Generated_Source\PSoC4/LED_DIMMER.c ****         /*******************************************************************************
+ 440:Generated_Source\PSoC4/LED_DIMMER.c ****         * Function Name: LED_DIMMER_ClearFIFO
+ 441:Generated_Source\PSoC4/LED_DIMMER.c ****         ********************************************************************************
+ 442:Generated_Source\PSoC4/LED_DIMMER.c ****         *
+ 443:Generated_Source\PSoC4/LED_DIMMER.c ****         * Summary:
+ 444:Generated_Source\PSoC4/LED_DIMMER.c ****         *  This function clears all capture data from the capture FIFO
+ 445:Generated_Source\PSoC4/LED_DIMMER.c ****         *
+ 446:Generated_Source\PSoC4/LED_DIMMER.c ****         * Parameters:
+ 447:Generated_Source\PSoC4/LED_DIMMER.c ****         *  None
+ 448:Generated_Source\PSoC4/LED_DIMMER.c ****         *
+ 449:Generated_Source\PSoC4/LED_DIMMER.c ****         * Return:
+ 450:Generated_Source\PSoC4/LED_DIMMER.c ****         *  None
+ 451:Generated_Source\PSoC4/LED_DIMMER.c ****         *
+ 452:Generated_Source\PSoC4/LED_DIMMER.c ****         *******************************************************************************/
+ 453:Generated_Source\PSoC4/LED_DIMMER.c ****         void LED_DIMMER_ClearFIFO(void) 
+ 454:Generated_Source\PSoC4/LED_DIMMER.c ****         {
+ 343              		.loc 1 454 0
+ 344              		.cfi_startproc
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 15
+
+
+ 345              		@ args = 0, pretend = 0, frame = 0
+ 346              		@ frame_needed = 1, uses_anonymous_args = 0
+ 347 0000 80B5     		push	{r7, lr}
+ 348              		.cfi_def_cfa_offset 8
+ 349              		.cfi_offset 7, -8
+ 350              		.cfi_offset 14, -4
+ 351 0002 00AF     		add	r7, sp, #0
+ 352              		.cfi_def_cfa_register 7
+ 455:Generated_Source\PSoC4/LED_DIMMER.c ****             while(0u != (LED_DIMMER_ReadStatusRegister() & LED_DIMMER_STATUS_FIFONEMPTY))
+ 353              		.loc 1 455 0
+ 354 0004 01E0     		b	.L22
+ 355              	.L23:
+ 456:Generated_Source\PSoC4/LED_DIMMER.c ****             {
+ 457:Generated_Source\PSoC4/LED_DIMMER.c ****                 (void)LED_DIMMER_ReadCapture();
+ 356              		.loc 1 457 0
+ 357 0006 FFF7FEFF 		bl	LED_DIMMER_ReadCapture
+ 358              	.L22:
+ 455:Generated_Source\PSoC4/LED_DIMMER.c ****             while(0u != (LED_DIMMER_ReadStatusRegister() & LED_DIMMER_STATUS_FIFONEMPTY))
+ 359              		.loc 1 455 0
+ 360 000a FFF7FEFF 		bl	LED_DIMMER_ReadStatusRegister
+ 361 000e 0300     		movs	r3, r0
+ 362 0010 1A00     		movs	r2, r3
+ 363 0012 1023     		movs	r3, #16
+ 364 0014 1340     		ands	r3, r2
+ 365 0016 F6D1     		bne	.L23
+ 458:Generated_Source\PSoC4/LED_DIMMER.c ****             }
+ 459:Generated_Source\PSoC4/LED_DIMMER.c ****         }
+ 366              		.loc 1 459 0
+ 367 0018 C046     		nop
+ 368 001a BD46     		mov	sp, r7
+ 369              		@ sp needed
+ 370 001c 80BD     		pop	{r7, pc}
+ 371              		.cfi_endproc
+ 372              	.LFE8:
+ 373              		.size	LED_DIMMER_ClearFIFO, .-LED_DIMMER_ClearFIFO
+ 374 001e C046     		.section	.text.LED_DIMMER_WritePeriod,"ax",%progbits
+ 375              		.align	2
+ 376              		.global	LED_DIMMER_WritePeriod
+ 377              		.code	16
+ 378              		.thumb_func
+ 379              		.type	LED_DIMMER_WritePeriod, %function
+ 380              	LED_DIMMER_WritePeriod:
+ 381              	.LFB9:
+ 460:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 461:Generated_Source\PSoC4/LED_DIMMER.c ****     #endif /* LED_DIMMER_UseStatus */
+ 462:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 463:Generated_Source\PSoC4/LED_DIMMER.c **** #endif /* !LED_DIMMER_UsingFixedFunction */
+ 464:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 465:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 466:Generated_Source\PSoC4/LED_DIMMER.c **** /*******************************************************************************
+ 467:Generated_Source\PSoC4/LED_DIMMER.c **** * Function Name: LED_DIMMER_WritePeriod
+ 468:Generated_Source\PSoC4/LED_DIMMER.c **** ********************************************************************************
+ 469:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ 470:Generated_Source\PSoC4/LED_DIMMER.c **** * Summary:
+ 471:Generated_Source\PSoC4/LED_DIMMER.c **** *  This function is used to change the period of the counter.  The new period
+ 472:Generated_Source\PSoC4/LED_DIMMER.c **** *  will be loaded the next time terminal count is detected.
+ 473:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 16
+
+
+ 474:Generated_Source\PSoC4/LED_DIMMER.c **** * Parameters:
+ 475:Generated_Source\PSoC4/LED_DIMMER.c **** *  period:  Period value. May be between 1 and (2^Resolution)-1.  A value of 0
+ 476:Generated_Source\PSoC4/LED_DIMMER.c **** *           will result in the counter remaining at zero.
+ 477:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ 478:Generated_Source\PSoC4/LED_DIMMER.c **** * Return:
+ 479:Generated_Source\PSoC4/LED_DIMMER.c **** *  None
+ 480:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ 481:Generated_Source\PSoC4/LED_DIMMER.c **** *******************************************************************************/
+ 482:Generated_Source\PSoC4/LED_DIMMER.c **** void LED_DIMMER_WritePeriod(uint16 period) 
+ 483:Generated_Source\PSoC4/LED_DIMMER.c **** {
+ 382              		.loc 1 483 0
+ 383              		.cfi_startproc
+ 384              		@ args = 0, pretend = 0, frame = 8
+ 385              		@ frame_needed = 1, uses_anonymous_args = 0
+ 386 0000 80B5     		push	{r7, lr}
+ 387              		.cfi_def_cfa_offset 8
+ 388              		.cfi_offset 7, -8
+ 389              		.cfi_offset 14, -4
+ 390 0002 82B0     		sub	sp, sp, #8
+ 391              		.cfi_def_cfa_offset 16
+ 392 0004 00AF     		add	r7, sp, #0
+ 393              		.cfi_def_cfa_register 7
+ 394 0006 0200     		movs	r2, r0
+ 395 0008 BB1D     		adds	r3, r7, #6
+ 396 000a 1A80     		strh	r2, [r3]
+ 484:Generated_Source\PSoC4/LED_DIMMER.c ****     #if(LED_DIMMER_UsingFixedFunction)
+ 485:Generated_Source\PSoC4/LED_DIMMER.c ****         CY_SET_REG16(LED_DIMMER_PERIOD_LSB_PTR, (uint16)period);
+ 486:Generated_Source\PSoC4/LED_DIMMER.c ****     #else
+ 487:Generated_Source\PSoC4/LED_DIMMER.c ****         CY_SET_REG16(LED_DIMMER_PERIOD_LSB_PTR, period);
+ 397              		.loc 1 487 0
+ 398 000c 034A     		ldr	r2, .L25
+ 399 000e BB1D     		adds	r3, r7, #6
+ 400 0010 1B88     		ldrh	r3, [r3]
+ 401 0012 1380     		strh	r3, [r2]
+ 488:Generated_Source\PSoC4/LED_DIMMER.c ****     #endif /* (LED_DIMMER_UsingFixedFunction) */
+ 489:Generated_Source\PSoC4/LED_DIMMER.c **** }
+ 402              		.loc 1 489 0
+ 403 0014 C046     		nop
+ 404 0016 BD46     		mov	sp, r7
+ 405 0018 02B0     		add	sp, sp, #8
+ 406              		@ sp needed
+ 407 001a 80BD     		pop	{r7, pc}
+ 408              	.L26:
+ 409              		.align	2
+ 410              	.L25:
+ 411 001c 84100F40 		.word	1074729092
+ 412              		.cfi_endproc
+ 413              	.LFE9:
+ 414              		.size	LED_DIMMER_WritePeriod, .-LED_DIMMER_WritePeriod
+ 415              		.section	.text.LED_DIMMER_WriteCompare,"ax",%progbits
+ 416              		.align	2
+ 417              		.global	LED_DIMMER_WriteCompare
+ 418              		.code	16
+ 419              		.thumb_func
+ 420              		.type	LED_DIMMER_WriteCompare, %function
+ 421              	LED_DIMMER_WriteCompare:
+ 422              	.LFB10:
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 17
+
+
+ 490:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 491:Generated_Source\PSoC4/LED_DIMMER.c **** #if (LED_DIMMER_UseOneCompareMode)
+ 492:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 493:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 494:Generated_Source\PSoC4/LED_DIMMER.c ****     /*******************************************************************************
+ 495:Generated_Source\PSoC4/LED_DIMMER.c ****     * Function Name: LED_DIMMER_WriteCompare
+ 496:Generated_Source\PSoC4/LED_DIMMER.c ****     ********************************************************************************
+ 497:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 498:Generated_Source\PSoC4/LED_DIMMER.c ****     * Summary:
+ 499:Generated_Source\PSoC4/LED_DIMMER.c ****     *  This funtion is used to change the compare1 value when the PWM is in Dither
+ 500:Generated_Source\PSoC4/LED_DIMMER.c ****     *  mode. The compare output will reflect the new value on the next UDB clock.
+ 501:Generated_Source\PSoC4/LED_DIMMER.c ****     *  The compare output will be driven high when the present counter value is
+ 502:Generated_Source\PSoC4/LED_DIMMER.c ****     *  compared to the compare value based on the compare mode defined in
+ 503:Generated_Source\PSoC4/LED_DIMMER.c ****     *  Dither Mode.
+ 504:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 505:Generated_Source\PSoC4/LED_DIMMER.c ****     * Parameters:
+ 506:Generated_Source\PSoC4/LED_DIMMER.c ****     *  compare:  New compare value.
+ 507:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 508:Generated_Source\PSoC4/LED_DIMMER.c ****     * Return:
+ 509:Generated_Source\PSoC4/LED_DIMMER.c ****     *  None
+ 510:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 511:Generated_Source\PSoC4/LED_DIMMER.c ****     * Side Effects:
+ 512:Generated_Source\PSoC4/LED_DIMMER.c ****     *  This function is only available if the PWM mode parameter is set to
+ 513:Generated_Source\PSoC4/LED_DIMMER.c ****     *  Dither Mode, Center Aligned Mode or One Output Mode
+ 514:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 515:Generated_Source\PSoC4/LED_DIMMER.c ****     *******************************************************************************/
+ 516:Generated_Source\PSoC4/LED_DIMMER.c ****     void LED_DIMMER_WriteCompare(uint16 compare) \
+ 517:Generated_Source\PSoC4/LED_DIMMER.c ****                                        
+ 518:Generated_Source\PSoC4/LED_DIMMER.c ****     {
+ 423              		.loc 1 518 0
+ 424              		.cfi_startproc
+ 425              		@ args = 0, pretend = 0, frame = 8
+ 426              		@ frame_needed = 1, uses_anonymous_args = 0
+ 427 0000 80B5     		push	{r7, lr}
+ 428              		.cfi_def_cfa_offset 8
+ 429              		.cfi_offset 7, -8
+ 430              		.cfi_offset 14, -4
+ 431 0002 82B0     		sub	sp, sp, #8
+ 432              		.cfi_def_cfa_offset 16
+ 433 0004 00AF     		add	r7, sp, #0
+ 434              		.cfi_def_cfa_register 7
+ 435 0006 0200     		movs	r2, r0
+ 436 0008 BB1D     		adds	r3, r7, #6
+ 437 000a 1A80     		strh	r2, [r3]
+ 519:Generated_Source\PSoC4/LED_DIMMER.c ****         #if(LED_DIMMER_UsingFixedFunction)
+ 520:Generated_Source\PSoC4/LED_DIMMER.c ****             CY_SET_REG16(LED_DIMMER_COMPARE1_LSB_PTR, (uint16)compare);
+ 521:Generated_Source\PSoC4/LED_DIMMER.c ****         #else
+ 522:Generated_Source\PSoC4/LED_DIMMER.c ****             CY_SET_REG16(LED_DIMMER_COMPARE1_LSB_PTR, compare);
+ 438              		.loc 1 522 0
+ 439 000c 034A     		ldr	r2, .L28
+ 440 000e BB1D     		adds	r3, r7, #6
+ 441 0010 1B88     		ldrh	r3, [r3]
+ 442 0012 1380     		strh	r3, [r2]
+ 523:Generated_Source\PSoC4/LED_DIMMER.c ****         #endif /* (LED_DIMMER_UsingFixedFunction) */
+ 524:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 525:Generated_Source\PSoC4/LED_DIMMER.c ****         #if (LED_DIMMER_PWMMode == LED_DIMMER__B_PWM__DITHER)
+ 526:Generated_Source\PSoC4/LED_DIMMER.c ****             #if(LED_DIMMER_UsingFixedFunction)
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 18
+
+
+ 527:Generated_Source\PSoC4/LED_DIMMER.c ****                 CY_SET_REG16(LED_DIMMER_COMPARE2_LSB_PTR, (uint16)(compare + 1u));
+ 528:Generated_Source\PSoC4/LED_DIMMER.c ****             #else
+ 529:Generated_Source\PSoC4/LED_DIMMER.c ****                 CY_SET_REG16(LED_DIMMER_COMPARE2_LSB_PTR, (compare + 1u));
+ 530:Generated_Source\PSoC4/LED_DIMMER.c ****             #endif /* (LED_DIMMER_UsingFixedFunction) */
+ 531:Generated_Source\PSoC4/LED_DIMMER.c ****         #endif /* (LED_DIMMER_PWMMode == LED_DIMMER__B_PWM__DITHER) */
+ 532:Generated_Source\PSoC4/LED_DIMMER.c ****     }
+ 443              		.loc 1 532 0
+ 444 0014 C046     		nop
+ 445 0016 BD46     		mov	sp, r7
+ 446 0018 02B0     		add	sp, sp, #8
+ 447              		@ sp needed
+ 448 001a 80BD     		pop	{r7, pc}
+ 449              	.L29:
+ 450              		.align	2
+ 451              	.L28:
+ 452 001c 44100F40 		.word	1074729028
+ 453              		.cfi_endproc
+ 454              	.LFE10:
+ 455              		.size	LED_DIMMER_WriteCompare, .-LED_DIMMER_WriteCompare
+ 456              		.section	.text.LED_DIMMER_SetInterruptMode,"ax",%progbits
+ 457              		.align	2
+ 458              		.global	LED_DIMMER_SetInterruptMode
+ 459              		.code	16
+ 460              		.thumb_func
+ 461              		.type	LED_DIMMER_SetInterruptMode, %function
+ 462              	LED_DIMMER_SetInterruptMode:
+ 463              	.LFB11:
+ 533:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 534:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 535:Generated_Source\PSoC4/LED_DIMMER.c **** #else
+ 536:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 537:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 538:Generated_Source\PSoC4/LED_DIMMER.c ****     /*******************************************************************************
+ 539:Generated_Source\PSoC4/LED_DIMMER.c ****     * Function Name: LED_DIMMER_WriteCompare1
+ 540:Generated_Source\PSoC4/LED_DIMMER.c ****     ********************************************************************************
+ 541:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 542:Generated_Source\PSoC4/LED_DIMMER.c ****     * Summary:
+ 543:Generated_Source\PSoC4/LED_DIMMER.c ****     *  This funtion is used to change the compare1 value.  The compare output will
+ 544:Generated_Source\PSoC4/LED_DIMMER.c ****     *  reflect the new value on the next UDB clock.  The compare output will be
+ 545:Generated_Source\PSoC4/LED_DIMMER.c ****     *  driven high when the present counter value is less than or less than or
+ 546:Generated_Source\PSoC4/LED_DIMMER.c ****     *  equal to the compare register, depending on the mode.
+ 547:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 548:Generated_Source\PSoC4/LED_DIMMER.c ****     * Parameters:
+ 549:Generated_Source\PSoC4/LED_DIMMER.c ****     *  compare:  New compare value.
+ 550:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 551:Generated_Source\PSoC4/LED_DIMMER.c ****     * Return:
+ 552:Generated_Source\PSoC4/LED_DIMMER.c ****     *  None
+ 553:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 554:Generated_Source\PSoC4/LED_DIMMER.c ****     *******************************************************************************/
+ 555:Generated_Source\PSoC4/LED_DIMMER.c ****     void LED_DIMMER_WriteCompare1(uint16 compare) \
+ 556:Generated_Source\PSoC4/LED_DIMMER.c ****                                         
+ 557:Generated_Source\PSoC4/LED_DIMMER.c ****     {
+ 558:Generated_Source\PSoC4/LED_DIMMER.c ****         #if(LED_DIMMER_UsingFixedFunction)
+ 559:Generated_Source\PSoC4/LED_DIMMER.c ****             CY_SET_REG16(LED_DIMMER_COMPARE1_LSB_PTR, (uint16)compare);
+ 560:Generated_Source\PSoC4/LED_DIMMER.c ****         #else
+ 561:Generated_Source\PSoC4/LED_DIMMER.c ****             CY_SET_REG16(LED_DIMMER_COMPARE1_LSB_PTR, compare);
+ 562:Generated_Source\PSoC4/LED_DIMMER.c ****         #endif /* (LED_DIMMER_UsingFixedFunction) */
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 19
+
+
+ 563:Generated_Source\PSoC4/LED_DIMMER.c ****     }
+ 564:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 565:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 566:Generated_Source\PSoC4/LED_DIMMER.c ****     /*******************************************************************************
+ 567:Generated_Source\PSoC4/LED_DIMMER.c ****     * Function Name: LED_DIMMER_WriteCompare2
+ 568:Generated_Source\PSoC4/LED_DIMMER.c ****     ********************************************************************************
+ 569:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 570:Generated_Source\PSoC4/LED_DIMMER.c ****     * Summary:
+ 571:Generated_Source\PSoC4/LED_DIMMER.c ****     *  This funtion is used to change the compare value, for compare1 output.
+ 572:Generated_Source\PSoC4/LED_DIMMER.c ****     *  The compare output will reflect the new value on the next UDB clock.
+ 573:Generated_Source\PSoC4/LED_DIMMER.c ****     *  The compare output will be driven high when the present counter value is
+ 574:Generated_Source\PSoC4/LED_DIMMER.c ****     *  less than or less than or equal to the compare register, depending on the
+ 575:Generated_Source\PSoC4/LED_DIMMER.c ****     *  mode.
+ 576:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 577:Generated_Source\PSoC4/LED_DIMMER.c ****     * Parameters:
+ 578:Generated_Source\PSoC4/LED_DIMMER.c ****     *  compare:  New compare value.
+ 579:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 580:Generated_Source\PSoC4/LED_DIMMER.c ****     * Return:
+ 581:Generated_Source\PSoC4/LED_DIMMER.c ****     *  None
+ 582:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 583:Generated_Source\PSoC4/LED_DIMMER.c ****     *******************************************************************************/
+ 584:Generated_Source\PSoC4/LED_DIMMER.c ****     void LED_DIMMER_WriteCompare2(uint16 compare) \
+ 585:Generated_Source\PSoC4/LED_DIMMER.c ****                                         
+ 586:Generated_Source\PSoC4/LED_DIMMER.c ****     {
+ 587:Generated_Source\PSoC4/LED_DIMMER.c ****         #if(LED_DIMMER_UsingFixedFunction)
+ 588:Generated_Source\PSoC4/LED_DIMMER.c ****             CY_SET_REG16(LED_DIMMER_COMPARE2_LSB_PTR, compare);
+ 589:Generated_Source\PSoC4/LED_DIMMER.c ****         #else
+ 590:Generated_Source\PSoC4/LED_DIMMER.c ****             CY_SET_REG16(LED_DIMMER_COMPARE2_LSB_PTR, compare);
+ 591:Generated_Source\PSoC4/LED_DIMMER.c ****         #endif /* (LED_DIMMER_UsingFixedFunction) */
+ 592:Generated_Source\PSoC4/LED_DIMMER.c ****     }
+ 593:Generated_Source\PSoC4/LED_DIMMER.c **** #endif /* UseOneCompareMode */
+ 594:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 595:Generated_Source\PSoC4/LED_DIMMER.c **** #if (LED_DIMMER_DeadBandUsed)
+ 596:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 597:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 598:Generated_Source\PSoC4/LED_DIMMER.c ****     /*******************************************************************************
+ 599:Generated_Source\PSoC4/LED_DIMMER.c ****     * Function Name: LED_DIMMER_WriteDeadTime
+ 600:Generated_Source\PSoC4/LED_DIMMER.c ****     ********************************************************************************
+ 601:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 602:Generated_Source\PSoC4/LED_DIMMER.c ****     * Summary:
+ 603:Generated_Source\PSoC4/LED_DIMMER.c ****     *  This function writes the dead-band counts to the corresponding register
+ 604:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 605:Generated_Source\PSoC4/LED_DIMMER.c ****     * Parameters:
+ 606:Generated_Source\PSoC4/LED_DIMMER.c ****     *  deadtime:  Number of counts for dead time
+ 607:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 608:Generated_Source\PSoC4/LED_DIMMER.c ****     * Return:
+ 609:Generated_Source\PSoC4/LED_DIMMER.c ****     *  None
+ 610:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 611:Generated_Source\PSoC4/LED_DIMMER.c ****     *******************************************************************************/
+ 612:Generated_Source\PSoC4/LED_DIMMER.c ****     void LED_DIMMER_WriteDeadTime(uint8 deadtime) 
+ 613:Generated_Source\PSoC4/LED_DIMMER.c ****     {
+ 614:Generated_Source\PSoC4/LED_DIMMER.c ****         /* If using the Dead Band 1-255 mode then just write the register */
+ 615:Generated_Source\PSoC4/LED_DIMMER.c ****         #if(!LED_DIMMER_DeadBand2_4)
+ 616:Generated_Source\PSoC4/LED_DIMMER.c ****             CY_SET_REG8(LED_DIMMER_DEADBAND_COUNT_PTR, deadtime);
+ 617:Generated_Source\PSoC4/LED_DIMMER.c ****         #else
+ 618:Generated_Source\PSoC4/LED_DIMMER.c ****             /* Otherwise the data has to be masked and offset */
+ 619:Generated_Source\PSoC4/LED_DIMMER.c ****             /* Clear existing data */
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 20
+
+
+ 620:Generated_Source\PSoC4/LED_DIMMER.c ****             LED_DIMMER_DEADBAND_COUNT &= ((uint8)(~LED_DIMMER_DEADBAND_COUNT_MASK));
+ 621:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 622:Generated_Source\PSoC4/LED_DIMMER.c ****             /* Set new dead time */
+ 623:Generated_Source\PSoC4/LED_DIMMER.c ****             #if(LED_DIMMER_DEADBAND_COUNT_SHIFT)
+ 624:Generated_Source\PSoC4/LED_DIMMER.c ****                 LED_DIMMER_DEADBAND_COUNT |= ((uint8)((uint8)deadtime << LED_DIMMER_DEADBAND_COUNT_
+ 625:Generated_Source\PSoC4/LED_DIMMER.c ****                                                     LED_DIMMER_DEADBAND_COUNT_MASK;
+ 626:Generated_Source\PSoC4/LED_DIMMER.c ****             #else
+ 627:Generated_Source\PSoC4/LED_DIMMER.c ****                 LED_DIMMER_DEADBAND_COUNT |= deadtime & LED_DIMMER_DEADBAND_COUNT_MASK;
+ 628:Generated_Source\PSoC4/LED_DIMMER.c ****             #endif /* (LED_DIMMER_DEADBAND_COUNT_SHIFT) */
+ 629:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 630:Generated_Source\PSoC4/LED_DIMMER.c ****         #endif /* (!LED_DIMMER_DeadBand2_4) */
+ 631:Generated_Source\PSoC4/LED_DIMMER.c ****     }
+ 632:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 633:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 634:Generated_Source\PSoC4/LED_DIMMER.c ****     /*******************************************************************************
+ 635:Generated_Source\PSoC4/LED_DIMMER.c ****     * Function Name: LED_DIMMER_ReadDeadTime
+ 636:Generated_Source\PSoC4/LED_DIMMER.c ****     ********************************************************************************
+ 637:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 638:Generated_Source\PSoC4/LED_DIMMER.c ****     * Summary:
+ 639:Generated_Source\PSoC4/LED_DIMMER.c ****     *  This function reads the dead-band counts from the corresponding register
+ 640:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 641:Generated_Source\PSoC4/LED_DIMMER.c ****     * Parameters:
+ 642:Generated_Source\PSoC4/LED_DIMMER.c ****     *  None
+ 643:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 644:Generated_Source\PSoC4/LED_DIMMER.c ****     * Return:
+ 645:Generated_Source\PSoC4/LED_DIMMER.c ****     *  Dead Band Counts
+ 646:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 647:Generated_Source\PSoC4/LED_DIMMER.c ****     *******************************************************************************/
+ 648:Generated_Source\PSoC4/LED_DIMMER.c ****     uint8 LED_DIMMER_ReadDeadTime(void) 
+ 649:Generated_Source\PSoC4/LED_DIMMER.c ****     {
+ 650:Generated_Source\PSoC4/LED_DIMMER.c ****         /* If using the Dead Band 1-255 mode then just read the register */
+ 651:Generated_Source\PSoC4/LED_DIMMER.c ****         #if(!LED_DIMMER_DeadBand2_4)
+ 652:Generated_Source\PSoC4/LED_DIMMER.c ****             return (CY_GET_REG8(LED_DIMMER_DEADBAND_COUNT_PTR));
+ 653:Generated_Source\PSoC4/LED_DIMMER.c ****         #else
+ 654:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 655:Generated_Source\PSoC4/LED_DIMMER.c ****             /* Otherwise the data has to be masked and offset */
+ 656:Generated_Source\PSoC4/LED_DIMMER.c ****             #if(LED_DIMMER_DEADBAND_COUNT_SHIFT)
+ 657:Generated_Source\PSoC4/LED_DIMMER.c ****                 return ((uint8)(((uint8)(LED_DIMMER_DEADBAND_COUNT & LED_DIMMER_DEADBAND_COUNT_MASK
+ 658:Generated_Source\PSoC4/LED_DIMMER.c ****                                                                            LED_DIMMER_DEADBAND_COUN
+ 659:Generated_Source\PSoC4/LED_DIMMER.c ****             #else
+ 660:Generated_Source\PSoC4/LED_DIMMER.c ****                 return (LED_DIMMER_DEADBAND_COUNT & LED_DIMMER_DEADBAND_COUNT_MASK);
+ 661:Generated_Source\PSoC4/LED_DIMMER.c ****             #endif /* (LED_DIMMER_DEADBAND_COUNT_SHIFT) */
+ 662:Generated_Source\PSoC4/LED_DIMMER.c ****         #endif /* (!LED_DIMMER_DeadBand2_4) */
+ 663:Generated_Source\PSoC4/LED_DIMMER.c ****     }
+ 664:Generated_Source\PSoC4/LED_DIMMER.c **** #endif /* DeadBandUsed */
+ 665:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 666:Generated_Source\PSoC4/LED_DIMMER.c **** #if (LED_DIMMER_UseStatus || LED_DIMMER_UsingFixedFunction)
+ 667:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 668:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 669:Generated_Source\PSoC4/LED_DIMMER.c ****     /*******************************************************************************
+ 670:Generated_Source\PSoC4/LED_DIMMER.c ****     * Function Name: LED_DIMMER_SetInterruptMode
+ 671:Generated_Source\PSoC4/LED_DIMMER.c ****     ********************************************************************************
+ 672:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 673:Generated_Source\PSoC4/LED_DIMMER.c ****     * Summary:
+ 674:Generated_Source\PSoC4/LED_DIMMER.c ****     *  This function configures the interrupts mask control of theinterrupt
+ 675:Generated_Source\PSoC4/LED_DIMMER.c ****     *  source status register.
+ 676:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 21
+
+
+ 677:Generated_Source\PSoC4/LED_DIMMER.c ****     * Parameters:
+ 678:Generated_Source\PSoC4/LED_DIMMER.c ****     *  uint8 interruptMode: Bit field containing the interrupt sources enabled
+ 679:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 680:Generated_Source\PSoC4/LED_DIMMER.c ****     * Return:
+ 681:Generated_Source\PSoC4/LED_DIMMER.c ****     *  None
+ 682:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 683:Generated_Source\PSoC4/LED_DIMMER.c ****     *******************************************************************************/
+ 684:Generated_Source\PSoC4/LED_DIMMER.c ****     void LED_DIMMER_SetInterruptMode(uint8 interruptMode) 
+ 685:Generated_Source\PSoC4/LED_DIMMER.c ****     {
+ 464              		.loc 1 685 0
+ 465              		.cfi_startproc
+ 466              		@ args = 0, pretend = 0, frame = 8
+ 467              		@ frame_needed = 1, uses_anonymous_args = 0
+ 468 0000 80B5     		push	{r7, lr}
+ 469              		.cfi_def_cfa_offset 8
+ 470              		.cfi_offset 7, -8
+ 471              		.cfi_offset 14, -4
+ 472 0002 82B0     		sub	sp, sp, #8
+ 473              		.cfi_def_cfa_offset 16
+ 474 0004 00AF     		add	r7, sp, #0
+ 475              		.cfi_def_cfa_register 7
+ 476 0006 0200     		movs	r2, r0
+ 477 0008 FB1D     		adds	r3, r7, #7
+ 478 000a 1A70     		strb	r2, [r3]
+ 686:Generated_Source\PSoC4/LED_DIMMER.c ****         CY_SET_REG8(LED_DIMMER_STATUS_MASK_PTR, interruptMode);
+ 479              		.loc 1 686 0
+ 480 000c 034A     		ldr	r2, .L31
+ 481 000e FB1D     		adds	r3, r7, #7
+ 482 0010 1B78     		ldrb	r3, [r3]
+ 483 0012 1370     		strb	r3, [r2]
+ 687:Generated_Source\PSoC4/LED_DIMMER.c ****     }
+ 484              		.loc 1 687 0
+ 485 0014 C046     		nop
+ 486 0016 BD46     		mov	sp, r7
+ 487 0018 02B0     		add	sp, sp, #8
+ 488              		@ sp needed
+ 489 001a 80BD     		pop	{r7, pc}
+ 490              	.L32:
+ 491              		.align	2
+ 492              	.L31:
+ 493 001c 83000F40 		.word	1074724995
+ 494              		.cfi_endproc
+ 495              	.LFE11:
+ 496              		.size	LED_DIMMER_SetInterruptMode, .-LED_DIMMER_SetInterruptMode
+ 497              		.section	.text.LED_DIMMER_ReadStatusRegister,"ax",%progbits
+ 498              		.align	2
+ 499              		.global	LED_DIMMER_ReadStatusRegister
+ 500              		.code	16
+ 501              		.thumb_func
+ 502              		.type	LED_DIMMER_ReadStatusRegister, %function
+ 503              	LED_DIMMER_ReadStatusRegister:
+ 504              	.LFB12:
+ 688:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 689:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 690:Generated_Source\PSoC4/LED_DIMMER.c ****     /*******************************************************************************
+ 691:Generated_Source\PSoC4/LED_DIMMER.c ****     * Function Name: LED_DIMMER_ReadStatusRegister
+ 692:Generated_Source\PSoC4/LED_DIMMER.c ****     ********************************************************************************
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 22
+
+
+ 693:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 694:Generated_Source\PSoC4/LED_DIMMER.c ****     * Summary:
+ 695:Generated_Source\PSoC4/LED_DIMMER.c ****     *  This function returns the current state of the status register.
+ 696:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 697:Generated_Source\PSoC4/LED_DIMMER.c ****     * Parameters:
+ 698:Generated_Source\PSoC4/LED_DIMMER.c ****     *  None
+ 699:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 700:Generated_Source\PSoC4/LED_DIMMER.c ****     * Return:
+ 701:Generated_Source\PSoC4/LED_DIMMER.c ****     *  uint8 : Current status register value. The status register bits are:
+ 702:Generated_Source\PSoC4/LED_DIMMER.c ****     *  [7:6] : Unused(0)
+ 703:Generated_Source\PSoC4/LED_DIMMER.c ****     *  [5]   : Kill event output
+ 704:Generated_Source\PSoC4/LED_DIMMER.c ****     *  [4]   : FIFO not empty
+ 705:Generated_Source\PSoC4/LED_DIMMER.c ****     *  [3]   : FIFO full
+ 706:Generated_Source\PSoC4/LED_DIMMER.c ****     *  [2]   : Terminal count
+ 707:Generated_Source\PSoC4/LED_DIMMER.c ****     *  [1]   : Compare output 2
+ 708:Generated_Source\PSoC4/LED_DIMMER.c ****     *  [0]   : Compare output 1
+ 709:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 710:Generated_Source\PSoC4/LED_DIMMER.c ****     *******************************************************************************/
+ 711:Generated_Source\PSoC4/LED_DIMMER.c ****     uint8 LED_DIMMER_ReadStatusRegister(void) 
+ 712:Generated_Source\PSoC4/LED_DIMMER.c ****     {
+ 505              		.loc 1 712 0
+ 506              		.cfi_startproc
+ 507              		@ args = 0, pretend = 0, frame = 0
+ 508              		@ frame_needed = 1, uses_anonymous_args = 0
+ 509 0000 80B5     		push	{r7, lr}
+ 510              		.cfi_def_cfa_offset 8
+ 511              		.cfi_offset 7, -8
+ 512              		.cfi_offset 14, -4
+ 513 0002 00AF     		add	r7, sp, #0
+ 514              		.cfi_def_cfa_register 7
+ 713:Generated_Source\PSoC4/LED_DIMMER.c ****         return (CY_GET_REG8(LED_DIMMER_STATUS_PTR));
+ 515              		.loc 1 713 0
+ 516 0004 024B     		ldr	r3, .L35
+ 517 0006 1B78     		ldrb	r3, [r3]
+ 518 0008 DBB2     		uxtb	r3, r3
+ 714:Generated_Source\PSoC4/LED_DIMMER.c ****     }
+ 519              		.loc 1 714 0
+ 520 000a 1800     		movs	r0, r3
+ 521 000c BD46     		mov	sp, r7
+ 522              		@ sp needed
+ 523 000e 80BD     		pop	{r7, pc}
+ 524              	.L36:
+ 525              		.align	2
+ 526              	.L35:
+ 527 0010 63000F40 		.word	1074724963
+ 528              		.cfi_endproc
+ 529              	.LFE12:
+ 530              		.size	LED_DIMMER_ReadStatusRegister, .-LED_DIMMER_ReadStatusRegister
+ 531              		.section	.text.LED_DIMMER_ReadControlRegister,"ax",%progbits
+ 532              		.align	2
+ 533              		.global	LED_DIMMER_ReadControlRegister
+ 534              		.code	16
+ 535              		.thumb_func
+ 536              		.type	LED_DIMMER_ReadControlRegister, %function
+ 537              	LED_DIMMER_ReadControlRegister:
+ 538              	.LFB13:
+ 715:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 23
+
+
+ 716:Generated_Source\PSoC4/LED_DIMMER.c **** #endif /* (LED_DIMMER_UseStatus || LED_DIMMER_UsingFixedFunction) */
+ 717:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 718:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 719:Generated_Source\PSoC4/LED_DIMMER.c **** #if (LED_DIMMER_UseControl)
+ 720:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 721:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 722:Generated_Source\PSoC4/LED_DIMMER.c ****     /*******************************************************************************
+ 723:Generated_Source\PSoC4/LED_DIMMER.c ****     * Function Name: LED_DIMMER_ReadControlRegister
+ 724:Generated_Source\PSoC4/LED_DIMMER.c ****     ********************************************************************************
+ 725:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 726:Generated_Source\PSoC4/LED_DIMMER.c ****     * Summary:
+ 727:Generated_Source\PSoC4/LED_DIMMER.c ****     *  Returns the current state of the control register. This API is available
+ 728:Generated_Source\PSoC4/LED_DIMMER.c ****     *  only if the control register is not removed.
+ 729:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 730:Generated_Source\PSoC4/LED_DIMMER.c ****     * Parameters:
+ 731:Generated_Source\PSoC4/LED_DIMMER.c ****     *  None
+ 732:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 733:Generated_Source\PSoC4/LED_DIMMER.c ****     * Return:
+ 734:Generated_Source\PSoC4/LED_DIMMER.c ****     *  uint8 : Current control register value
+ 735:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 736:Generated_Source\PSoC4/LED_DIMMER.c ****     *******************************************************************************/
+ 737:Generated_Source\PSoC4/LED_DIMMER.c ****     uint8 LED_DIMMER_ReadControlRegister(void) 
+ 738:Generated_Source\PSoC4/LED_DIMMER.c ****     {
+ 539              		.loc 1 738 0
+ 540              		.cfi_startproc
+ 541              		@ args = 0, pretend = 0, frame = 8
+ 542              		@ frame_needed = 1, uses_anonymous_args = 0
+ 543 0000 80B5     		push	{r7, lr}
+ 544              		.cfi_def_cfa_offset 8
+ 545              		.cfi_offset 7, -8
+ 546              		.cfi_offset 14, -4
+ 547 0002 82B0     		sub	sp, sp, #8
+ 548              		.cfi_def_cfa_offset 16
+ 549 0004 00AF     		add	r7, sp, #0
+ 550              		.cfi_def_cfa_register 7
+ 739:Generated_Source\PSoC4/LED_DIMMER.c ****         uint8 result;
+ 740:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 741:Generated_Source\PSoC4/LED_DIMMER.c ****         result = CY_GET_REG8(LED_DIMMER_CONTROL_PTR);
+ 551              		.loc 1 741 0
+ 552 0006 054A     		ldr	r2, .L39
+ 553 0008 FB1D     		adds	r3, r7, #7
+ 554 000a 1278     		ldrb	r2, [r2]
+ 555 000c 1A70     		strb	r2, [r3]
+ 742:Generated_Source\PSoC4/LED_DIMMER.c ****         return (result);
+ 556              		.loc 1 742 0
+ 557 000e FB1D     		adds	r3, r7, #7
+ 558 0010 1B78     		ldrb	r3, [r3]
+ 743:Generated_Source\PSoC4/LED_DIMMER.c ****     }
+ 559              		.loc 1 743 0
+ 560 0012 1800     		movs	r0, r3
+ 561 0014 BD46     		mov	sp, r7
+ 562 0016 02B0     		add	sp, sp, #8
+ 563              		@ sp needed
+ 564 0018 80BD     		pop	{r7, pc}
+ 565              	.L40:
+ 566 001a C046     		.align	2
+ 567              	.L39:
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 24
+
+
+ 568 001c 72000F40 		.word	1074724978
+ 569              		.cfi_endproc
+ 570              	.LFE13:
+ 571              		.size	LED_DIMMER_ReadControlRegister, .-LED_DIMMER_ReadControlRegister
+ 572              		.section	.text.LED_DIMMER_WriteControlRegister,"ax",%progbits
+ 573              		.align	2
+ 574              		.global	LED_DIMMER_WriteControlRegister
+ 575              		.code	16
+ 576              		.thumb_func
+ 577              		.type	LED_DIMMER_WriteControlRegister, %function
+ 578              	LED_DIMMER_WriteControlRegister:
+ 579              	.LFB14:
+ 744:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 745:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 746:Generated_Source\PSoC4/LED_DIMMER.c ****     /*******************************************************************************
+ 747:Generated_Source\PSoC4/LED_DIMMER.c ****     * Function Name: LED_DIMMER_WriteControlRegister
+ 748:Generated_Source\PSoC4/LED_DIMMER.c ****     ********************************************************************************
+ 749:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 750:Generated_Source\PSoC4/LED_DIMMER.c ****     * Summary:
+ 751:Generated_Source\PSoC4/LED_DIMMER.c ****     *  Sets the bit field of the control register. This API is available only if
+ 752:Generated_Source\PSoC4/LED_DIMMER.c ****     *  the control register is not removed.
+ 753:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 754:Generated_Source\PSoC4/LED_DIMMER.c ****     * Parameters:
+ 755:Generated_Source\PSoC4/LED_DIMMER.c ****     *  uint8 control: Control register bit field, The status register bits are:
+ 756:Generated_Source\PSoC4/LED_DIMMER.c ****     *  [7]   : PWM Enable
+ 757:Generated_Source\PSoC4/LED_DIMMER.c ****     *  [6]   : Reset
+ 758:Generated_Source\PSoC4/LED_DIMMER.c ****     *  [5:3] : Compare Mode2
+ 759:Generated_Source\PSoC4/LED_DIMMER.c ****     *  [2:0] : Compare Mode2
+ 760:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 761:Generated_Source\PSoC4/LED_DIMMER.c ****     * Return:
+ 762:Generated_Source\PSoC4/LED_DIMMER.c ****     *  None
+ 763:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 764:Generated_Source\PSoC4/LED_DIMMER.c ****     *******************************************************************************/
+ 765:Generated_Source\PSoC4/LED_DIMMER.c ****     void LED_DIMMER_WriteControlRegister(uint8 control) 
+ 766:Generated_Source\PSoC4/LED_DIMMER.c ****     {
+ 580              		.loc 1 766 0
+ 581              		.cfi_startproc
+ 582              		@ args = 0, pretend = 0, frame = 8
+ 583              		@ frame_needed = 1, uses_anonymous_args = 0
+ 584 0000 80B5     		push	{r7, lr}
+ 585              		.cfi_def_cfa_offset 8
+ 586              		.cfi_offset 7, -8
+ 587              		.cfi_offset 14, -4
+ 588 0002 82B0     		sub	sp, sp, #8
+ 589              		.cfi_def_cfa_offset 16
+ 590 0004 00AF     		add	r7, sp, #0
+ 591              		.cfi_def_cfa_register 7
+ 592 0006 0200     		movs	r2, r0
+ 593 0008 FB1D     		adds	r3, r7, #7
+ 594 000a 1A70     		strb	r2, [r3]
+ 767:Generated_Source\PSoC4/LED_DIMMER.c ****         CY_SET_REG8(LED_DIMMER_CONTROL_PTR, control);
+ 595              		.loc 1 767 0
+ 596 000c 034A     		ldr	r2, .L42
+ 597 000e FB1D     		adds	r3, r7, #7
+ 598 0010 1B78     		ldrb	r3, [r3]
+ 599 0012 1370     		strb	r3, [r2]
+ 768:Generated_Source\PSoC4/LED_DIMMER.c ****     }
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 25
+
+
+ 600              		.loc 1 768 0
+ 601 0014 C046     		nop
+ 602 0016 BD46     		mov	sp, r7
+ 603 0018 02B0     		add	sp, sp, #8
+ 604              		@ sp needed
+ 605 001a 80BD     		pop	{r7, pc}
+ 606              	.L43:
+ 607              		.align	2
+ 608              	.L42:
+ 609 001c 72000F40 		.word	1074724978
+ 610              		.cfi_endproc
+ 611              	.LFE14:
+ 612              		.size	LED_DIMMER_WriteControlRegister, .-LED_DIMMER_WriteControlRegister
+ 613              		.section	.text.LED_DIMMER_ReadCapture,"ax",%progbits
+ 614              		.align	2
+ 615              		.global	LED_DIMMER_ReadCapture
+ 616              		.code	16
+ 617              		.thumb_func
+ 618              		.type	LED_DIMMER_ReadCapture, %function
+ 619              	LED_DIMMER_ReadCapture:
+ 620              	.LFB15:
+ 769:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 770:Generated_Source\PSoC4/LED_DIMMER.c **** #endif /* (LED_DIMMER_UseControl) */
+ 771:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 772:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 773:Generated_Source\PSoC4/LED_DIMMER.c **** #if (!LED_DIMMER_UsingFixedFunction)
+ 774:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 775:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 776:Generated_Source\PSoC4/LED_DIMMER.c ****     /*******************************************************************************
+ 777:Generated_Source\PSoC4/LED_DIMMER.c ****     * Function Name: LED_DIMMER_ReadCapture
+ 778:Generated_Source\PSoC4/LED_DIMMER.c ****     ********************************************************************************
+ 779:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 780:Generated_Source\PSoC4/LED_DIMMER.c ****     * Summary:
+ 781:Generated_Source\PSoC4/LED_DIMMER.c ****     *  Reads the capture value from the capture FIFO.
+ 782:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 783:Generated_Source\PSoC4/LED_DIMMER.c ****     * Parameters:
+ 784:Generated_Source\PSoC4/LED_DIMMER.c ****     *  None
+ 785:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 786:Generated_Source\PSoC4/LED_DIMMER.c ****     * Return:
+ 787:Generated_Source\PSoC4/LED_DIMMER.c ****     *  uint8/uint16: The current capture value
+ 788:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 789:Generated_Source\PSoC4/LED_DIMMER.c ****     *******************************************************************************/
+ 790:Generated_Source\PSoC4/LED_DIMMER.c ****     uint16 LED_DIMMER_ReadCapture(void) 
+ 791:Generated_Source\PSoC4/LED_DIMMER.c ****     {
+ 621              		.loc 1 791 0
+ 622              		.cfi_startproc
+ 623              		@ args = 0, pretend = 0, frame = 0
+ 624              		@ frame_needed = 1, uses_anonymous_args = 0
+ 625 0000 80B5     		push	{r7, lr}
+ 626              		.cfi_def_cfa_offset 8
+ 627              		.cfi_offset 7, -8
+ 628              		.cfi_offset 14, -4
+ 629 0002 00AF     		add	r7, sp, #0
+ 630              		.cfi_def_cfa_register 7
+ 792:Generated_Source\PSoC4/LED_DIMMER.c ****         return (CY_GET_REG16(LED_DIMMER_CAPTURE_LSB_PTR));
+ 631              		.loc 1 792 0
+ 632 0004 024B     		ldr	r3, .L46
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 26
+
+
+ 633 0006 1B88     		ldrh	r3, [r3]
+ 634 0008 9BB2     		uxth	r3, r3
+ 793:Generated_Source\PSoC4/LED_DIMMER.c ****     }
+ 635              		.loc 1 793 0
+ 636 000a 1800     		movs	r0, r3
+ 637 000c BD46     		mov	sp, r7
+ 638              		@ sp needed
+ 639 000e 80BD     		pop	{r7, pc}
+ 640              	.L47:
+ 641              		.align	2
+ 642              	.L46:
+ 643 0010 A4100F40 		.word	1074729124
+ 644              		.cfi_endproc
+ 645              	.LFE15:
+ 646              		.size	LED_DIMMER_ReadCapture, .-LED_DIMMER_ReadCapture
+ 647              		.section	.text.LED_DIMMER_ReadCompare,"ax",%progbits
+ 648              		.align	2
+ 649              		.global	LED_DIMMER_ReadCompare
+ 650              		.code	16
+ 651              		.thumb_func
+ 652              		.type	LED_DIMMER_ReadCompare, %function
+ 653              	LED_DIMMER_ReadCompare:
+ 654              	.LFB16:
+ 794:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 795:Generated_Source\PSoC4/LED_DIMMER.c **** #endif /* (!LED_DIMMER_UsingFixedFunction) */
+ 796:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 797:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 798:Generated_Source\PSoC4/LED_DIMMER.c **** #if (LED_DIMMER_UseOneCompareMode)
+ 799:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 800:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 801:Generated_Source\PSoC4/LED_DIMMER.c ****     /*******************************************************************************
+ 802:Generated_Source\PSoC4/LED_DIMMER.c ****     * Function Name: LED_DIMMER_ReadCompare
+ 803:Generated_Source\PSoC4/LED_DIMMER.c ****     ********************************************************************************
+ 804:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 805:Generated_Source\PSoC4/LED_DIMMER.c ****     * Summary:
+ 806:Generated_Source\PSoC4/LED_DIMMER.c ****     *  Reads the compare value for the compare output when the PWM Mode parameter is
+ 807:Generated_Source\PSoC4/LED_DIMMER.c ****     *  set to Dither mode, Center Aligned mode, or One Output mode.
+ 808:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 809:Generated_Source\PSoC4/LED_DIMMER.c ****     * Parameters:
+ 810:Generated_Source\PSoC4/LED_DIMMER.c ****     *  None
+ 811:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 812:Generated_Source\PSoC4/LED_DIMMER.c ****     * Return:
+ 813:Generated_Source\PSoC4/LED_DIMMER.c ****     *  uint8/uint16: Current compare value
+ 814:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 815:Generated_Source\PSoC4/LED_DIMMER.c ****     *******************************************************************************/
+ 816:Generated_Source\PSoC4/LED_DIMMER.c ****     uint16 LED_DIMMER_ReadCompare(void) 
+ 817:Generated_Source\PSoC4/LED_DIMMER.c ****     {
+ 655              		.loc 1 817 0
+ 656              		.cfi_startproc
+ 657              		@ args = 0, pretend = 0, frame = 0
+ 658              		@ frame_needed = 1, uses_anonymous_args = 0
+ 659 0000 80B5     		push	{r7, lr}
+ 660              		.cfi_def_cfa_offset 8
+ 661              		.cfi_offset 7, -8
+ 662              		.cfi_offset 14, -4
+ 663 0002 00AF     		add	r7, sp, #0
+ 664              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 27
+
+
+ 818:Generated_Source\PSoC4/LED_DIMMER.c ****         #if(LED_DIMMER_UsingFixedFunction)
+ 819:Generated_Source\PSoC4/LED_DIMMER.c ****             return ((uint16)CY_GET_REG16(LED_DIMMER_COMPARE1_LSB_PTR));
+ 820:Generated_Source\PSoC4/LED_DIMMER.c ****         #else
+ 821:Generated_Source\PSoC4/LED_DIMMER.c ****             return (CY_GET_REG16(LED_DIMMER_COMPARE1_LSB_PTR));
+ 665              		.loc 1 821 0
+ 666 0004 024B     		ldr	r3, .L50
+ 667 0006 1B88     		ldrh	r3, [r3]
+ 668 0008 9BB2     		uxth	r3, r3
+ 822:Generated_Source\PSoC4/LED_DIMMER.c ****         #endif /* (LED_DIMMER_UsingFixedFunction) */
+ 823:Generated_Source\PSoC4/LED_DIMMER.c ****     }
+ 669              		.loc 1 823 0
+ 670 000a 1800     		movs	r0, r3
+ 671 000c BD46     		mov	sp, r7
+ 672              		@ sp needed
+ 673 000e 80BD     		pop	{r7, pc}
+ 674              	.L51:
+ 675              		.align	2
+ 676              	.L50:
+ 677 0010 44100F40 		.word	1074729028
+ 678              		.cfi_endproc
+ 679              	.LFE16:
+ 680              		.size	LED_DIMMER_ReadCompare, .-LED_DIMMER_ReadCompare
+ 681              		.section	.text.LED_DIMMER_ReadPeriod,"ax",%progbits
+ 682              		.align	2
+ 683              		.global	LED_DIMMER_ReadPeriod
+ 684              		.code	16
+ 685              		.thumb_func
+ 686              		.type	LED_DIMMER_ReadPeriod, %function
+ 687              	LED_DIMMER_ReadPeriod:
+ 688              	.LFB17:
+ 824:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 825:Generated_Source\PSoC4/LED_DIMMER.c **** #else
+ 826:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 827:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 828:Generated_Source\PSoC4/LED_DIMMER.c ****     /*******************************************************************************
+ 829:Generated_Source\PSoC4/LED_DIMMER.c ****     * Function Name: LED_DIMMER_ReadCompare1
+ 830:Generated_Source\PSoC4/LED_DIMMER.c ****     ********************************************************************************
+ 831:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 832:Generated_Source\PSoC4/LED_DIMMER.c ****     * Summary:
+ 833:Generated_Source\PSoC4/LED_DIMMER.c ****     *  Reads the compare value for the compare1 output.
+ 834:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 835:Generated_Source\PSoC4/LED_DIMMER.c ****     * Parameters:
+ 836:Generated_Source\PSoC4/LED_DIMMER.c ****     *  None
+ 837:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 838:Generated_Source\PSoC4/LED_DIMMER.c ****     * Return:
+ 839:Generated_Source\PSoC4/LED_DIMMER.c ****     *  uint8/uint16: Current compare value.
+ 840:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 841:Generated_Source\PSoC4/LED_DIMMER.c ****     *******************************************************************************/
+ 842:Generated_Source\PSoC4/LED_DIMMER.c ****     uint16 LED_DIMMER_ReadCompare1(void) 
+ 843:Generated_Source\PSoC4/LED_DIMMER.c ****     {
+ 844:Generated_Source\PSoC4/LED_DIMMER.c ****         return (CY_GET_REG16(LED_DIMMER_COMPARE1_LSB_PTR));
+ 845:Generated_Source\PSoC4/LED_DIMMER.c ****     }
+ 846:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 847:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 848:Generated_Source\PSoC4/LED_DIMMER.c ****     /*******************************************************************************
+ 849:Generated_Source\PSoC4/LED_DIMMER.c ****     * Function Name: LED_DIMMER_ReadCompare2
+ 850:Generated_Source\PSoC4/LED_DIMMER.c ****     ********************************************************************************
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 28
+
+
+ 851:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 852:Generated_Source\PSoC4/LED_DIMMER.c ****     * Summary:
+ 853:Generated_Source\PSoC4/LED_DIMMER.c ****     *  Reads the compare value for the compare2 output.
+ 854:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 855:Generated_Source\PSoC4/LED_DIMMER.c ****     * Parameters:
+ 856:Generated_Source\PSoC4/LED_DIMMER.c ****     *  None
+ 857:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 858:Generated_Source\PSoC4/LED_DIMMER.c ****     * Return:
+ 859:Generated_Source\PSoC4/LED_DIMMER.c ****     *  uint8/uint16: Current compare value.
+ 860:Generated_Source\PSoC4/LED_DIMMER.c ****     *
+ 861:Generated_Source\PSoC4/LED_DIMMER.c ****     *******************************************************************************/
+ 862:Generated_Source\PSoC4/LED_DIMMER.c ****     uint16 LED_DIMMER_ReadCompare2(void) 
+ 863:Generated_Source\PSoC4/LED_DIMMER.c ****     {
+ 864:Generated_Source\PSoC4/LED_DIMMER.c ****         return (CY_GET_REG16(LED_DIMMER_COMPARE2_LSB_PTR));
+ 865:Generated_Source\PSoC4/LED_DIMMER.c ****     }
+ 866:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 867:Generated_Source\PSoC4/LED_DIMMER.c **** #endif /* (LED_DIMMER_UseOneCompareMode) */
+ 868:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 869:Generated_Source\PSoC4/LED_DIMMER.c **** 
+ 870:Generated_Source\PSoC4/LED_DIMMER.c **** /*******************************************************************************
+ 871:Generated_Source\PSoC4/LED_DIMMER.c **** * Function Name: LED_DIMMER_ReadPeriod
+ 872:Generated_Source\PSoC4/LED_DIMMER.c **** ********************************************************************************
+ 873:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ 874:Generated_Source\PSoC4/LED_DIMMER.c **** * Summary:
+ 875:Generated_Source\PSoC4/LED_DIMMER.c **** *  Reads the period value used by the PWM hardware.
+ 876:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ 877:Generated_Source\PSoC4/LED_DIMMER.c **** * Parameters:
+ 878:Generated_Source\PSoC4/LED_DIMMER.c **** *  None
+ 879:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ 880:Generated_Source\PSoC4/LED_DIMMER.c **** * Return:
+ 881:Generated_Source\PSoC4/LED_DIMMER.c **** *  uint8/16: Period value
+ 882:Generated_Source\PSoC4/LED_DIMMER.c **** *
+ 883:Generated_Source\PSoC4/LED_DIMMER.c **** *******************************************************************************/
+ 884:Generated_Source\PSoC4/LED_DIMMER.c **** uint16 LED_DIMMER_ReadPeriod(void) 
+ 885:Generated_Source\PSoC4/LED_DIMMER.c **** {
+ 689              		.loc 1 885 0
+ 690              		.cfi_startproc
+ 691              		@ args = 0, pretend = 0, frame = 0
+ 692              		@ frame_needed = 1, uses_anonymous_args = 0
+ 693 0000 80B5     		push	{r7, lr}
+ 694              		.cfi_def_cfa_offset 8
+ 695              		.cfi_offset 7, -8
+ 696              		.cfi_offset 14, -4
+ 697 0002 00AF     		add	r7, sp, #0
+ 698              		.cfi_def_cfa_register 7
+ 886:Generated_Source\PSoC4/LED_DIMMER.c ****     #if(LED_DIMMER_UsingFixedFunction)
+ 887:Generated_Source\PSoC4/LED_DIMMER.c ****         return ((uint16)CY_GET_REG16(LED_DIMMER_PERIOD_LSB_PTR));
+ 888:Generated_Source\PSoC4/LED_DIMMER.c ****     #else
+ 889:Generated_Source\PSoC4/LED_DIMMER.c ****         return (CY_GET_REG16(LED_DIMMER_PERIOD_LSB_PTR));
+ 699              		.loc 1 889 0
+ 700 0004 024B     		ldr	r3, .L54
+ 701 0006 1B88     		ldrh	r3, [r3]
+ 702 0008 9BB2     		uxth	r3, r3
+ 890:Generated_Source\PSoC4/LED_DIMMER.c ****     #endif /* (LED_DIMMER_UsingFixedFunction) */
+ 891:Generated_Source\PSoC4/LED_DIMMER.c **** }
+ 703              		.loc 1 891 0
+ 704 000a 1800     		movs	r0, r3
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 29
+
+
+ 705 000c BD46     		mov	sp, r7
+ 706              		@ sp needed
+ 707 000e 80BD     		pop	{r7, pc}
+ 708              	.L55:
+ 709              		.align	2
+ 710              	.L54:
+ 711 0010 84100F40 		.word	1074729092
+ 712              		.cfi_endproc
+ 713              	.LFE17:
+ 714              		.size	LED_DIMMER_ReadPeriod, .-LED_DIMMER_ReadPeriod
+ 715              		.text
+ 716              	.Letext0:
+ 717              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 718              		.section	.debug_info,"",%progbits
+ 719              	.Ldebug_info0:
+ 720 0000 A3020000 		.4byte	0x2a3
+ 721 0004 0400     		.2byte	0x4
+ 722 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 723 000a 04       		.byte	0x4
+ 724 000b 01       		.uleb128 0x1
+ 725 000c 61010000 		.4byte	.LASF41
+ 726 0010 0C       		.byte	0xc
+ 727 0011 B7020000 		.4byte	.LASF42
+ 728 0015 56000000 		.4byte	.LASF43
+ 729 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 730 001d 00000000 		.4byte	0
+ 731 0021 00000000 		.4byte	.Ldebug_line0
+ 732 0025 02       		.uleb128 0x2
+ 733 0026 01       		.byte	0x1
+ 734 0027 06       		.byte	0x6
+ 735 0028 6A030000 		.4byte	.LASF0
+ 736 002c 02       		.uleb128 0x2
+ 737 002d 01       		.byte	0x1
+ 738 002e 08       		.byte	0x8
+ 739 002f 18010000 		.4byte	.LASF1
+ 740 0033 02       		.uleb128 0x2
+ 741 0034 02       		.byte	0x2
+ 742 0035 05       		.byte	0x5
+ 743 0036 40030000 		.4byte	.LASF2
+ 744 003a 02       		.uleb128 0x2
+ 745 003b 02       		.byte	0x2
+ 746 003c 07       		.byte	0x7
+ 747 003d 8D000000 		.4byte	.LASF3
+ 748 0041 02       		.uleb128 0x2
+ 749 0042 04       		.byte	0x4
+ 750 0043 05       		.byte	0x5
+ 751 0044 50030000 		.4byte	.LASF4
+ 752 0048 02       		.uleb128 0x2
+ 753 0049 04       		.byte	0x4
+ 754 004a 07       		.byte	0x7
+ 755 004b 2B010000 		.4byte	.LASF5
+ 756 004f 02       		.uleb128 0x2
+ 757 0050 08       		.byte	0x8
+ 758 0051 05       		.byte	0x5
+ 759 0052 00000000 		.4byte	.LASF6
+ 760 0056 02       		.uleb128 0x2
+ 761 0057 08       		.byte	0x8
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 30
+
+
+ 762 0058 07       		.byte	0x7
+ 763 0059 86020000 		.4byte	.LASF7
+ 764 005d 03       		.uleb128 0x3
+ 765 005e 04       		.byte	0x4
+ 766 005f 05       		.byte	0x5
+ 767 0060 696E7400 		.ascii	"int\000"
+ 768 0064 02       		.uleb128 0x2
+ 769 0065 04       		.byte	0x4
+ 770 0066 07       		.byte	0x7
+ 771 0067 56020000 		.4byte	.LASF8
+ 772 006b 04       		.uleb128 0x4
+ 773 006c 53010000 		.4byte	.LASF9
+ 774 0070 02       		.byte	0x2
+ 775 0071 D201     		.2byte	0x1d2
+ 776 0073 2C000000 		.4byte	0x2c
+ 777 0077 04       		.uleb128 0x4
+ 778 0078 33020000 		.4byte	.LASF10
+ 779 007c 02       		.byte	0x2
+ 780 007d D301     		.2byte	0x1d3
+ 781 007f 3A000000 		.4byte	0x3a
+ 782 0083 02       		.uleb128 0x2
+ 783 0084 04       		.byte	0x4
+ 784 0085 04       		.byte	0x4
+ 785 0086 0A010000 		.4byte	.LASF11
+ 786 008a 02       		.uleb128 0x2
+ 787 008b 08       		.byte	0x8
+ 788 008c 04       		.byte	0x4
+ 789 008d 0E020000 		.4byte	.LASF12
+ 790 0091 02       		.uleb128 0x2
+ 791 0092 01       		.byte	0x1
+ 792 0093 08       		.byte	0x8
+ 793 0094 59030000 		.4byte	.LASF13
+ 794 0098 04       		.uleb128 0x4
+ 795 0099 26010000 		.4byte	.LASF14
+ 796 009d 02       		.byte	0x2
+ 797 009e 7C02     		.2byte	0x27c
+ 798 00a0 A4000000 		.4byte	0xa4
+ 799 00a4 05       		.uleb128 0x5
+ 800 00a5 6B000000 		.4byte	0x6b
+ 801 00a9 04       		.uleb128 0x4
+ 802 00aa 4A030000 		.4byte	.LASF15
+ 803 00ae 02       		.byte	0x2
+ 804 00af 7D02     		.2byte	0x27d
+ 805 00b1 B5000000 		.4byte	0xb5
+ 806 00b5 05       		.uleb128 0x5
+ 807 00b6 77000000 		.4byte	0x77
+ 808 00ba 02       		.uleb128 0x2
+ 809 00bb 08       		.byte	0x8
+ 810 00bc 04       		.byte	0x4
+ 811 00bd 5E030000 		.4byte	.LASF16
+ 812 00c1 02       		.uleb128 0x2
+ 813 00c2 04       		.byte	0x4
+ 814 00c3 07       		.byte	0x7
+ 815 00c4 FA020000 		.4byte	.LASF17
+ 816 00c8 06       		.uleb128 0x6
+ 817 00c9 63020000 		.4byte	.LASF20
+ 818 00cd 01       		.byte	0x1
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 31
+
+
+ 819 00ce 37       		.byte	0x37
+ 820 00cf 00000000 		.4byte	.LFB2
+ 821 00d3 24000000 		.4byte	.LFE2-.LFB2
+ 822 00d7 01       		.uleb128 0x1
+ 823 00d8 9C       		.byte	0x9c
+ 824 00d9 07       		.uleb128 0x7
+ 825 00da E3000000 		.4byte	.LASF23
+ 826 00de 01       		.byte	0x1
+ 827 00df 54       		.byte	0x54
+ 828 00e0 00000000 		.4byte	.LFB3
+ 829 00e4 A0000000 		.4byte	.LFE3-.LFB3
+ 830 00e8 01       		.uleb128 0x1
+ 831 00e9 9C       		.byte	0x9c
+ 832 00ea 0B010000 		.4byte	0x10b
+ 833 00ee 08       		.uleb128 0x8
+ 834 00ef F5020000 		.4byte	.LASF18
+ 835 00f3 01       		.byte	0x1
+ 836 00f4 57       		.byte	0x57
+ 837 00f5 6B000000 		.4byte	0x6b
+ 838 00f9 02       		.uleb128 0x2
+ 839 00fa 91       		.byte	0x91
+ 840 00fb 6F       		.sleb128 -17
+ 841 00fc 08       		.uleb128 0x8
+ 842 00fd DB020000 		.4byte	.LASF19
+ 843 0101 01       		.byte	0x1
+ 844 0102 5D       		.byte	0x5d
+ 845 0103 6B000000 		.4byte	0x6b
+ 846 0107 02       		.uleb128 0x2
+ 847 0108 91       		.byte	0x91
+ 848 0109 6E       		.sleb128 -18
+ 849 010a 00       		.byte	0
+ 850 010b 09       		.uleb128 0x9
+ 851 010c 74020000 		.4byte	.LASF21
+ 852 0110 01       		.byte	0x1
+ 853 0111 C7       		.byte	0xc7
+ 854 0112 00000000 		.4byte	.LFB4
+ 855 0116 20000000 		.4byte	.LFE4-.LFB4
+ 856 011a 01       		.uleb128 0x1
+ 857 011b 9C       		.byte	0x9c
+ 858 011c 09       		.uleb128 0x9
+ 859 011d 0E000000 		.4byte	.LASF22
+ 860 0121 01       		.byte	0x1
+ 861 0122 E9       		.byte	0xe9
+ 862 0123 00000000 		.4byte	.LFB5
+ 863 0127 20000000 		.4byte	.LFE5-.LFB5
+ 864 012b 01       		.uleb128 0x1
+ 865 012c 9C       		.byte	0x9c
+ 866 012d 0A       		.uleb128 0xa
+ 867 012e 1E000000 		.4byte	.LASF24
+ 868 0132 01       		.byte	0x1
+ 869 0133 9301     		.2byte	0x193
+ 870 0135 00000000 		.4byte	.LFB6
+ 871 0139 20000000 		.4byte	.LFE6-.LFB6
+ 872 013d 01       		.uleb128 0x1
+ 873 013e 9C       		.byte	0x9c
+ 874 013f 53010000 		.4byte	0x153
+ 875 0143 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 32
+
+
+ 876 0144 10010000 		.4byte	.LASF27
+ 877 0148 01       		.byte	0x1
+ 878 0149 9301     		.2byte	0x193
+ 879 014b 77000000 		.4byte	0x77
+ 880 014f 02       		.uleb128 0x2
+ 881 0150 91       		.byte	0x91
+ 882 0151 76       		.sleb128 -10
+ 883 0152 00       		.byte	0
+ 884 0153 0C       		.uleb128 0xc
+ 885 0154 F3000000 		.4byte	.LASF33
+ 886 0158 01       		.byte	0x1
+ 887 0159 A901     		.2byte	0x1a9
+ 888 015b 77000000 		.4byte	0x77
+ 889 015f 00000000 		.4byte	.LFB7
+ 890 0163 1C000000 		.4byte	.LFE7-.LFB7
+ 891 0167 01       		.uleb128 0x1
+ 892 0168 9C       		.byte	0x9c
+ 893 0169 0D       		.uleb128 0xd
+ 894 016a B7000000 		.4byte	.LASF25
+ 895 016e 01       		.byte	0x1
+ 896 016f C501     		.2byte	0x1c5
+ 897 0171 00000000 		.4byte	.LFB8
+ 898 0175 1E000000 		.4byte	.LFE8-.LFB8
+ 899 0179 01       		.uleb128 0x1
+ 900 017a 9C       		.byte	0x9c
+ 901 017b 0A       		.uleb128 0xa
+ 902 017c 03030000 		.4byte	.LASF26
+ 903 0180 01       		.byte	0x1
+ 904 0181 E201     		.2byte	0x1e2
+ 905 0183 00000000 		.4byte	.LFB9
+ 906 0187 20000000 		.4byte	.LFE9-.LFB9
+ 907 018b 01       		.uleb128 0x1
+ 908 018c 9C       		.byte	0x9c
+ 909 018d A1010000 		.4byte	0x1a1
+ 910 0191 0B       		.uleb128 0xb
+ 911 0192 86000000 		.4byte	.LASF28
+ 912 0196 01       		.byte	0x1
+ 913 0197 E201     		.2byte	0x1e2
+ 914 0199 77000000 		.4byte	0x77
+ 915 019d 02       		.uleb128 0x2
+ 916 019e 91       		.byte	0x91
+ 917 019f 76       		.sleb128 -10
+ 918 01a0 00       		.byte	0
+ 919 01a1 0A       		.uleb128 0xa
+ 920 01a2 1A030000 		.4byte	.LASF29
+ 921 01a6 01       		.byte	0x1
+ 922 01a7 0402     		.2byte	0x204
+ 923 01a9 00000000 		.4byte	.LFB10
+ 924 01ad 20000000 		.4byte	.LFE10-.LFB10
+ 925 01b1 01       		.uleb128 0x1
+ 926 01b2 9C       		.byte	0x9c
+ 927 01b3 C7010000 		.4byte	0x1c7
+ 928 01b7 0B       		.uleb128 0xb
+ 929 01b8 76030000 		.4byte	.LASF30
+ 930 01bc 01       		.byte	0x1
+ 931 01bd 0402     		.2byte	0x204
+ 932 01bf 77000000 		.4byte	0x77
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 33
+
+
+ 933 01c3 02       		.uleb128 0x2
+ 934 01c4 91       		.byte	0x91
+ 935 01c5 76       		.sleb128 -10
+ 936 01c6 00       		.byte	0
+ 937 01c7 0A       		.uleb128 0xa
+ 938 01c8 3A020000 		.4byte	.LASF31
+ 939 01cc 01       		.byte	0x1
+ 940 01cd AC02     		.2byte	0x2ac
+ 941 01cf 00000000 		.4byte	.LFB11
+ 942 01d3 20000000 		.4byte	.LFE11-.LFB11
+ 943 01d7 01       		.uleb128 0x1
+ 944 01d8 9C       		.byte	0x9c
+ 945 01d9 ED010000 		.4byte	0x1ed
+ 946 01dd 0B       		.uleb128 0xb
+ 947 01de 32030000 		.4byte	.LASF32
+ 948 01e2 01       		.byte	0x1
+ 949 01e3 AC02     		.2byte	0x2ac
+ 950 01e5 6B000000 		.4byte	0x6b
+ 951 01e9 02       		.uleb128 0x2
+ 952 01ea 91       		.byte	0x91
+ 953 01eb 77       		.sleb128 -9
+ 954 01ec 00       		.byte	0
+ 955 01ed 0C       		.uleb128 0xc
+ 956 01ee 15020000 		.4byte	.LASF34
+ 957 01f2 01       		.byte	0x1
+ 958 01f3 C702     		.2byte	0x2c7
+ 959 01f5 6B000000 		.4byte	0x6b
+ 960 01f9 00000000 		.4byte	.LFB12
+ 961 01fd 14000000 		.4byte	.LFE12-.LFB12
+ 962 0201 01       		.uleb128 0x1
+ 963 0202 9C       		.byte	0x9c
+ 964 0203 0E       		.uleb128 0xe
+ 965 0204 EF010000 		.4byte	.LASF44
+ 966 0208 01       		.byte	0x1
+ 967 0209 E102     		.2byte	0x2e1
+ 968 020b 6B000000 		.4byte	0x6b
+ 969 020f 00000000 		.4byte	.LFB13
+ 970 0213 20000000 		.4byte	.LFE13-.LFB13
+ 971 0217 01       		.uleb128 0x1
+ 972 0218 9C       		.byte	0x9c
+ 973 0219 2D020000 		.4byte	0x22d
+ 974 021d 0F       		.uleb128 0xf
+ 975 021e B0020000 		.4byte	.LASF35
+ 976 0222 01       		.byte	0x1
+ 977 0223 E302     		.2byte	0x2e3
+ 978 0225 6B000000 		.4byte	0x6b
+ 979 0229 02       		.uleb128 0x2
+ 980 022a 91       		.byte	0x91
+ 981 022b 77       		.sleb128 -9
+ 982 022c 00       		.byte	0
+ 983 022d 0A       		.uleb128 0xa
+ 984 022e 36000000 		.4byte	.LASF36
+ 985 0232 01       		.byte	0x1
+ 986 0233 FD02     		.2byte	0x2fd
+ 987 0235 00000000 		.4byte	.LFB14
+ 988 0239 20000000 		.4byte	.LFE14-.LFB14
+ 989 023d 01       		.uleb128 0x1
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 34
+
+
+ 990 023e 9C       		.byte	0x9c
+ 991 023f 53020000 		.4byte	0x253
+ 992 0243 0B       		.uleb128 0xb
+ 993 0244 59010000 		.4byte	.LASF37
+ 994 0248 01       		.byte	0x1
+ 995 0249 FD02     		.2byte	0x2fd
+ 996 024b 6B000000 		.4byte	0x6b
+ 997 024f 02       		.uleb128 0x2
+ 998 0250 91       		.byte	0x91
+ 999 0251 77       		.sleb128 -9
+ 1000 0252 00       		.byte	0
+ 1001 0253 0C       		.uleb128 0xc
+ 1002 0254 CC000000 		.4byte	.LASF38
+ 1003 0258 01       		.byte	0x1
+ 1004 0259 1603     		.2byte	0x316
+ 1005 025b 77000000 		.4byte	0x77
+ 1006 025f 00000000 		.4byte	.LFB15
+ 1007 0263 14000000 		.4byte	.LFE15-.LFB15
+ 1008 0267 01       		.uleb128 0x1
+ 1009 0268 9C       		.byte	0x9c
+ 1010 0269 0C       		.uleb128 0xc
+ 1011 026a A0000000 		.4byte	.LASF39
+ 1012 026e 01       		.byte	0x1
+ 1013 026f 3003     		.2byte	0x330
+ 1014 0271 77000000 		.4byte	0x77
+ 1015 0275 00000000 		.4byte	.LFB16
+ 1016 0279 14000000 		.4byte	.LFE16-.LFB16
+ 1017 027d 01       		.uleb128 0x1
+ 1018 027e 9C       		.byte	0x9c
+ 1019 027f 0C       		.uleb128 0xc
+ 1020 0280 3D010000 		.4byte	.LASF40
+ 1021 0284 01       		.byte	0x1
+ 1022 0285 7403     		.2byte	0x374
+ 1023 0287 77000000 		.4byte	0x77
+ 1024 028b 00000000 		.4byte	.LFB17
+ 1025 028f 14000000 		.4byte	.LFE17-.LFB17
+ 1026 0293 01       		.uleb128 0x1
+ 1027 0294 9C       		.byte	0x9c
+ 1028 0295 10       		.uleb128 0x10
+ 1029 0296 9D020000 		.4byte	.LASF45
+ 1030 029a 01       		.byte	0x1
+ 1031 029b 20       		.byte	0x20
+ 1032 029c 6B000000 		.4byte	0x6b
+ 1033 02a0 05       		.uleb128 0x5
+ 1034 02a1 03       		.byte	0x3
+ 1035 02a2 00000000 		.4byte	LED_DIMMER_initVar
+ 1036 02a6 00       		.byte	0
+ 1037              		.section	.debug_abbrev,"",%progbits
+ 1038              	.Ldebug_abbrev0:
+ 1039 0000 01       		.uleb128 0x1
+ 1040 0001 11       		.uleb128 0x11
+ 1041 0002 01       		.byte	0x1
+ 1042 0003 25       		.uleb128 0x25
+ 1043 0004 0E       		.uleb128 0xe
+ 1044 0005 13       		.uleb128 0x13
+ 1045 0006 0B       		.uleb128 0xb
+ 1046 0007 03       		.uleb128 0x3
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 35
+
+
+ 1047 0008 0E       		.uleb128 0xe
+ 1048 0009 1B       		.uleb128 0x1b
+ 1049 000a 0E       		.uleb128 0xe
+ 1050 000b 55       		.uleb128 0x55
+ 1051 000c 17       		.uleb128 0x17
+ 1052 000d 11       		.uleb128 0x11
+ 1053 000e 01       		.uleb128 0x1
+ 1054 000f 10       		.uleb128 0x10
+ 1055 0010 17       		.uleb128 0x17
+ 1056 0011 00       		.byte	0
+ 1057 0012 00       		.byte	0
+ 1058 0013 02       		.uleb128 0x2
+ 1059 0014 24       		.uleb128 0x24
+ 1060 0015 00       		.byte	0
+ 1061 0016 0B       		.uleb128 0xb
+ 1062 0017 0B       		.uleb128 0xb
+ 1063 0018 3E       		.uleb128 0x3e
+ 1064 0019 0B       		.uleb128 0xb
+ 1065 001a 03       		.uleb128 0x3
+ 1066 001b 0E       		.uleb128 0xe
+ 1067 001c 00       		.byte	0
+ 1068 001d 00       		.byte	0
+ 1069 001e 03       		.uleb128 0x3
+ 1070 001f 24       		.uleb128 0x24
+ 1071 0020 00       		.byte	0
+ 1072 0021 0B       		.uleb128 0xb
+ 1073 0022 0B       		.uleb128 0xb
+ 1074 0023 3E       		.uleb128 0x3e
+ 1075 0024 0B       		.uleb128 0xb
+ 1076 0025 03       		.uleb128 0x3
+ 1077 0026 08       		.uleb128 0x8
+ 1078 0027 00       		.byte	0
+ 1079 0028 00       		.byte	0
+ 1080 0029 04       		.uleb128 0x4
+ 1081 002a 16       		.uleb128 0x16
+ 1082 002b 00       		.byte	0
+ 1083 002c 03       		.uleb128 0x3
+ 1084 002d 0E       		.uleb128 0xe
+ 1085 002e 3A       		.uleb128 0x3a
+ 1086 002f 0B       		.uleb128 0xb
+ 1087 0030 3B       		.uleb128 0x3b
+ 1088 0031 05       		.uleb128 0x5
+ 1089 0032 49       		.uleb128 0x49
+ 1090 0033 13       		.uleb128 0x13
+ 1091 0034 00       		.byte	0
+ 1092 0035 00       		.byte	0
+ 1093 0036 05       		.uleb128 0x5
+ 1094 0037 35       		.uleb128 0x35
+ 1095 0038 00       		.byte	0
+ 1096 0039 49       		.uleb128 0x49
+ 1097 003a 13       		.uleb128 0x13
+ 1098 003b 00       		.byte	0
+ 1099 003c 00       		.byte	0
+ 1100 003d 06       		.uleb128 0x6
+ 1101 003e 2E       		.uleb128 0x2e
+ 1102 003f 00       		.byte	0
+ 1103 0040 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 36
+
+
+ 1104 0041 19       		.uleb128 0x19
+ 1105 0042 03       		.uleb128 0x3
+ 1106 0043 0E       		.uleb128 0xe
+ 1107 0044 3A       		.uleb128 0x3a
+ 1108 0045 0B       		.uleb128 0xb
+ 1109 0046 3B       		.uleb128 0x3b
+ 1110 0047 0B       		.uleb128 0xb
+ 1111 0048 27       		.uleb128 0x27
+ 1112 0049 19       		.uleb128 0x19
+ 1113 004a 11       		.uleb128 0x11
+ 1114 004b 01       		.uleb128 0x1
+ 1115 004c 12       		.uleb128 0x12
+ 1116 004d 06       		.uleb128 0x6
+ 1117 004e 40       		.uleb128 0x40
+ 1118 004f 18       		.uleb128 0x18
+ 1119 0050 9642     		.uleb128 0x2116
+ 1120 0052 19       		.uleb128 0x19
+ 1121 0053 00       		.byte	0
+ 1122 0054 00       		.byte	0
+ 1123 0055 07       		.uleb128 0x7
+ 1124 0056 2E       		.uleb128 0x2e
+ 1125 0057 01       		.byte	0x1
+ 1126 0058 3F       		.uleb128 0x3f
+ 1127 0059 19       		.uleb128 0x19
+ 1128 005a 03       		.uleb128 0x3
+ 1129 005b 0E       		.uleb128 0xe
+ 1130 005c 3A       		.uleb128 0x3a
+ 1131 005d 0B       		.uleb128 0xb
+ 1132 005e 3B       		.uleb128 0x3b
+ 1133 005f 0B       		.uleb128 0xb
+ 1134 0060 27       		.uleb128 0x27
+ 1135 0061 19       		.uleb128 0x19
+ 1136 0062 11       		.uleb128 0x11
+ 1137 0063 01       		.uleb128 0x1
+ 1138 0064 12       		.uleb128 0x12
+ 1139 0065 06       		.uleb128 0x6
+ 1140 0066 40       		.uleb128 0x40
+ 1141 0067 18       		.uleb128 0x18
+ 1142 0068 9642     		.uleb128 0x2116
+ 1143 006a 19       		.uleb128 0x19
+ 1144 006b 01       		.uleb128 0x1
+ 1145 006c 13       		.uleb128 0x13
+ 1146 006d 00       		.byte	0
+ 1147 006e 00       		.byte	0
+ 1148 006f 08       		.uleb128 0x8
+ 1149 0070 34       		.uleb128 0x34
+ 1150 0071 00       		.byte	0
+ 1151 0072 03       		.uleb128 0x3
+ 1152 0073 0E       		.uleb128 0xe
+ 1153 0074 3A       		.uleb128 0x3a
+ 1154 0075 0B       		.uleb128 0xb
+ 1155 0076 3B       		.uleb128 0x3b
+ 1156 0077 0B       		.uleb128 0xb
+ 1157 0078 49       		.uleb128 0x49
+ 1158 0079 13       		.uleb128 0x13
+ 1159 007a 02       		.uleb128 0x2
+ 1160 007b 18       		.uleb128 0x18
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 37
+
+
+ 1161 007c 00       		.byte	0
+ 1162 007d 00       		.byte	0
+ 1163 007e 09       		.uleb128 0x9
+ 1164 007f 2E       		.uleb128 0x2e
+ 1165 0080 00       		.byte	0
+ 1166 0081 3F       		.uleb128 0x3f
+ 1167 0082 19       		.uleb128 0x19
+ 1168 0083 03       		.uleb128 0x3
+ 1169 0084 0E       		.uleb128 0xe
+ 1170 0085 3A       		.uleb128 0x3a
+ 1171 0086 0B       		.uleb128 0xb
+ 1172 0087 3B       		.uleb128 0x3b
+ 1173 0088 0B       		.uleb128 0xb
+ 1174 0089 27       		.uleb128 0x27
+ 1175 008a 19       		.uleb128 0x19
+ 1176 008b 11       		.uleb128 0x11
+ 1177 008c 01       		.uleb128 0x1
+ 1178 008d 12       		.uleb128 0x12
+ 1179 008e 06       		.uleb128 0x6
+ 1180 008f 40       		.uleb128 0x40
+ 1181 0090 18       		.uleb128 0x18
+ 1182 0091 9742     		.uleb128 0x2117
+ 1183 0093 19       		.uleb128 0x19
+ 1184 0094 00       		.byte	0
+ 1185 0095 00       		.byte	0
+ 1186 0096 0A       		.uleb128 0xa
+ 1187 0097 2E       		.uleb128 0x2e
+ 1188 0098 01       		.byte	0x1
+ 1189 0099 3F       		.uleb128 0x3f
+ 1190 009a 19       		.uleb128 0x19
+ 1191 009b 03       		.uleb128 0x3
+ 1192 009c 0E       		.uleb128 0xe
+ 1193 009d 3A       		.uleb128 0x3a
+ 1194 009e 0B       		.uleb128 0xb
+ 1195 009f 3B       		.uleb128 0x3b
+ 1196 00a0 05       		.uleb128 0x5
+ 1197 00a1 27       		.uleb128 0x27
+ 1198 00a2 19       		.uleb128 0x19
+ 1199 00a3 11       		.uleb128 0x11
+ 1200 00a4 01       		.uleb128 0x1
+ 1201 00a5 12       		.uleb128 0x12
+ 1202 00a6 06       		.uleb128 0x6
+ 1203 00a7 40       		.uleb128 0x40
+ 1204 00a8 18       		.uleb128 0x18
+ 1205 00a9 9742     		.uleb128 0x2117
+ 1206 00ab 19       		.uleb128 0x19
+ 1207 00ac 01       		.uleb128 0x1
+ 1208 00ad 13       		.uleb128 0x13
+ 1209 00ae 00       		.byte	0
+ 1210 00af 00       		.byte	0
+ 1211 00b0 0B       		.uleb128 0xb
+ 1212 00b1 05       		.uleb128 0x5
+ 1213 00b2 00       		.byte	0
+ 1214 00b3 03       		.uleb128 0x3
+ 1215 00b4 0E       		.uleb128 0xe
+ 1216 00b5 3A       		.uleb128 0x3a
+ 1217 00b6 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 38
+
+
+ 1218 00b7 3B       		.uleb128 0x3b
+ 1219 00b8 05       		.uleb128 0x5
+ 1220 00b9 49       		.uleb128 0x49
+ 1221 00ba 13       		.uleb128 0x13
+ 1222 00bb 02       		.uleb128 0x2
+ 1223 00bc 18       		.uleb128 0x18
+ 1224 00bd 00       		.byte	0
+ 1225 00be 00       		.byte	0
+ 1226 00bf 0C       		.uleb128 0xc
+ 1227 00c0 2E       		.uleb128 0x2e
+ 1228 00c1 00       		.byte	0
+ 1229 00c2 3F       		.uleb128 0x3f
+ 1230 00c3 19       		.uleb128 0x19
+ 1231 00c4 03       		.uleb128 0x3
+ 1232 00c5 0E       		.uleb128 0xe
+ 1233 00c6 3A       		.uleb128 0x3a
+ 1234 00c7 0B       		.uleb128 0xb
+ 1235 00c8 3B       		.uleb128 0x3b
+ 1236 00c9 05       		.uleb128 0x5
+ 1237 00ca 27       		.uleb128 0x27
+ 1238 00cb 19       		.uleb128 0x19
+ 1239 00cc 49       		.uleb128 0x49
+ 1240 00cd 13       		.uleb128 0x13
+ 1241 00ce 11       		.uleb128 0x11
+ 1242 00cf 01       		.uleb128 0x1
+ 1243 00d0 12       		.uleb128 0x12
+ 1244 00d1 06       		.uleb128 0x6
+ 1245 00d2 40       		.uleb128 0x40
+ 1246 00d3 18       		.uleb128 0x18
+ 1247 00d4 9742     		.uleb128 0x2117
+ 1248 00d6 19       		.uleb128 0x19
+ 1249 00d7 00       		.byte	0
+ 1250 00d8 00       		.byte	0
+ 1251 00d9 0D       		.uleb128 0xd
+ 1252 00da 2E       		.uleb128 0x2e
+ 1253 00db 00       		.byte	0
+ 1254 00dc 3F       		.uleb128 0x3f
+ 1255 00dd 19       		.uleb128 0x19
+ 1256 00de 03       		.uleb128 0x3
+ 1257 00df 0E       		.uleb128 0xe
+ 1258 00e0 3A       		.uleb128 0x3a
+ 1259 00e1 0B       		.uleb128 0xb
+ 1260 00e2 3B       		.uleb128 0x3b
+ 1261 00e3 05       		.uleb128 0x5
+ 1262 00e4 27       		.uleb128 0x27
+ 1263 00e5 19       		.uleb128 0x19
+ 1264 00e6 11       		.uleb128 0x11
+ 1265 00e7 01       		.uleb128 0x1
+ 1266 00e8 12       		.uleb128 0x12
+ 1267 00e9 06       		.uleb128 0x6
+ 1268 00ea 40       		.uleb128 0x40
+ 1269 00eb 18       		.uleb128 0x18
+ 1270 00ec 9642     		.uleb128 0x2116
+ 1271 00ee 19       		.uleb128 0x19
+ 1272 00ef 00       		.byte	0
+ 1273 00f0 00       		.byte	0
+ 1274 00f1 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 39
+
+
+ 1275 00f2 2E       		.uleb128 0x2e
+ 1276 00f3 01       		.byte	0x1
+ 1277 00f4 3F       		.uleb128 0x3f
+ 1278 00f5 19       		.uleb128 0x19
+ 1279 00f6 03       		.uleb128 0x3
+ 1280 00f7 0E       		.uleb128 0xe
+ 1281 00f8 3A       		.uleb128 0x3a
+ 1282 00f9 0B       		.uleb128 0xb
+ 1283 00fa 3B       		.uleb128 0x3b
+ 1284 00fb 05       		.uleb128 0x5
+ 1285 00fc 27       		.uleb128 0x27
+ 1286 00fd 19       		.uleb128 0x19
+ 1287 00fe 49       		.uleb128 0x49
+ 1288 00ff 13       		.uleb128 0x13
+ 1289 0100 11       		.uleb128 0x11
+ 1290 0101 01       		.uleb128 0x1
+ 1291 0102 12       		.uleb128 0x12
+ 1292 0103 06       		.uleb128 0x6
+ 1293 0104 40       		.uleb128 0x40
+ 1294 0105 18       		.uleb128 0x18
+ 1295 0106 9742     		.uleb128 0x2117
+ 1296 0108 19       		.uleb128 0x19
+ 1297 0109 01       		.uleb128 0x1
+ 1298 010a 13       		.uleb128 0x13
+ 1299 010b 00       		.byte	0
+ 1300 010c 00       		.byte	0
+ 1301 010d 0F       		.uleb128 0xf
+ 1302 010e 34       		.uleb128 0x34
+ 1303 010f 00       		.byte	0
+ 1304 0110 03       		.uleb128 0x3
+ 1305 0111 0E       		.uleb128 0xe
+ 1306 0112 3A       		.uleb128 0x3a
+ 1307 0113 0B       		.uleb128 0xb
+ 1308 0114 3B       		.uleb128 0x3b
+ 1309 0115 05       		.uleb128 0x5
+ 1310 0116 49       		.uleb128 0x49
+ 1311 0117 13       		.uleb128 0x13
+ 1312 0118 02       		.uleb128 0x2
+ 1313 0119 18       		.uleb128 0x18
+ 1314 011a 00       		.byte	0
+ 1315 011b 00       		.byte	0
+ 1316 011c 10       		.uleb128 0x10
+ 1317 011d 34       		.uleb128 0x34
+ 1318 011e 00       		.byte	0
+ 1319 011f 03       		.uleb128 0x3
+ 1320 0120 0E       		.uleb128 0xe
+ 1321 0121 3A       		.uleb128 0x3a
+ 1322 0122 0B       		.uleb128 0xb
+ 1323 0123 3B       		.uleb128 0x3b
+ 1324 0124 0B       		.uleb128 0xb
+ 1325 0125 49       		.uleb128 0x49
+ 1326 0126 13       		.uleb128 0x13
+ 1327 0127 3F       		.uleb128 0x3f
+ 1328 0128 19       		.uleb128 0x19
+ 1329 0129 02       		.uleb128 0x2
+ 1330 012a 18       		.uleb128 0x18
+ 1331 012b 00       		.byte	0
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 40
+
+
+ 1332 012c 00       		.byte	0
+ 1333 012d 00       		.byte	0
+ 1334              		.section	.debug_aranges,"",%progbits
+ 1335 0000 94000000 		.4byte	0x94
+ 1336 0004 0200     		.2byte	0x2
+ 1337 0006 00000000 		.4byte	.Ldebug_info0
+ 1338 000a 04       		.byte	0x4
+ 1339 000b 00       		.byte	0
+ 1340 000c 0000     		.2byte	0
+ 1341 000e 0000     		.2byte	0
+ 1342 0010 00000000 		.4byte	.LFB2
+ 1343 0014 24000000 		.4byte	.LFE2-.LFB2
+ 1344 0018 00000000 		.4byte	.LFB3
+ 1345 001c A0000000 		.4byte	.LFE3-.LFB3
+ 1346 0020 00000000 		.4byte	.LFB4
+ 1347 0024 20000000 		.4byte	.LFE4-.LFB4
+ 1348 0028 00000000 		.4byte	.LFB5
+ 1349 002c 20000000 		.4byte	.LFE5-.LFB5
+ 1350 0030 00000000 		.4byte	.LFB6
+ 1351 0034 20000000 		.4byte	.LFE6-.LFB6
+ 1352 0038 00000000 		.4byte	.LFB7
+ 1353 003c 1C000000 		.4byte	.LFE7-.LFB7
+ 1354 0040 00000000 		.4byte	.LFB8
+ 1355 0044 1E000000 		.4byte	.LFE8-.LFB8
+ 1356 0048 00000000 		.4byte	.LFB9
+ 1357 004c 20000000 		.4byte	.LFE9-.LFB9
+ 1358 0050 00000000 		.4byte	.LFB10
+ 1359 0054 20000000 		.4byte	.LFE10-.LFB10
+ 1360 0058 00000000 		.4byte	.LFB11
+ 1361 005c 20000000 		.4byte	.LFE11-.LFB11
+ 1362 0060 00000000 		.4byte	.LFB12
+ 1363 0064 14000000 		.4byte	.LFE12-.LFB12
+ 1364 0068 00000000 		.4byte	.LFB13
+ 1365 006c 20000000 		.4byte	.LFE13-.LFB13
+ 1366 0070 00000000 		.4byte	.LFB14
+ 1367 0074 20000000 		.4byte	.LFE14-.LFB14
+ 1368 0078 00000000 		.4byte	.LFB15
+ 1369 007c 14000000 		.4byte	.LFE15-.LFB15
+ 1370 0080 00000000 		.4byte	.LFB16
+ 1371 0084 14000000 		.4byte	.LFE16-.LFB16
+ 1372 0088 00000000 		.4byte	.LFB17
+ 1373 008c 14000000 		.4byte	.LFE17-.LFB17
+ 1374 0090 00000000 		.4byte	0
+ 1375 0094 00000000 		.4byte	0
+ 1376              		.section	.debug_ranges,"",%progbits
+ 1377              	.Ldebug_ranges0:
+ 1378 0000 00000000 		.4byte	.LFB2
+ 1379 0004 24000000 		.4byte	.LFE2
+ 1380 0008 00000000 		.4byte	.LFB3
+ 1381 000c A0000000 		.4byte	.LFE3
+ 1382 0010 00000000 		.4byte	.LFB4
+ 1383 0014 20000000 		.4byte	.LFE4
+ 1384 0018 00000000 		.4byte	.LFB5
+ 1385 001c 20000000 		.4byte	.LFE5
+ 1386 0020 00000000 		.4byte	.LFB6
+ 1387 0024 20000000 		.4byte	.LFE6
+ 1388 0028 00000000 		.4byte	.LFB7
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 41
+
+
+ 1389 002c 1C000000 		.4byte	.LFE7
+ 1390 0030 00000000 		.4byte	.LFB8
+ 1391 0034 1E000000 		.4byte	.LFE8
+ 1392 0038 00000000 		.4byte	.LFB9
+ 1393 003c 20000000 		.4byte	.LFE9
+ 1394 0040 00000000 		.4byte	.LFB10
+ 1395 0044 20000000 		.4byte	.LFE10
+ 1396 0048 00000000 		.4byte	.LFB11
+ 1397 004c 20000000 		.4byte	.LFE11
+ 1398 0050 00000000 		.4byte	.LFB12
+ 1399 0054 14000000 		.4byte	.LFE12
+ 1400 0058 00000000 		.4byte	.LFB13
+ 1401 005c 20000000 		.4byte	.LFE13
+ 1402 0060 00000000 		.4byte	.LFB14
+ 1403 0064 20000000 		.4byte	.LFE14
+ 1404 0068 00000000 		.4byte	.LFB15
+ 1405 006c 14000000 		.4byte	.LFE15
+ 1406 0070 00000000 		.4byte	.LFB16
+ 1407 0074 14000000 		.4byte	.LFE16
+ 1408 0078 00000000 		.4byte	.LFB17
+ 1409 007c 14000000 		.4byte	.LFE17
+ 1410 0080 00000000 		.4byte	0
+ 1411 0084 00000000 		.4byte	0
+ 1412              		.section	.debug_line,"",%progbits
+ 1413              	.Ldebug_line0:
+ 1414 0000 8A010000 		.section	.debug_str,"MS",%progbits,1
+ 1414      02004700 
+ 1414      00000201 
+ 1414      FB0E0D00 
+ 1414      01010101 
+ 1415              	.LASF6:
+ 1416 0000 6C6F6E67 		.ascii	"long long int\000"
+ 1416      206C6F6E 
+ 1416      6720696E 
+ 1416      7400
+ 1417              	.LASF22:
+ 1418 000e 4C45445F 		.ascii	"LED_DIMMER_Stop\000"
+ 1418      44494D4D 
+ 1418      45525F53 
+ 1418      746F7000 
+ 1419              	.LASF24:
+ 1420 001e 4C45445F 		.ascii	"LED_DIMMER_WriteCounter\000"
+ 1420      44494D4D 
+ 1420      45525F57 
+ 1420      72697465 
+ 1420      436F756E 
+ 1421              	.LASF36:
+ 1422 0036 4C45445F 		.ascii	"LED_DIMMER_WriteControlRegister\000"
+ 1422      44494D4D 
+ 1422      45525F57 
+ 1422      72697465 
+ 1422      436F6E74 
+ 1423              	.LASF43:
+ 1424 0056 433A5C63 		.ascii	"C:\\cypressWorkspace\\CY8C_149KIT\\BLEModule.cydsn\000"
+ 1424      79707265 
+ 1424      7373576F 
+ 1424      726B7370 
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 42
+
+
+ 1424      6163655C 
+ 1425              	.LASF28:
+ 1426 0086 70657269 		.ascii	"period\000"
+ 1426      6F6400
+ 1427              	.LASF3:
+ 1428 008d 73686F72 		.ascii	"short unsigned int\000"
+ 1428      7420756E 
+ 1428      7369676E 
+ 1428      65642069 
+ 1428      6E7400
+ 1429              	.LASF39:
+ 1430 00a0 4C45445F 		.ascii	"LED_DIMMER_ReadCompare\000"
+ 1430      44494D4D 
+ 1430      45525F52 
+ 1430      65616443 
+ 1430      6F6D7061 
+ 1431              	.LASF25:
+ 1432 00b7 4C45445F 		.ascii	"LED_DIMMER_ClearFIFO\000"
+ 1432      44494D4D 
+ 1432      45525F43 
+ 1432      6C656172 
+ 1432      4649464F 
+ 1433              	.LASF38:
+ 1434 00cc 4C45445F 		.ascii	"LED_DIMMER_ReadCapture\000"
+ 1434      44494D4D 
+ 1434      45525F52 
+ 1434      65616443 
+ 1434      61707475 
+ 1435              	.LASF23:
+ 1436 00e3 4C45445F 		.ascii	"LED_DIMMER_Init\000"
+ 1436      44494D4D 
+ 1436      45525F49 
+ 1436      6E697400 
+ 1437              	.LASF33:
+ 1438 00f3 4C45445F 		.ascii	"LED_DIMMER_ReadCounter\000"
+ 1438      44494D4D 
+ 1438      45525F52 
+ 1438      65616443 
+ 1438      6F756E74 
+ 1439              	.LASF11:
+ 1440 010a 666C6F61 		.ascii	"float\000"
+ 1440      7400
+ 1441              	.LASF27:
+ 1442 0110 636F756E 		.ascii	"counter\000"
+ 1442      74657200 
+ 1443              	.LASF1:
+ 1444 0118 756E7369 		.ascii	"unsigned char\000"
+ 1444      676E6564 
+ 1444      20636861 
+ 1444      7200
+ 1445              	.LASF14:
+ 1446 0126 72656738 		.ascii	"reg8\000"
+ 1446      00
+ 1447              	.LASF5:
+ 1448 012b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1448      20756E73 
+ 1448      69676E65 
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 43
+
+
+ 1448      6420696E 
+ 1448      7400
+ 1449              	.LASF40:
+ 1450 013d 4C45445F 		.ascii	"LED_DIMMER_ReadPeriod\000"
+ 1450      44494D4D 
+ 1450      45525F52 
+ 1450      65616450 
+ 1450      6572696F 
+ 1451              	.LASF9:
+ 1452 0153 75696E74 		.ascii	"uint8\000"
+ 1452      3800
+ 1453              	.LASF37:
+ 1454 0159 636F6E74 		.ascii	"control\000"
+ 1454      726F6C00 
+ 1455              	.LASF41:
+ 1456 0161 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1456      43313120 
+ 1456      352E342E 
+ 1456      31203230 
+ 1456      31363036 
+ 1457 0194 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1457      20726576 
+ 1457      6973696F 
+ 1457      6E203233 
+ 1457      37373135 
+ 1458 01c7 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1458      66756E63 
+ 1458      74696F6E 
+ 1458      2D736563 
+ 1458      74696F6E 
+ 1459              	.LASF44:
+ 1460 01ef 4C45445F 		.ascii	"LED_DIMMER_ReadControlRegister\000"
+ 1460      44494D4D 
+ 1460      45525F52 
+ 1460      65616443 
+ 1460      6F6E7472 
+ 1461              	.LASF12:
+ 1462 020e 646F7562 		.ascii	"double\000"
+ 1462      6C6500
+ 1463              	.LASF34:
+ 1464 0215 4C45445F 		.ascii	"LED_DIMMER_ReadStatusRegister\000"
+ 1464      44494D4D 
+ 1464      45525F52 
+ 1464      65616453 
+ 1464      74617475 
+ 1465              	.LASF10:
+ 1466 0233 75696E74 		.ascii	"uint16\000"
+ 1466      313600
+ 1467              	.LASF31:
+ 1468 023a 4C45445F 		.ascii	"LED_DIMMER_SetInterruptMode\000"
+ 1468      44494D4D 
+ 1468      45525F53 
+ 1468      6574496E 
+ 1468      74657272 
+ 1469              	.LASF8:
+ 1470 0256 756E7369 		.ascii	"unsigned int\000"
+ 1470      676E6564 
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 44
+
+
+ 1470      20696E74 
+ 1470      00
+ 1471              	.LASF20:
+ 1472 0263 4C45445F 		.ascii	"LED_DIMMER_Start\000"
+ 1472      44494D4D 
+ 1472      45525F53 
+ 1472      74617274 
+ 1472      00
+ 1473              	.LASF21:
+ 1474 0274 4C45445F 		.ascii	"LED_DIMMER_Enable\000"
+ 1474      44494D4D 
+ 1474      45525F45 
+ 1474      6E61626C 
+ 1474      6500
+ 1475              	.LASF7:
+ 1476 0286 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1476      206C6F6E 
+ 1476      6720756E 
+ 1476      7369676E 
+ 1476      65642069 
+ 1477              	.LASF45:
+ 1478 029d 4C45445F 		.ascii	"LED_DIMMER_initVar\000"
+ 1478      44494D4D 
+ 1478      45525F69 
+ 1478      6E697456 
+ 1478      617200
+ 1479              	.LASF35:
+ 1480 02b0 72657375 		.ascii	"result\000"
+ 1480      6C7400
+ 1481              	.LASF42:
+ 1482 02b7 47656E65 		.ascii	"Generated_Source\\PSoC4\\LED_DIMMER.c\000"
+ 1482      72617465 
+ 1482      645F536F 
+ 1482      75726365 
+ 1482      5C50536F 
+ 1483              	.LASF19:
+ 1484 02db 4C45445F 		.ascii	"LED_DIMMER_interruptState\000"
+ 1484      44494D4D 
+ 1484      45525F69 
+ 1484      6E746572 
+ 1484      72757074 
+ 1485              	.LASF18:
+ 1486 02f5 6374726C 		.ascii	"ctrl\000"
+ 1486      00
+ 1487              	.LASF17:
+ 1488 02fa 73697A65 		.ascii	"sizetype\000"
+ 1488      74797065 
+ 1488      00
+ 1489              	.LASF26:
+ 1490 0303 4C45445F 		.ascii	"LED_DIMMER_WritePeriod\000"
+ 1490      44494D4D 
+ 1490      45525F57 
+ 1490      72697465 
+ 1490      50657269 
+ 1491              	.LASF29:
+ 1492 031a 4C45445F 		.ascii	"LED_DIMMER_WriteCompare\000"
+ 1492      44494D4D 
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\cc8kLY3U.s 			page 45
+
+
+ 1492      45525F57 
+ 1492      72697465 
+ 1492      436F6D70 
+ 1493              	.LASF32:
+ 1494 0332 696E7465 		.ascii	"interruptMode\000"
+ 1494      72727570 
+ 1494      744D6F64 
+ 1494      6500
+ 1495              	.LASF2:
+ 1496 0340 73686F72 		.ascii	"short int\000"
+ 1496      7420696E 
+ 1496      7400
+ 1497              	.LASF15:
+ 1498 034a 72656731 		.ascii	"reg16\000"
+ 1498      3600
+ 1499              	.LASF4:
+ 1500 0350 6C6F6E67 		.ascii	"long int\000"
+ 1500      20696E74 
+ 1500      00
+ 1501              	.LASF13:
+ 1502 0359 63686172 		.ascii	"char\000"
+ 1502      00
+ 1503              	.LASF16:
+ 1504 035e 6C6F6E67 		.ascii	"long double\000"
+ 1504      20646F75 
+ 1504      626C6500 
+ 1505              	.LASF0:
+ 1506 036a 7369676E 		.ascii	"signed char\000"
+ 1506      65642063 
+ 1506      68617200 
+ 1507              	.LASF30:
+ 1508 0376 636F6D70 		.ascii	"compare\000"
+ 1508      61726500 
+ 1509              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

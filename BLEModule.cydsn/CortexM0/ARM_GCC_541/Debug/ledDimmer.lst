@@ -1,0 +1,2675 @@
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"ledDimmer.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	ledDimmer_initVar
+  20              		.bss
+  21              		.type	ledDimmer_initVar, %object
+  22              		.size	ledDimmer_initVar, 1
+  23              	ledDimmer_initVar:
+  24 0000 00       		.space	1
+  25              		.section	.text.ledDimmer_Start,"ax",%progbits
+  26              		.align	2
+  27              		.global	ledDimmer_Start
+  28              		.code	16
+  29              		.thumb_func
+  30              		.type	ledDimmer_Start, %function
+  31              	ledDimmer_Start:
+  32              	.LFB2:
+  33              		.file 1 "Generated_Source\\PSoC4\\ledDimmer.c"
+   1:Generated_Source\PSoC4/ledDimmer.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/ledDimmer.c **** * File Name: ledDimmer.c
+   3:Generated_Source\PSoC4/ledDimmer.c **** * Version 3.30
+   4:Generated_Source\PSoC4/ledDimmer.c **** *
+   5:Generated_Source\PSoC4/ledDimmer.c **** * Description:
+   6:Generated_Source\PSoC4/ledDimmer.c **** *  The PWM User Module consist of an 8 or 16-bit counter with two 8 or 16-bit
+   7:Generated_Source\PSoC4/ledDimmer.c **** *  comparitors. Each instance of this user module is capable of generating
+   8:Generated_Source\PSoC4/ledDimmer.c **** *  two PWM outputs with the same period. The pulse width is selectable between
+   9:Generated_Source\PSoC4/ledDimmer.c **** *  1 and 255/65535. The period is selectable between 2 and 255/65536 clocks.
+  10:Generated_Source\PSoC4/ledDimmer.c **** *  The compare value output may be configured to be active when the present
+  11:Generated_Source\PSoC4/ledDimmer.c **** *  counter is less than or less than/equal to the compare value.
+  12:Generated_Source\PSoC4/ledDimmer.c **** *  A terminal count output is also provided. It generates a pulse one clock
+  13:Generated_Source\PSoC4/ledDimmer.c **** *  width wide when the counter is equal to zero.
+  14:Generated_Source\PSoC4/ledDimmer.c **** *
+  15:Generated_Source\PSoC4/ledDimmer.c **** * Note:
+  16:Generated_Source\PSoC4/ledDimmer.c **** *
+  17:Generated_Source\PSoC4/ledDimmer.c **** *******************************************************************************
+  18:Generated_Source\PSoC4/ledDimmer.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  19:Generated_Source\PSoC4/ledDimmer.c **** * You may use this file only in accordance with the license, terms, conditions,
+  20:Generated_Source\PSoC4/ledDimmer.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  21:Generated_Source\PSoC4/ledDimmer.c **** * the software package with which this file was provided.
+  22:Generated_Source\PSoC4/ledDimmer.c **** ********************************************************************************/
+  23:Generated_Source\PSoC4/ledDimmer.c **** 
+  24:Generated_Source\PSoC4/ledDimmer.c **** #include "ledDimmer.h"
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 2
+
+
+  25:Generated_Source\PSoC4/ledDimmer.c **** 
+  26:Generated_Source\PSoC4/ledDimmer.c **** /* Error message for removed <resource> through optimization */
+  27:Generated_Source\PSoC4/ledDimmer.c **** #ifdef ledDimmer_PWMUDB_genblk1_ctrlreg__REMOVED
+  28:Generated_Source\PSoC4/ledDimmer.c ****     #error PWM_v3_30 detected with a constant 0 for the enable or \
+  29:Generated_Source\PSoC4/ledDimmer.c ****          constant 1 for reset. This will prevent the component from operating.
+  30:Generated_Source\PSoC4/ledDimmer.c **** #endif /* ledDimmer_PWMUDB_genblk1_ctrlreg__REMOVED */
+  31:Generated_Source\PSoC4/ledDimmer.c **** 
+  32:Generated_Source\PSoC4/ledDimmer.c **** uint8 ledDimmer_initVar = 0u;
+  33:Generated_Source\PSoC4/ledDimmer.c **** 
+  34:Generated_Source\PSoC4/ledDimmer.c **** 
+  35:Generated_Source\PSoC4/ledDimmer.c **** /*******************************************************************************
+  36:Generated_Source\PSoC4/ledDimmer.c **** * Function Name: ledDimmer_Start
+  37:Generated_Source\PSoC4/ledDimmer.c **** ********************************************************************************
+  38:Generated_Source\PSoC4/ledDimmer.c **** *
+  39:Generated_Source\PSoC4/ledDimmer.c **** * Summary:
+  40:Generated_Source\PSoC4/ledDimmer.c **** *  The start function initializes the pwm with the default values, the
+  41:Generated_Source\PSoC4/ledDimmer.c **** *  enables the counter to begin counting.  It does not enable interrupts,
+  42:Generated_Source\PSoC4/ledDimmer.c **** *  the EnableInt command should be called if interrupt generation is required.
+  43:Generated_Source\PSoC4/ledDimmer.c **** *
+  44:Generated_Source\PSoC4/ledDimmer.c **** * Parameters:
+  45:Generated_Source\PSoC4/ledDimmer.c **** *  None
+  46:Generated_Source\PSoC4/ledDimmer.c **** *
+  47:Generated_Source\PSoC4/ledDimmer.c **** * Return:
+  48:Generated_Source\PSoC4/ledDimmer.c **** *  None
+  49:Generated_Source\PSoC4/ledDimmer.c **** *
+  50:Generated_Source\PSoC4/ledDimmer.c **** * Global variables:
+  51:Generated_Source\PSoC4/ledDimmer.c **** *  ledDimmer_initVar: Is modified when this function is called for the
+  52:Generated_Source\PSoC4/ledDimmer.c **** *   first time. Is used to ensure that initialization happens only once.
+  53:Generated_Source\PSoC4/ledDimmer.c **** *
+  54:Generated_Source\PSoC4/ledDimmer.c **** *******************************************************************************/
+  55:Generated_Source\PSoC4/ledDimmer.c **** void ledDimmer_Start(void) 
+  56:Generated_Source\PSoC4/ledDimmer.c **** {
+  34              		.loc 1 56 0
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 0
+  37              		@ frame_needed = 1, uses_anonymous_args = 0
+  38 0000 80B5     		push	{r7, lr}
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 7, -8
+  41              		.cfi_offset 14, -4
+  42 0002 00AF     		add	r7, sp, #0
+  43              		.cfi_def_cfa_register 7
+  57:Generated_Source\PSoC4/ledDimmer.c ****     /* If not Initialized then initialize all required hardware and software */
+  58:Generated_Source\PSoC4/ledDimmer.c ****     if(ledDimmer_initVar == 0u)
+  44              		.loc 1 58 0
+  45 0004 064B     		ldr	r3, .L3
+  46 0006 1B78     		ldrb	r3, [r3]
+  47 0008 002B     		cmp	r3, #0
+  48 000a 04D1     		bne	.L2
+  59:Generated_Source\PSoC4/ledDimmer.c ****     {
+  60:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_Init();
+  49              		.loc 1 60 0
+  50 000c FFF7FEFF 		bl	ledDimmer_Init
+  61:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_initVar = 1u;
+  51              		.loc 1 61 0
+  52 0010 034B     		ldr	r3, .L3
+  53 0012 0122     		movs	r2, #1
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 3
+
+
+  54 0014 1A70     		strb	r2, [r3]
+  55              	.L2:
+  62:Generated_Source\PSoC4/ledDimmer.c ****     }
+  63:Generated_Source\PSoC4/ledDimmer.c ****     ledDimmer_Enable();
+  56              		.loc 1 63 0
+  57 0016 FFF7FEFF 		bl	ledDimmer_Enable
+  64:Generated_Source\PSoC4/ledDimmer.c **** 
+  65:Generated_Source\PSoC4/ledDimmer.c **** }
+  58              		.loc 1 65 0
+  59 001a C046     		nop
+  60 001c BD46     		mov	sp, r7
+  61              		@ sp needed
+  62 001e 80BD     		pop	{r7, pc}
+  63              	.L4:
+  64              		.align	2
+  65              	.L3:
+  66 0020 00000000 		.word	ledDimmer_initVar
+  67              		.cfi_endproc
+  68              	.LFE2:
+  69              		.size	ledDimmer_Start, .-ledDimmer_Start
+  70              		.section	.text.ledDimmer_Init,"ax",%progbits
+  71              		.align	2
+  72              		.global	ledDimmer_Init
+  73              		.code	16
+  74              		.thumb_func
+  75              		.type	ledDimmer_Init, %function
+  76              	ledDimmer_Init:
+  77              	.LFB3:
+  66:Generated_Source\PSoC4/ledDimmer.c **** 
+  67:Generated_Source\PSoC4/ledDimmer.c **** 
+  68:Generated_Source\PSoC4/ledDimmer.c **** /*******************************************************************************
+  69:Generated_Source\PSoC4/ledDimmer.c **** * Function Name: ledDimmer_Init
+  70:Generated_Source\PSoC4/ledDimmer.c **** ********************************************************************************
+  71:Generated_Source\PSoC4/ledDimmer.c **** *
+  72:Generated_Source\PSoC4/ledDimmer.c **** * Summary:
+  73:Generated_Source\PSoC4/ledDimmer.c **** *  Initialize component's parameters to the parameters set by user in the
+  74:Generated_Source\PSoC4/ledDimmer.c **** *  customizer of the component placed onto schematic. Usually called in
+  75:Generated_Source\PSoC4/ledDimmer.c **** *  ledDimmer_Start().
+  76:Generated_Source\PSoC4/ledDimmer.c **** *
+  77:Generated_Source\PSoC4/ledDimmer.c **** * Parameters:
+  78:Generated_Source\PSoC4/ledDimmer.c **** *  None
+  79:Generated_Source\PSoC4/ledDimmer.c **** *
+  80:Generated_Source\PSoC4/ledDimmer.c **** * Return:
+  81:Generated_Source\PSoC4/ledDimmer.c **** *  None
+  82:Generated_Source\PSoC4/ledDimmer.c **** *
+  83:Generated_Source\PSoC4/ledDimmer.c **** *******************************************************************************/
+  84:Generated_Source\PSoC4/ledDimmer.c **** void ledDimmer_Init(void) 
+  85:Generated_Source\PSoC4/ledDimmer.c **** {
+  78              		.loc 1 85 0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 8
+  81              		@ frame_needed = 1, uses_anonymous_args = 0
+  82 0000 90B5     		push	{r4, r7, lr}
+  83              		.cfi_def_cfa_offset 12
+  84              		.cfi_offset 4, -12
+  85              		.cfi_offset 7, -8
+  86              		.cfi_offset 14, -4
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 4
+
+
+  87 0002 83B0     		sub	sp, sp, #12
+  88              		.cfi_def_cfa_offset 24
+  89 0004 00AF     		add	r7, sp, #0
+  90              		.cfi_def_cfa_register 7
+  86:Generated_Source\PSoC4/ledDimmer.c ****     #if (ledDimmer_UsingFixedFunction || ledDimmer_UseControl)
+  87:Generated_Source\PSoC4/ledDimmer.c ****         uint8 ctrl;
+  88:Generated_Source\PSoC4/ledDimmer.c ****     #endif /* (ledDimmer_UsingFixedFunction || ledDimmer_UseControl) */
+  89:Generated_Source\PSoC4/ledDimmer.c **** 
+  90:Generated_Source\PSoC4/ledDimmer.c ****     #if(!ledDimmer_UsingFixedFunction)
+  91:Generated_Source\PSoC4/ledDimmer.c ****         #if(ledDimmer_UseStatus)
+  92:Generated_Source\PSoC4/ledDimmer.c ****             /* Interrupt State Backup for Critical Region*/
+  93:Generated_Source\PSoC4/ledDimmer.c ****             uint8 ledDimmer_interruptState;
+  94:Generated_Source\PSoC4/ledDimmer.c ****         #endif /* (ledDimmer_UseStatus) */
+  95:Generated_Source\PSoC4/ledDimmer.c ****     #endif /* (!ledDimmer_UsingFixedFunction) */
+  96:Generated_Source\PSoC4/ledDimmer.c **** 
+  97:Generated_Source\PSoC4/ledDimmer.c ****     #if (ledDimmer_UsingFixedFunction)
+  98:Generated_Source\PSoC4/ledDimmer.c ****         /* You are allowed to write the compare value (FF only) */
+  99:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_CONTROL |= ledDimmer_CFG0_MODE;
+ 100:Generated_Source\PSoC4/ledDimmer.c ****         #if (ledDimmer_DeadBand2_4)
+ 101:Generated_Source\PSoC4/ledDimmer.c ****             ledDimmer_CONTROL |= ledDimmer_CFG0_DB;
+ 102:Generated_Source\PSoC4/ledDimmer.c ****         #endif /* (ledDimmer_DeadBand2_4) */
+ 103:Generated_Source\PSoC4/ledDimmer.c **** 
+ 104:Generated_Source\PSoC4/ledDimmer.c ****         ctrl = ledDimmer_CONTROL3 & ((uint8 )(~ledDimmer_CTRL_CMPMODE1_MASK));
+ 105:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_CONTROL3 = ctrl | ledDimmer_DEFAULT_COMPARE1_MODE;
+ 106:Generated_Source\PSoC4/ledDimmer.c **** 
+ 107:Generated_Source\PSoC4/ledDimmer.c ****          /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+ 108:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_RT1 &= ((uint8)(~ledDimmer_RT1_MASK));
+ 109:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_RT1 |= ledDimmer_SYNC;
+ 110:Generated_Source\PSoC4/ledDimmer.c **** 
+ 111:Generated_Source\PSoC4/ledDimmer.c ****         /*Enable DSI Sync all all inputs of the PWM*/
+ 112:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_RT1 &= ((uint8)(~ledDimmer_SYNCDSI_MASK));
+ 113:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_RT1 |= ledDimmer_SYNCDSI_EN;
+ 114:Generated_Source\PSoC4/ledDimmer.c **** 
+ 115:Generated_Source\PSoC4/ledDimmer.c ****     #elif (ledDimmer_UseControl)
+ 116:Generated_Source\PSoC4/ledDimmer.c ****         /* Set the default compare mode defined in the parameter */
+ 117:Generated_Source\PSoC4/ledDimmer.c ****         ctrl = ledDimmer_CONTROL & ((uint8)(~ledDimmer_CTRL_CMPMODE2_MASK)) &
+  91              		.loc 1 117 0
+  92 0006 224B     		ldr	r3, .L6
+  93 0008 1B78     		ldrb	r3, [r3]
+  94 000a DAB2     		uxtb	r2, r3
+  95 000c FB1D     		adds	r3, r7, #7
+  96 000e 3F21     		movs	r1, #63
+  97 0010 8A43     		bics	r2, r1
+  98 0012 1A70     		strb	r2, [r3]
+ 118:Generated_Source\PSoC4/ledDimmer.c ****                 ((uint8)(~ledDimmer_CTRL_CMPMODE1_MASK));
+ 119:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_CONTROL = ctrl | ledDimmer_DEFAULT_COMPARE2_MODE |
+  99              		.loc 1 119 0
+ 100 0014 1E4A     		ldr	r2, .L6
+ 101 0016 FB1D     		adds	r3, r7, #7
+ 102 0018 1B78     		ldrb	r3, [r3]
+ 103 001a 0C21     		movs	r1, #12
+ 104 001c 0B43     		orrs	r3, r1
+ 105 001e DBB2     		uxtb	r3, r3
+ 106 0020 1370     		strb	r3, [r2]
+ 120:Generated_Source\PSoC4/ledDimmer.c ****                                    ledDimmer_DEFAULT_COMPARE1_MODE;
+ 121:Generated_Source\PSoC4/ledDimmer.c ****     #endif /* (ledDimmer_UsingFixedFunction) */
+ 122:Generated_Source\PSoC4/ledDimmer.c **** 
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 5
+
+
+ 123:Generated_Source\PSoC4/ledDimmer.c ****     #if (!ledDimmer_UsingFixedFunction)
+ 124:Generated_Source\PSoC4/ledDimmer.c ****         #if (ledDimmer_Resolution == 8)
+ 125:Generated_Source\PSoC4/ledDimmer.c ****             /* Set FIFO 0 to 1 byte register for period*/
+ 126:Generated_Source\PSoC4/ledDimmer.c ****             ledDimmer_AUX_CONTROLDP0 |= (ledDimmer_AUX_CTRL_FIFO0_CLR);
+ 127:Generated_Source\PSoC4/ledDimmer.c ****         #else /* (ledDimmer_Resolution == 16)*/
+ 128:Generated_Source\PSoC4/ledDimmer.c ****             /* Set FIFO 0 to 1 byte register for period */
+ 129:Generated_Source\PSoC4/ledDimmer.c ****             ledDimmer_AUX_CONTROLDP0 |= (ledDimmer_AUX_CTRL_FIFO0_CLR);
+ 107              		.loc 1 129 0
+ 108 0022 1C4A     		ldr	r2, .L6+4
+ 109 0024 1B4B     		ldr	r3, .L6+4
+ 110 0026 1B78     		ldrb	r3, [r3]
+ 111 0028 DBB2     		uxtb	r3, r3
+ 112 002a 0121     		movs	r1, #1
+ 113 002c 0B43     		orrs	r3, r1
+ 114 002e DBB2     		uxtb	r3, r3
+ 115 0030 1370     		strb	r3, [r2]
+ 130:Generated_Source\PSoC4/ledDimmer.c ****             ledDimmer_AUX_CONTROLDP1 |= (ledDimmer_AUX_CTRL_FIFO0_CLR);
+ 116              		.loc 1 130 0
+ 117 0032 194A     		ldr	r2, .L6+8
+ 118 0034 184B     		ldr	r3, .L6+8
+ 119 0036 1B78     		ldrb	r3, [r3]
+ 120 0038 DBB2     		uxtb	r3, r3
+ 121 003a 0121     		movs	r1, #1
+ 122 003c 0B43     		orrs	r3, r1
+ 123 003e DBB2     		uxtb	r3, r3
+ 124 0040 1370     		strb	r3, [r2]
+ 131:Generated_Source\PSoC4/ledDimmer.c ****         #endif /* (ledDimmer_Resolution == 8) */
+ 132:Generated_Source\PSoC4/ledDimmer.c **** 
+ 133:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_WriteCounter(ledDimmer_INIT_PERIOD_VALUE);
+ 125              		.loc 1 133 0
+ 126 0042 164B     		ldr	r3, .L6+12
+ 127 0044 1800     		movs	r0, r3
+ 128 0046 FFF7FEFF 		bl	ledDimmer_WriteCounter
+ 134:Generated_Source\PSoC4/ledDimmer.c ****     #endif /* (!ledDimmer_UsingFixedFunction) */
+ 135:Generated_Source\PSoC4/ledDimmer.c **** 
+ 136:Generated_Source\PSoC4/ledDimmer.c ****     ledDimmer_WritePeriod(ledDimmer_INIT_PERIOD_VALUE);
+ 129              		.loc 1 136 0
+ 130 004a 144B     		ldr	r3, .L6+12
+ 131 004c 1800     		movs	r0, r3
+ 132 004e FFF7FEFF 		bl	ledDimmer_WritePeriod
+ 137:Generated_Source\PSoC4/ledDimmer.c **** 
+ 138:Generated_Source\PSoC4/ledDimmer.c ****         #if (ledDimmer_UseOneCompareMode)
+ 139:Generated_Source\PSoC4/ledDimmer.c ****             ledDimmer_WriteCompare(ledDimmer_INIT_COMPARE_VALUE1);
+ 133              		.loc 1 139 0
+ 134 0052 0020     		movs	r0, #0
+ 135 0054 FFF7FEFF 		bl	ledDimmer_WriteCompare
+ 140:Generated_Source\PSoC4/ledDimmer.c ****         #else
+ 141:Generated_Source\PSoC4/ledDimmer.c ****             ledDimmer_WriteCompare1(ledDimmer_INIT_COMPARE_VALUE1);
+ 142:Generated_Source\PSoC4/ledDimmer.c ****             ledDimmer_WriteCompare2(ledDimmer_INIT_COMPARE_VALUE2);
+ 143:Generated_Source\PSoC4/ledDimmer.c ****         #endif /* (ledDimmer_UseOneCompareMode) */
+ 144:Generated_Source\PSoC4/ledDimmer.c **** 
+ 145:Generated_Source\PSoC4/ledDimmer.c ****         #if (ledDimmer_KillModeMinTime)
+ 146:Generated_Source\PSoC4/ledDimmer.c ****             ledDimmer_WriteKillTime(ledDimmer_MinimumKillTime);
+ 147:Generated_Source\PSoC4/ledDimmer.c ****         #endif /* (ledDimmer_KillModeMinTime) */
+ 148:Generated_Source\PSoC4/ledDimmer.c **** 
+ 149:Generated_Source\PSoC4/ledDimmer.c ****         #if (ledDimmer_DeadBandUsed)
+ 150:Generated_Source\PSoC4/ledDimmer.c ****             ledDimmer_WriteDeadTime(ledDimmer_INIT_DEAD_TIME);
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 6
+
+
+ 151:Generated_Source\PSoC4/ledDimmer.c ****         #endif /* (ledDimmer_DeadBandUsed) */
+ 152:Generated_Source\PSoC4/ledDimmer.c **** 
+ 153:Generated_Source\PSoC4/ledDimmer.c ****     #if (ledDimmer_UseStatus || ledDimmer_UsingFixedFunction)
+ 154:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_SetInterruptMode(ledDimmer_INIT_INTERRUPTS_MODE);
+ 136              		.loc 1 154 0
+ 137 0058 0020     		movs	r0, #0
+ 138 005a FFF7FEFF 		bl	ledDimmer_SetInterruptMode
+ 155:Generated_Source\PSoC4/ledDimmer.c ****     #endif /* (ledDimmer_UseStatus || ledDimmer_UsingFixedFunction) */
+ 156:Generated_Source\PSoC4/ledDimmer.c **** 
+ 157:Generated_Source\PSoC4/ledDimmer.c ****     #if (ledDimmer_UsingFixedFunction)
+ 158:Generated_Source\PSoC4/ledDimmer.c ****         /* Globally Enable the Fixed Function Block chosen */
+ 159:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_GLOBAL_ENABLE |= ledDimmer_BLOCK_EN_MASK;
+ 160:Generated_Source\PSoC4/ledDimmer.c ****         /* Set the Interrupt source to come from the status register */
+ 161:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_CONTROL2 |= ledDimmer_CTRL2_IRQ_SEL;
+ 162:Generated_Source\PSoC4/ledDimmer.c ****     #else
+ 163:Generated_Source\PSoC4/ledDimmer.c ****         #if(ledDimmer_UseStatus)
+ 164:Generated_Source\PSoC4/ledDimmer.c **** 
+ 165:Generated_Source\PSoC4/ledDimmer.c ****             /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region cri
+ 166:Generated_Source\PSoC4/ledDimmer.c ****             /* Enter Critical Region*/
+ 167:Generated_Source\PSoC4/ledDimmer.c ****             ledDimmer_interruptState = CyEnterCriticalSection();
+ 139              		.loc 1 167 0
+ 140 005e BC1D     		adds	r4, r7, #6
+ 141 0060 FFF7FEFF 		bl	CyEnterCriticalSection
+ 142 0064 0300     		movs	r3, r0
+ 143 0066 2370     		strb	r3, [r4]
+ 168:Generated_Source\PSoC4/ledDimmer.c ****             /* Use the interrupt output of the status register for IRQ output */
+ 169:Generated_Source\PSoC4/ledDimmer.c ****             ledDimmer_STATUS_AUX_CTRL |= ledDimmer_STATUS_ACTL_INT_EN_MASK;
+ 144              		.loc 1 169 0
+ 145 0068 0B4A     		ldr	r2, .L6+8
+ 146 006a 0B4B     		ldr	r3, .L6+8
+ 147 006c 1B78     		ldrb	r3, [r3]
+ 148 006e DBB2     		uxtb	r3, r3
+ 149 0070 1021     		movs	r1, #16
+ 150 0072 0B43     		orrs	r3, r1
+ 151 0074 DBB2     		uxtb	r3, r3
+ 152 0076 1370     		strb	r3, [r2]
+ 170:Generated_Source\PSoC4/ledDimmer.c **** 
+ 171:Generated_Source\PSoC4/ledDimmer.c ****              /* Exit Critical Region*/
+ 172:Generated_Source\PSoC4/ledDimmer.c ****             CyExitCriticalSection(ledDimmer_interruptState);
+ 153              		.loc 1 172 0
+ 154 0078 BB1D     		adds	r3, r7, #6
+ 155 007a 1B78     		ldrb	r3, [r3]
+ 156 007c 1800     		movs	r0, r3
+ 157 007e FFF7FEFF 		bl	CyExitCriticalSection
+ 173:Generated_Source\PSoC4/ledDimmer.c **** 
+ 174:Generated_Source\PSoC4/ledDimmer.c ****             /* Clear the FIFO to enable the ledDimmer_STATUS_FIFOFULL
+ 175:Generated_Source\PSoC4/ledDimmer.c ****                    bit to be set on FIFO full. */
+ 176:Generated_Source\PSoC4/ledDimmer.c ****             ledDimmer_ClearFIFO();
+ 158              		.loc 1 176 0
+ 159 0082 FFF7FEFF 		bl	ledDimmer_ClearFIFO
+ 177:Generated_Source\PSoC4/ledDimmer.c ****         #endif /* (ledDimmer_UseStatus) */
+ 178:Generated_Source\PSoC4/ledDimmer.c ****     #endif /* (ledDimmer_UsingFixedFunction) */
+ 179:Generated_Source\PSoC4/ledDimmer.c **** }
+ 160              		.loc 1 179 0
+ 161 0086 C046     		nop
+ 162 0088 BD46     		mov	sp, r7
+ 163 008a 03B0     		add	sp, sp, #12
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 7
+
+
+ 164              		@ sp needed
+ 165 008c 90BD     		pop	{r4, r7, pc}
+ 166              	.L7:
+ 167 008e C046     		.align	2
+ 168              	.L6:
+ 169 0090 73000F40 		.word	1074724979
+ 170 0094 92000F40 		.word	1074725010
+ 171 0098 93000F40 		.word	1074725011
+ 172 009c E02E0000 		.word	12000
+ 173              		.cfi_endproc
+ 174              	.LFE3:
+ 175              		.size	ledDimmer_Init, .-ledDimmer_Init
+ 176              		.section	.text.ledDimmer_Enable,"ax",%progbits
+ 177              		.align	2
+ 178              		.global	ledDimmer_Enable
+ 179              		.code	16
+ 180              		.thumb_func
+ 181              		.type	ledDimmer_Enable, %function
+ 182              	ledDimmer_Enable:
+ 183              	.LFB4:
+ 180:Generated_Source\PSoC4/ledDimmer.c **** 
+ 181:Generated_Source\PSoC4/ledDimmer.c **** 
+ 182:Generated_Source\PSoC4/ledDimmer.c **** /*******************************************************************************
+ 183:Generated_Source\PSoC4/ledDimmer.c **** * Function Name: ledDimmer_Enable
+ 184:Generated_Source\PSoC4/ledDimmer.c **** ********************************************************************************
+ 185:Generated_Source\PSoC4/ledDimmer.c **** *
+ 186:Generated_Source\PSoC4/ledDimmer.c **** * Summary:
+ 187:Generated_Source\PSoC4/ledDimmer.c **** *  Enables the PWM block operation
+ 188:Generated_Source\PSoC4/ledDimmer.c **** *
+ 189:Generated_Source\PSoC4/ledDimmer.c **** * Parameters:
+ 190:Generated_Source\PSoC4/ledDimmer.c **** *  None
+ 191:Generated_Source\PSoC4/ledDimmer.c **** *
+ 192:Generated_Source\PSoC4/ledDimmer.c **** * Return:
+ 193:Generated_Source\PSoC4/ledDimmer.c **** *  None
+ 194:Generated_Source\PSoC4/ledDimmer.c **** *
+ 195:Generated_Source\PSoC4/ledDimmer.c **** * Side Effects:
+ 196:Generated_Source\PSoC4/ledDimmer.c **** *  This works only if software enable mode is chosen
+ 197:Generated_Source\PSoC4/ledDimmer.c **** *
+ 198:Generated_Source\PSoC4/ledDimmer.c **** *******************************************************************************/
+ 199:Generated_Source\PSoC4/ledDimmer.c **** void ledDimmer_Enable(void) 
+ 200:Generated_Source\PSoC4/ledDimmer.c **** {
+ 184              		.loc 1 200 0
+ 185              		.cfi_startproc
+ 186              		@ args = 0, pretend = 0, frame = 0
+ 187              		@ frame_needed = 1, uses_anonymous_args = 0
+ 188 0000 80B5     		push	{r7, lr}
+ 189              		.cfi_def_cfa_offset 8
+ 190              		.cfi_offset 7, -8
+ 191              		.cfi_offset 14, -4
+ 192 0002 00AF     		add	r7, sp, #0
+ 193              		.cfi_def_cfa_register 7
+ 201:Generated_Source\PSoC4/ledDimmer.c ****     /* Globally Enable the Fixed Function Block chosen */
+ 202:Generated_Source\PSoC4/ledDimmer.c ****     #if (ledDimmer_UsingFixedFunction)
+ 203:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_GLOBAL_ENABLE |= ledDimmer_BLOCK_EN_MASK;
+ 204:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_GLOBAL_STBY_ENABLE |= ledDimmer_BLOCK_STBY_EN_MASK;
+ 205:Generated_Source\PSoC4/ledDimmer.c ****     #endif /* (ledDimmer_UsingFixedFunction) */
+ 206:Generated_Source\PSoC4/ledDimmer.c **** 
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 8
+
+
+ 207:Generated_Source\PSoC4/ledDimmer.c ****     /* Enable the PWM from the control register  */
+ 208:Generated_Source\PSoC4/ledDimmer.c ****     #if (ledDimmer_UseControl || ledDimmer_UsingFixedFunction)
+ 209:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_CONTROL |= ledDimmer_CTRL_ENABLE;
+ 194              		.loc 1 209 0
+ 195 0004 0549     		ldr	r1, .L9
+ 196 0006 054B     		ldr	r3, .L9
+ 197 0008 1B78     		ldrb	r3, [r3]
+ 198 000a DBB2     		uxtb	r3, r3
+ 199 000c 8022     		movs	r2, #128
+ 200 000e 5242     		rsbs	r2, r2, #0
+ 201 0010 1343     		orrs	r3, r2
+ 202 0012 DBB2     		uxtb	r3, r3
+ 203 0014 0B70     		strb	r3, [r1]
+ 210:Generated_Source\PSoC4/ledDimmer.c ****     #endif /* (ledDimmer_UseControl || ledDimmer_UsingFixedFunction) */
+ 211:Generated_Source\PSoC4/ledDimmer.c **** }
+ 204              		.loc 1 211 0
+ 205 0016 C046     		nop
+ 206 0018 BD46     		mov	sp, r7
+ 207              		@ sp needed
+ 208 001a 80BD     		pop	{r7, pc}
+ 209              	.L10:
+ 210              		.align	2
+ 211              	.L9:
+ 212 001c 73000F40 		.word	1074724979
+ 213              		.cfi_endproc
+ 214              	.LFE4:
+ 215              		.size	ledDimmer_Enable, .-ledDimmer_Enable
+ 216              		.section	.text.ledDimmer_Stop,"ax",%progbits
+ 217              		.align	2
+ 218              		.global	ledDimmer_Stop
+ 219              		.code	16
+ 220              		.thumb_func
+ 221              		.type	ledDimmer_Stop, %function
+ 222              	ledDimmer_Stop:
+ 223              	.LFB5:
+ 212:Generated_Source\PSoC4/ledDimmer.c **** 
+ 213:Generated_Source\PSoC4/ledDimmer.c **** 
+ 214:Generated_Source\PSoC4/ledDimmer.c **** /*******************************************************************************
+ 215:Generated_Source\PSoC4/ledDimmer.c **** * Function Name: ledDimmer_Stop
+ 216:Generated_Source\PSoC4/ledDimmer.c **** ********************************************************************************
+ 217:Generated_Source\PSoC4/ledDimmer.c **** *
+ 218:Generated_Source\PSoC4/ledDimmer.c **** * Summary:
+ 219:Generated_Source\PSoC4/ledDimmer.c **** *  The stop function halts the PWM, but does not change any modes or disable
+ 220:Generated_Source\PSoC4/ledDimmer.c **** *  interrupts.
+ 221:Generated_Source\PSoC4/ledDimmer.c **** *
+ 222:Generated_Source\PSoC4/ledDimmer.c **** * Parameters:
+ 223:Generated_Source\PSoC4/ledDimmer.c **** *  None
+ 224:Generated_Source\PSoC4/ledDimmer.c **** *
+ 225:Generated_Source\PSoC4/ledDimmer.c **** * Return:
+ 226:Generated_Source\PSoC4/ledDimmer.c **** *  None
+ 227:Generated_Source\PSoC4/ledDimmer.c **** *
+ 228:Generated_Source\PSoC4/ledDimmer.c **** * Side Effects:
+ 229:Generated_Source\PSoC4/ledDimmer.c **** *  If the Enable mode is set to Hardware only then this function
+ 230:Generated_Source\PSoC4/ledDimmer.c **** *  has no effect on the operation of the PWM
+ 231:Generated_Source\PSoC4/ledDimmer.c **** *
+ 232:Generated_Source\PSoC4/ledDimmer.c **** *******************************************************************************/
+ 233:Generated_Source\PSoC4/ledDimmer.c **** void ledDimmer_Stop(void) 
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 9
+
+
+ 234:Generated_Source\PSoC4/ledDimmer.c **** {
+ 224              		.loc 1 234 0
+ 225              		.cfi_startproc
+ 226              		@ args = 0, pretend = 0, frame = 0
+ 227              		@ frame_needed = 1, uses_anonymous_args = 0
+ 228 0000 80B5     		push	{r7, lr}
+ 229              		.cfi_def_cfa_offset 8
+ 230              		.cfi_offset 7, -8
+ 231              		.cfi_offset 14, -4
+ 232 0002 00AF     		add	r7, sp, #0
+ 233              		.cfi_def_cfa_register 7
+ 235:Generated_Source\PSoC4/ledDimmer.c ****     #if (ledDimmer_UseControl || ledDimmer_UsingFixedFunction)
+ 236:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_CONTROL &= ((uint8)(~ledDimmer_CTRL_ENABLE));
+ 234              		.loc 1 236 0
+ 235 0004 054A     		ldr	r2, .L12
+ 236 0006 054B     		ldr	r3, .L12
+ 237 0008 1B78     		ldrb	r3, [r3]
+ 238 000a DBB2     		uxtb	r3, r3
+ 239 000c 7F21     		movs	r1, #127
+ 240 000e 0B40     		ands	r3, r1
+ 241 0010 DBB2     		uxtb	r3, r3
+ 242 0012 1370     		strb	r3, [r2]
+ 237:Generated_Source\PSoC4/ledDimmer.c ****     #endif /* (ledDimmer_UseControl || ledDimmer_UsingFixedFunction) */
+ 238:Generated_Source\PSoC4/ledDimmer.c **** 
+ 239:Generated_Source\PSoC4/ledDimmer.c ****     /* Globally disable the Fixed Function Block chosen */
+ 240:Generated_Source\PSoC4/ledDimmer.c ****     #if (ledDimmer_UsingFixedFunction)
+ 241:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_GLOBAL_ENABLE &= ((uint8)(~ledDimmer_BLOCK_EN_MASK));
+ 242:Generated_Source\PSoC4/ledDimmer.c ****         ledDimmer_GLOBAL_STBY_ENABLE &= ((uint8)(~ledDimmer_BLOCK_STBY_EN_MASK));
+ 243:Generated_Source\PSoC4/ledDimmer.c ****     #endif /* (ledDimmer_UsingFixedFunction) */
+ 244:Generated_Source\PSoC4/ledDimmer.c **** }
+ 243              		.loc 1 244 0
+ 244 0014 C046     		nop
+ 245 0016 BD46     		mov	sp, r7
+ 246              		@ sp needed
+ 247 0018 80BD     		pop	{r7, pc}
+ 248              	.L13:
+ 249 001a C046     		.align	2
+ 250              	.L12:
+ 251 001c 73000F40 		.word	1074724979
+ 252              		.cfi_endproc
+ 253              	.LFE5:
+ 254              		.size	ledDimmer_Stop, .-ledDimmer_Stop
+ 255              		.section	.text.ledDimmer_WriteCounter,"ax",%progbits
+ 256              		.align	2
+ 257              		.global	ledDimmer_WriteCounter
+ 258              		.code	16
+ 259              		.thumb_func
+ 260              		.type	ledDimmer_WriteCounter, %function
+ 261              	ledDimmer_WriteCounter:
+ 262              	.LFB6:
+ 245:Generated_Source\PSoC4/ledDimmer.c **** 
+ 246:Generated_Source\PSoC4/ledDimmer.c **** #if (ledDimmer_UseOneCompareMode)
+ 247:Generated_Source\PSoC4/ledDimmer.c ****     #if (ledDimmer_CompareMode1SW)
+ 248:Generated_Source\PSoC4/ledDimmer.c **** 
+ 249:Generated_Source\PSoC4/ledDimmer.c **** 
+ 250:Generated_Source\PSoC4/ledDimmer.c ****         /*******************************************************************************
+ 251:Generated_Source\PSoC4/ledDimmer.c ****         * Function Name: ledDimmer_SetCompareMode
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 10
+
+
+ 252:Generated_Source\PSoC4/ledDimmer.c ****         ********************************************************************************
+ 253:Generated_Source\PSoC4/ledDimmer.c ****         *
+ 254:Generated_Source\PSoC4/ledDimmer.c ****         * Summary:
+ 255:Generated_Source\PSoC4/ledDimmer.c ****         *  This function writes the Compare Mode for the pwm output when in Dither mode,
+ 256:Generated_Source\PSoC4/ledDimmer.c ****         *  Center Align Mode or One Output Mode.
+ 257:Generated_Source\PSoC4/ledDimmer.c ****         *
+ 258:Generated_Source\PSoC4/ledDimmer.c ****         * Parameters:
+ 259:Generated_Source\PSoC4/ledDimmer.c ****         *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 260:Generated_Source\PSoC4/ledDimmer.c ****         *                defined in the H file as input arguments.
+ 261:Generated_Source\PSoC4/ledDimmer.c ****         *
+ 262:Generated_Source\PSoC4/ledDimmer.c ****         * Return:
+ 263:Generated_Source\PSoC4/ledDimmer.c ****         *  None
+ 264:Generated_Source\PSoC4/ledDimmer.c ****         *
+ 265:Generated_Source\PSoC4/ledDimmer.c ****         *******************************************************************************/
+ 266:Generated_Source\PSoC4/ledDimmer.c ****         void ledDimmer_SetCompareMode(uint8 comparemode) 
+ 267:Generated_Source\PSoC4/ledDimmer.c ****         {
+ 268:Generated_Source\PSoC4/ledDimmer.c ****             #if(ledDimmer_UsingFixedFunction)
+ 269:Generated_Source\PSoC4/ledDimmer.c **** 
+ 270:Generated_Source\PSoC4/ledDimmer.c ****                 #if(0 != ledDimmer_CTRL_CMPMODE1_SHIFT)
+ 271:Generated_Source\PSoC4/ledDimmer.c ****                     uint8 comparemodemasked = ((uint8)((uint8)comparemode << ledDimmer_CTRL_CMPMODE
+ 272:Generated_Source\PSoC4/ledDimmer.c ****                 #else
+ 273:Generated_Source\PSoC4/ledDimmer.c ****                     uint8 comparemodemasked = comparemode;
+ 274:Generated_Source\PSoC4/ledDimmer.c ****                 #endif /* (0 != ledDimmer_CTRL_CMPMODE1_SHIFT) */
+ 275:Generated_Source\PSoC4/ledDimmer.c **** 
+ 276:Generated_Source\PSoC4/ledDimmer.c ****                 ledDimmer_CONTROL3 &= ((uint8)(~ledDimmer_CTRL_CMPMODE1_MASK)); /*Clear Existing Da
+ 277:Generated_Source\PSoC4/ledDimmer.c ****                 ledDimmer_CONTROL3 |= comparemodemasked;
+ 278:Generated_Source\PSoC4/ledDimmer.c **** 
+ 279:Generated_Source\PSoC4/ledDimmer.c ****             #elif (ledDimmer_UseControl)
+ 280:Generated_Source\PSoC4/ledDimmer.c **** 
+ 281:Generated_Source\PSoC4/ledDimmer.c ****                 #if(0 != ledDimmer_CTRL_CMPMODE1_SHIFT)
+ 282:Generated_Source\PSoC4/ledDimmer.c ****                     uint8 comparemode1masked = ((uint8)((uint8)comparemode << ledDimmer_CTRL_CMPMOD
+ 283:Generated_Source\PSoC4/ledDimmer.c ****                                                 ledDimmer_CTRL_CMPMODE1_MASK;
+ 284:Generated_Source\PSoC4/ledDimmer.c ****                 #else
+ 285:Generated_Source\PSoC4/ledDimmer.c ****                     uint8 comparemode1masked = comparemode & ledDimmer_CTRL_CMPMODE1_MASK;
+ 286:Generated_Source\PSoC4/ledDimmer.c ****                 #endif /* (0 != ledDimmer_CTRL_CMPMODE1_SHIFT) */
+ 287:Generated_Source\PSoC4/ledDimmer.c **** 
+ 288:Generated_Source\PSoC4/ledDimmer.c ****                 #if(0 != ledDimmer_CTRL_CMPMODE2_SHIFT)
+ 289:Generated_Source\PSoC4/ledDimmer.c ****                     uint8 comparemode2masked = ((uint8)((uint8)comparemode << ledDimmer_CTRL_CMPMOD
+ 290:Generated_Source\PSoC4/ledDimmer.c ****                                                ledDimmer_CTRL_CMPMODE2_MASK;
+ 291:Generated_Source\PSoC4/ledDimmer.c ****                 #else
+ 292:Generated_Source\PSoC4/ledDimmer.c ****                     uint8 comparemode2masked = comparemode & ledDimmer_CTRL_CMPMODE2_MASK;
+ 293:Generated_Source\PSoC4/ledDimmer.c ****                 #endif /* (0 != ledDimmer_CTRL_CMPMODE2_SHIFT) */
+ 294:Generated_Source\PSoC4/ledDimmer.c **** 
+ 295:Generated_Source\PSoC4/ledDimmer.c ****                 /*Clear existing mode */
+ 296:Generated_Source\PSoC4/ledDimmer.c ****                 ledDimmer_CONTROL &= ((uint8)(~(ledDimmer_CTRL_CMPMODE1_MASK |
+ 297:Generated_Source\PSoC4/ledDimmer.c ****                                             ledDimmer_CTRL_CMPMODE2_MASK)));
+ 298:Generated_Source\PSoC4/ledDimmer.c ****                 ledDimmer_CONTROL |= (comparemode1masked | comparemode2masked);
+ 299:Generated_Source\PSoC4/ledDimmer.c **** 
+ 300:Generated_Source\PSoC4/ledDimmer.c ****             #else
+ 301:Generated_Source\PSoC4/ledDimmer.c ****                 uint8 temp = comparemode;
+ 302:Generated_Source\PSoC4/ledDimmer.c ****             #endif /* (ledDimmer_UsingFixedFunction) */
+ 303:Generated_Source\PSoC4/ledDimmer.c ****         }
+ 304:Generated_Source\PSoC4/ledDimmer.c ****     #endif /* ledDimmer_CompareMode1SW */
+ 305:Generated_Source\PSoC4/ledDimmer.c **** 
+ 306:Generated_Source\PSoC4/ledDimmer.c **** #else /* UseOneCompareMode */
+ 307:Generated_Source\PSoC4/ledDimmer.c **** 
+ 308:Generated_Source\PSoC4/ledDimmer.c ****     #if (ledDimmer_CompareMode1SW)
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 11
+
+
+ 309:Generated_Source\PSoC4/ledDimmer.c **** 
+ 310:Generated_Source\PSoC4/ledDimmer.c **** 
+ 311:Generated_Source\PSoC4/ledDimmer.c ****         /*******************************************************************************
+ 312:Generated_Source\PSoC4/ledDimmer.c ****         * Function Name: ledDimmer_SetCompareMode1
+ 313:Generated_Source\PSoC4/ledDimmer.c ****         ********************************************************************************
+ 314:Generated_Source\PSoC4/ledDimmer.c ****         *
+ 315:Generated_Source\PSoC4/ledDimmer.c ****         * Summary:
+ 316:Generated_Source\PSoC4/ledDimmer.c ****         *  This function writes the Compare Mode for the pwm or pwm1 output
+ 317:Generated_Source\PSoC4/ledDimmer.c ****         *
+ 318:Generated_Source\PSoC4/ledDimmer.c ****         * Parameters:
+ 319:Generated_Source\PSoC4/ledDimmer.c ****         *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 320:Generated_Source\PSoC4/ledDimmer.c ****         *                defined in the H file as input arguments.
+ 321:Generated_Source\PSoC4/ledDimmer.c ****         *
+ 322:Generated_Source\PSoC4/ledDimmer.c ****         * Return:
+ 323:Generated_Source\PSoC4/ledDimmer.c ****         *  None
+ 324:Generated_Source\PSoC4/ledDimmer.c ****         *
+ 325:Generated_Source\PSoC4/ledDimmer.c ****         *******************************************************************************/
+ 326:Generated_Source\PSoC4/ledDimmer.c ****         void ledDimmer_SetCompareMode1(uint8 comparemode) 
+ 327:Generated_Source\PSoC4/ledDimmer.c ****         {
+ 328:Generated_Source\PSoC4/ledDimmer.c ****             #if(0 != ledDimmer_CTRL_CMPMODE1_SHIFT)
+ 329:Generated_Source\PSoC4/ledDimmer.c ****                 uint8 comparemodemasked = ((uint8)((uint8)comparemode << ledDimmer_CTRL_CMPMODE1_SH
+ 330:Generated_Source\PSoC4/ledDimmer.c ****                                            ledDimmer_CTRL_CMPMODE1_MASK;
+ 331:Generated_Source\PSoC4/ledDimmer.c ****             #else
+ 332:Generated_Source\PSoC4/ledDimmer.c ****                 uint8 comparemodemasked = comparemode & ledDimmer_CTRL_CMPMODE1_MASK;
+ 333:Generated_Source\PSoC4/ledDimmer.c ****             #endif /* (0 != ledDimmer_CTRL_CMPMODE1_SHIFT) */
+ 334:Generated_Source\PSoC4/ledDimmer.c **** 
+ 335:Generated_Source\PSoC4/ledDimmer.c ****             #if (ledDimmer_UseControl)
+ 336:Generated_Source\PSoC4/ledDimmer.c ****                 ledDimmer_CONTROL &= ((uint8)(~ledDimmer_CTRL_CMPMODE1_MASK)); /*Clear existing mod
+ 337:Generated_Source\PSoC4/ledDimmer.c ****                 ledDimmer_CONTROL |= comparemodemasked;
+ 338:Generated_Source\PSoC4/ledDimmer.c ****             #endif /* (ledDimmer_UseControl) */
+ 339:Generated_Source\PSoC4/ledDimmer.c ****         }
+ 340:Generated_Source\PSoC4/ledDimmer.c ****     #endif /* ledDimmer_CompareMode1SW */
+ 341:Generated_Source\PSoC4/ledDimmer.c **** 
+ 342:Generated_Source\PSoC4/ledDimmer.c **** #if (ledDimmer_CompareMode2SW)
+ 343:Generated_Source\PSoC4/ledDimmer.c **** 
+ 344:Generated_Source\PSoC4/ledDimmer.c **** 
+ 345:Generated_Source\PSoC4/ledDimmer.c ****     /*******************************************************************************
+ 346:Generated_Source\PSoC4/ledDimmer.c ****     * Function Name: ledDimmer_SetCompareMode2
+ 347:Generated_Source\PSoC4/ledDimmer.c ****     ********************************************************************************
+ 348:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 349:Generated_Source\PSoC4/ledDimmer.c ****     * Summary:
+ 350:Generated_Source\PSoC4/ledDimmer.c ****     *  This function writes the Compare Mode for the pwm or pwm2 output
+ 351:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 352:Generated_Source\PSoC4/ledDimmer.c ****     * Parameters:
+ 353:Generated_Source\PSoC4/ledDimmer.c ****     *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 354:Generated_Source\PSoC4/ledDimmer.c ****     *                defined in the H file as input arguments.
+ 355:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 356:Generated_Source\PSoC4/ledDimmer.c ****     * Return:
+ 357:Generated_Source\PSoC4/ledDimmer.c ****     *  None
+ 358:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 359:Generated_Source\PSoC4/ledDimmer.c ****     *******************************************************************************/
+ 360:Generated_Source\PSoC4/ledDimmer.c ****     void ledDimmer_SetCompareMode2(uint8 comparemode) 
+ 361:Generated_Source\PSoC4/ledDimmer.c ****     {
+ 362:Generated_Source\PSoC4/ledDimmer.c **** 
+ 363:Generated_Source\PSoC4/ledDimmer.c ****         #if(0 != ledDimmer_CTRL_CMPMODE2_SHIFT)
+ 364:Generated_Source\PSoC4/ledDimmer.c ****             uint8 comparemodemasked = ((uint8)((uint8)comparemode << ledDimmer_CTRL_CMPMODE2_SHIFT)
+ 365:Generated_Source\PSoC4/ledDimmer.c ****                                                  ledDimmer_CTRL_CMPMODE2_MASK;
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 12
+
+
+ 366:Generated_Source\PSoC4/ledDimmer.c ****         #else
+ 367:Generated_Source\PSoC4/ledDimmer.c ****             uint8 comparemodemasked = comparemode & ledDimmer_CTRL_CMPMODE2_MASK;
+ 368:Generated_Source\PSoC4/ledDimmer.c ****         #endif /* (0 != ledDimmer_CTRL_CMPMODE2_SHIFT) */
+ 369:Generated_Source\PSoC4/ledDimmer.c **** 
+ 370:Generated_Source\PSoC4/ledDimmer.c ****         #if (ledDimmer_UseControl)
+ 371:Generated_Source\PSoC4/ledDimmer.c ****             ledDimmer_CONTROL &= ((uint8)(~ledDimmer_CTRL_CMPMODE2_MASK)); /*Clear existing mode */
+ 372:Generated_Source\PSoC4/ledDimmer.c ****             ledDimmer_CONTROL |= comparemodemasked;
+ 373:Generated_Source\PSoC4/ledDimmer.c ****         #endif /* (ledDimmer_UseControl) */
+ 374:Generated_Source\PSoC4/ledDimmer.c ****     }
+ 375:Generated_Source\PSoC4/ledDimmer.c ****     #endif /*ledDimmer_CompareMode2SW */
+ 376:Generated_Source\PSoC4/ledDimmer.c **** 
+ 377:Generated_Source\PSoC4/ledDimmer.c **** #endif /* UseOneCompareMode */
+ 378:Generated_Source\PSoC4/ledDimmer.c **** 
+ 379:Generated_Source\PSoC4/ledDimmer.c **** 
+ 380:Generated_Source\PSoC4/ledDimmer.c **** #if (!ledDimmer_UsingFixedFunction)
+ 381:Generated_Source\PSoC4/ledDimmer.c **** 
+ 382:Generated_Source\PSoC4/ledDimmer.c **** 
+ 383:Generated_Source\PSoC4/ledDimmer.c ****     /*******************************************************************************
+ 384:Generated_Source\PSoC4/ledDimmer.c ****     * Function Name: ledDimmer_WriteCounter
+ 385:Generated_Source\PSoC4/ledDimmer.c ****     ********************************************************************************
+ 386:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 387:Generated_Source\PSoC4/ledDimmer.c ****     * Summary:
+ 388:Generated_Source\PSoC4/ledDimmer.c ****     *  Writes a new counter value directly to the counter register. This will be
+ 389:Generated_Source\PSoC4/ledDimmer.c ****     *  implemented for that currently running period and only that period. This API
+ 390:Generated_Source\PSoC4/ledDimmer.c ****     *  is valid only for UDB implementation and not available for fixed function
+ 391:Generated_Source\PSoC4/ledDimmer.c ****     *  PWM implementation.
+ 392:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 393:Generated_Source\PSoC4/ledDimmer.c ****     * Parameters:
+ 394:Generated_Source\PSoC4/ledDimmer.c ****     *  counter:  The period new period counter value.
+ 395:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 396:Generated_Source\PSoC4/ledDimmer.c ****     * Return:
+ 397:Generated_Source\PSoC4/ledDimmer.c ****     *  None
+ 398:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 399:Generated_Source\PSoC4/ledDimmer.c ****     * Side Effects:
+ 400:Generated_Source\PSoC4/ledDimmer.c ****     *  The PWM Period will be reloaded when a counter value will be a zero
+ 401:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 402:Generated_Source\PSoC4/ledDimmer.c ****     *******************************************************************************/
+ 403:Generated_Source\PSoC4/ledDimmer.c ****     void ledDimmer_WriteCounter(uint16 counter) \
+ 404:Generated_Source\PSoC4/ledDimmer.c ****                                        
+ 405:Generated_Source\PSoC4/ledDimmer.c ****     {
+ 263              		.loc 1 405 0
+ 264              		.cfi_startproc
+ 265              		@ args = 0, pretend = 0, frame = 8
+ 266              		@ frame_needed = 1, uses_anonymous_args = 0
+ 267 0000 80B5     		push	{r7, lr}
+ 268              		.cfi_def_cfa_offset 8
+ 269              		.cfi_offset 7, -8
+ 270              		.cfi_offset 14, -4
+ 271 0002 82B0     		sub	sp, sp, #8
+ 272              		.cfi_def_cfa_offset 16
+ 273 0004 00AF     		add	r7, sp, #0
+ 274              		.cfi_def_cfa_register 7
+ 275 0006 0200     		movs	r2, r0
+ 276 0008 BB1D     		adds	r3, r7, #6
+ 277 000a 1A80     		strh	r2, [r3]
+ 406:Generated_Source\PSoC4/ledDimmer.c ****         CY_SET_REG16(ledDimmer_COUNTER_LSB_PTR, counter);
+ 278              		.loc 1 406 0
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 13
+
+
+ 279 000c 034A     		ldr	r2, .L15
+ 280 000e BB1D     		adds	r3, r7, #6
+ 281 0010 1B88     		ldrh	r3, [r3]
+ 282 0012 1380     		strh	r3, [r2]
+ 407:Generated_Source\PSoC4/ledDimmer.c ****     }
+ 283              		.loc 1 407 0
+ 284 0014 C046     		nop
+ 285 0016 BD46     		mov	sp, r7
+ 286 0018 02B0     		add	sp, sp, #8
+ 287              		@ sp needed
+ 288 001a 80BD     		pop	{r7, pc}
+ 289              	.L16:
+ 290              		.align	2
+ 291              	.L15:
+ 292 001c 04100F40 		.word	1074728964
+ 293              		.cfi_endproc
+ 294              	.LFE6:
+ 295              		.size	ledDimmer_WriteCounter, .-ledDimmer_WriteCounter
+ 296              		.section	.text.ledDimmer_ReadCounter,"ax",%progbits
+ 297              		.align	2
+ 298              		.global	ledDimmer_ReadCounter
+ 299              		.code	16
+ 300              		.thumb_func
+ 301              		.type	ledDimmer_ReadCounter, %function
+ 302              	ledDimmer_ReadCounter:
+ 303              	.LFB7:
+ 408:Generated_Source\PSoC4/ledDimmer.c **** 
+ 409:Generated_Source\PSoC4/ledDimmer.c **** 
+ 410:Generated_Source\PSoC4/ledDimmer.c ****     /*******************************************************************************
+ 411:Generated_Source\PSoC4/ledDimmer.c ****     * Function Name: ledDimmer_ReadCounter
+ 412:Generated_Source\PSoC4/ledDimmer.c ****     ********************************************************************************
+ 413:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 414:Generated_Source\PSoC4/ledDimmer.c ****     * Summary:
+ 415:Generated_Source\PSoC4/ledDimmer.c ****     *  This function returns the current value of the counter.  It doesn't matter
+ 416:Generated_Source\PSoC4/ledDimmer.c ****     *  if the counter is enabled or running.
+ 417:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 418:Generated_Source\PSoC4/ledDimmer.c ****     * Parameters:
+ 419:Generated_Source\PSoC4/ledDimmer.c ****     *  None
+ 420:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 421:Generated_Source\PSoC4/ledDimmer.c ****     * Return:
+ 422:Generated_Source\PSoC4/ledDimmer.c ****     *  The current value of the counter.
+ 423:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 424:Generated_Source\PSoC4/ledDimmer.c ****     *******************************************************************************/
+ 425:Generated_Source\PSoC4/ledDimmer.c ****     uint16 ledDimmer_ReadCounter(void) 
+ 426:Generated_Source\PSoC4/ledDimmer.c ****     {
+ 304              		.loc 1 426 0
+ 305              		.cfi_startproc
+ 306              		@ args = 0, pretend = 0, frame = 0
+ 307              		@ frame_needed = 1, uses_anonymous_args = 0
+ 308 0000 80B5     		push	{r7, lr}
+ 309              		.cfi_def_cfa_offset 8
+ 310              		.cfi_offset 7, -8
+ 311              		.cfi_offset 14, -4
+ 312 0002 00AF     		add	r7, sp, #0
+ 313              		.cfi_def_cfa_register 7
+ 427:Generated_Source\PSoC4/ledDimmer.c ****         /* Force capture by reading Accumulator */
+ 428:Generated_Source\PSoC4/ledDimmer.c ****         /* Must first do a software capture to be able to read the counter */
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 14
+
+
+ 429:Generated_Source\PSoC4/ledDimmer.c ****         /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ 430:Generated_Source\PSoC4/ledDimmer.c ****           (void)CY_GET_REG8(ledDimmer_COUNTERCAP_LSB_PTR_8BIT);
+ 314              		.loc 1 430 0
+ 315 0004 034B     		ldr	r3, .L19
+ 316 0006 1B78     		ldrb	r3, [r3]
+ 431:Generated_Source\PSoC4/ledDimmer.c **** 
+ 432:Generated_Source\PSoC4/ledDimmer.c ****         /* Read the data from the FIFO */
+ 433:Generated_Source\PSoC4/ledDimmer.c ****         return (CY_GET_REG16(ledDimmer_CAPTURE_LSB_PTR));
+ 317              		.loc 1 433 0
+ 318 0008 034B     		ldr	r3, .L19+4
+ 319 000a 1B88     		ldrh	r3, [r3]
+ 320 000c 9BB2     		uxth	r3, r3
+ 434:Generated_Source\PSoC4/ledDimmer.c ****     }
+ 321              		.loc 1 434 0
+ 322 000e 1800     		movs	r0, r3
+ 323 0010 BD46     		mov	sp, r7
+ 324              		@ sp needed
+ 325 0012 80BD     		pop	{r7, pc}
+ 326              	.L20:
+ 327              		.align	2
+ 328              	.L19:
+ 329 0014 12000F40 		.word	1074724882
+ 330 0018 A4100F40 		.word	1074729124
+ 331              		.cfi_endproc
+ 332              	.LFE7:
+ 333              		.size	ledDimmer_ReadCounter, .-ledDimmer_ReadCounter
+ 334              		.section	.text.ledDimmer_ClearFIFO,"ax",%progbits
+ 335              		.align	2
+ 336              		.global	ledDimmer_ClearFIFO
+ 337              		.code	16
+ 338              		.thumb_func
+ 339              		.type	ledDimmer_ClearFIFO, %function
+ 340              	ledDimmer_ClearFIFO:
+ 341              	.LFB8:
+ 435:Generated_Source\PSoC4/ledDimmer.c **** 
+ 436:Generated_Source\PSoC4/ledDimmer.c ****     #if (ledDimmer_UseStatus)
+ 437:Generated_Source\PSoC4/ledDimmer.c **** 
+ 438:Generated_Source\PSoC4/ledDimmer.c **** 
+ 439:Generated_Source\PSoC4/ledDimmer.c ****         /*******************************************************************************
+ 440:Generated_Source\PSoC4/ledDimmer.c ****         * Function Name: ledDimmer_ClearFIFO
+ 441:Generated_Source\PSoC4/ledDimmer.c ****         ********************************************************************************
+ 442:Generated_Source\PSoC4/ledDimmer.c ****         *
+ 443:Generated_Source\PSoC4/ledDimmer.c ****         * Summary:
+ 444:Generated_Source\PSoC4/ledDimmer.c ****         *  This function clears all capture data from the capture FIFO
+ 445:Generated_Source\PSoC4/ledDimmer.c ****         *
+ 446:Generated_Source\PSoC4/ledDimmer.c ****         * Parameters:
+ 447:Generated_Source\PSoC4/ledDimmer.c ****         *  None
+ 448:Generated_Source\PSoC4/ledDimmer.c ****         *
+ 449:Generated_Source\PSoC4/ledDimmer.c ****         * Return:
+ 450:Generated_Source\PSoC4/ledDimmer.c ****         *  None
+ 451:Generated_Source\PSoC4/ledDimmer.c ****         *
+ 452:Generated_Source\PSoC4/ledDimmer.c ****         *******************************************************************************/
+ 453:Generated_Source\PSoC4/ledDimmer.c ****         void ledDimmer_ClearFIFO(void) 
+ 454:Generated_Source\PSoC4/ledDimmer.c ****         {
+ 342              		.loc 1 454 0
+ 343              		.cfi_startproc
+ 344              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 15
+
+
+ 345              		@ frame_needed = 1, uses_anonymous_args = 0
+ 346 0000 80B5     		push	{r7, lr}
+ 347              		.cfi_def_cfa_offset 8
+ 348              		.cfi_offset 7, -8
+ 349              		.cfi_offset 14, -4
+ 350 0002 00AF     		add	r7, sp, #0
+ 351              		.cfi_def_cfa_register 7
+ 455:Generated_Source\PSoC4/ledDimmer.c ****             while(0u != (ledDimmer_ReadStatusRegister() & ledDimmer_STATUS_FIFONEMPTY))
+ 352              		.loc 1 455 0
+ 353 0004 01E0     		b	.L22
+ 354              	.L23:
+ 456:Generated_Source\PSoC4/ledDimmer.c ****             {
+ 457:Generated_Source\PSoC4/ledDimmer.c ****                 (void)ledDimmer_ReadCapture();
+ 355              		.loc 1 457 0
+ 356 0006 FFF7FEFF 		bl	ledDimmer_ReadCapture
+ 357              	.L22:
+ 455:Generated_Source\PSoC4/ledDimmer.c ****             while(0u != (ledDimmer_ReadStatusRegister() & ledDimmer_STATUS_FIFONEMPTY))
+ 358              		.loc 1 455 0
+ 359 000a FFF7FEFF 		bl	ledDimmer_ReadStatusRegister
+ 360 000e 0300     		movs	r3, r0
+ 361 0010 1A00     		movs	r2, r3
+ 362 0012 1023     		movs	r3, #16
+ 363 0014 1340     		ands	r3, r2
+ 364 0016 F6D1     		bne	.L23
+ 458:Generated_Source\PSoC4/ledDimmer.c ****             }
+ 459:Generated_Source\PSoC4/ledDimmer.c ****         }
+ 365              		.loc 1 459 0
+ 366 0018 C046     		nop
+ 367 001a BD46     		mov	sp, r7
+ 368              		@ sp needed
+ 369 001c 80BD     		pop	{r7, pc}
+ 370              		.cfi_endproc
+ 371              	.LFE8:
+ 372              		.size	ledDimmer_ClearFIFO, .-ledDimmer_ClearFIFO
+ 373 001e C046     		.section	.text.ledDimmer_WritePeriod,"ax",%progbits
+ 374              		.align	2
+ 375              		.global	ledDimmer_WritePeriod
+ 376              		.code	16
+ 377              		.thumb_func
+ 378              		.type	ledDimmer_WritePeriod, %function
+ 379              	ledDimmer_WritePeriod:
+ 380              	.LFB9:
+ 460:Generated_Source\PSoC4/ledDimmer.c **** 
+ 461:Generated_Source\PSoC4/ledDimmer.c ****     #endif /* ledDimmer_UseStatus */
+ 462:Generated_Source\PSoC4/ledDimmer.c **** 
+ 463:Generated_Source\PSoC4/ledDimmer.c **** #endif /* !ledDimmer_UsingFixedFunction */
+ 464:Generated_Source\PSoC4/ledDimmer.c **** 
+ 465:Generated_Source\PSoC4/ledDimmer.c **** 
+ 466:Generated_Source\PSoC4/ledDimmer.c **** /*******************************************************************************
+ 467:Generated_Source\PSoC4/ledDimmer.c **** * Function Name: ledDimmer_WritePeriod
+ 468:Generated_Source\PSoC4/ledDimmer.c **** ********************************************************************************
+ 469:Generated_Source\PSoC4/ledDimmer.c **** *
+ 470:Generated_Source\PSoC4/ledDimmer.c **** * Summary:
+ 471:Generated_Source\PSoC4/ledDimmer.c **** *  This function is used to change the period of the counter.  The new period
+ 472:Generated_Source\PSoC4/ledDimmer.c **** *  will be loaded the next time terminal count is detected.
+ 473:Generated_Source\PSoC4/ledDimmer.c **** *
+ 474:Generated_Source\PSoC4/ledDimmer.c **** * Parameters:
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 16
+
+
+ 475:Generated_Source\PSoC4/ledDimmer.c **** *  period:  Period value. May be between 1 and (2^Resolution)-1.  A value of 0
+ 476:Generated_Source\PSoC4/ledDimmer.c **** *           will result in the counter remaining at zero.
+ 477:Generated_Source\PSoC4/ledDimmer.c **** *
+ 478:Generated_Source\PSoC4/ledDimmer.c **** * Return:
+ 479:Generated_Source\PSoC4/ledDimmer.c **** *  None
+ 480:Generated_Source\PSoC4/ledDimmer.c **** *
+ 481:Generated_Source\PSoC4/ledDimmer.c **** *******************************************************************************/
+ 482:Generated_Source\PSoC4/ledDimmer.c **** void ledDimmer_WritePeriod(uint16 period) 
+ 483:Generated_Source\PSoC4/ledDimmer.c **** {
+ 381              		.loc 1 483 0
+ 382              		.cfi_startproc
+ 383              		@ args = 0, pretend = 0, frame = 8
+ 384              		@ frame_needed = 1, uses_anonymous_args = 0
+ 385 0000 80B5     		push	{r7, lr}
+ 386              		.cfi_def_cfa_offset 8
+ 387              		.cfi_offset 7, -8
+ 388              		.cfi_offset 14, -4
+ 389 0002 82B0     		sub	sp, sp, #8
+ 390              		.cfi_def_cfa_offset 16
+ 391 0004 00AF     		add	r7, sp, #0
+ 392              		.cfi_def_cfa_register 7
+ 393 0006 0200     		movs	r2, r0
+ 394 0008 BB1D     		adds	r3, r7, #6
+ 395 000a 1A80     		strh	r2, [r3]
+ 484:Generated_Source\PSoC4/ledDimmer.c ****     #if(ledDimmer_UsingFixedFunction)
+ 485:Generated_Source\PSoC4/ledDimmer.c ****         CY_SET_REG16(ledDimmer_PERIOD_LSB_PTR, (uint16)period);
+ 486:Generated_Source\PSoC4/ledDimmer.c ****     #else
+ 487:Generated_Source\PSoC4/ledDimmer.c ****         CY_SET_REG16(ledDimmer_PERIOD_LSB_PTR, period);
+ 396              		.loc 1 487 0
+ 397 000c 034A     		ldr	r2, .L25
+ 398 000e BB1D     		adds	r3, r7, #6
+ 399 0010 1B88     		ldrh	r3, [r3]
+ 400 0012 1380     		strh	r3, [r2]
+ 488:Generated_Source\PSoC4/ledDimmer.c ****     #endif /* (ledDimmer_UsingFixedFunction) */
+ 489:Generated_Source\PSoC4/ledDimmer.c **** }
+ 401              		.loc 1 489 0
+ 402 0014 C046     		nop
+ 403 0016 BD46     		mov	sp, r7
+ 404 0018 02B0     		add	sp, sp, #8
+ 405              		@ sp needed
+ 406 001a 80BD     		pop	{r7, pc}
+ 407              	.L26:
+ 408              		.align	2
+ 409              	.L25:
+ 410 001c 84100F40 		.word	1074729092
+ 411              		.cfi_endproc
+ 412              	.LFE9:
+ 413              		.size	ledDimmer_WritePeriod, .-ledDimmer_WritePeriod
+ 414              		.section	.text.ledDimmer_WriteCompare,"ax",%progbits
+ 415              		.align	2
+ 416              		.global	ledDimmer_WriteCompare
+ 417              		.code	16
+ 418              		.thumb_func
+ 419              		.type	ledDimmer_WriteCompare, %function
+ 420              	ledDimmer_WriteCompare:
+ 421              	.LFB10:
+ 490:Generated_Source\PSoC4/ledDimmer.c **** 
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 17
+
+
+ 491:Generated_Source\PSoC4/ledDimmer.c **** #if (ledDimmer_UseOneCompareMode)
+ 492:Generated_Source\PSoC4/ledDimmer.c **** 
+ 493:Generated_Source\PSoC4/ledDimmer.c **** 
+ 494:Generated_Source\PSoC4/ledDimmer.c ****     /*******************************************************************************
+ 495:Generated_Source\PSoC4/ledDimmer.c ****     * Function Name: ledDimmer_WriteCompare
+ 496:Generated_Source\PSoC4/ledDimmer.c ****     ********************************************************************************
+ 497:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 498:Generated_Source\PSoC4/ledDimmer.c ****     * Summary:
+ 499:Generated_Source\PSoC4/ledDimmer.c ****     *  This funtion is used to change the compare1 value when the PWM is in Dither
+ 500:Generated_Source\PSoC4/ledDimmer.c ****     *  mode. The compare output will reflect the new value on the next UDB clock.
+ 501:Generated_Source\PSoC4/ledDimmer.c ****     *  The compare output will be driven high when the present counter value is
+ 502:Generated_Source\PSoC4/ledDimmer.c ****     *  compared to the compare value based on the compare mode defined in
+ 503:Generated_Source\PSoC4/ledDimmer.c ****     *  Dither Mode.
+ 504:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 505:Generated_Source\PSoC4/ledDimmer.c ****     * Parameters:
+ 506:Generated_Source\PSoC4/ledDimmer.c ****     *  compare:  New compare value.
+ 507:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 508:Generated_Source\PSoC4/ledDimmer.c ****     * Return:
+ 509:Generated_Source\PSoC4/ledDimmer.c ****     *  None
+ 510:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 511:Generated_Source\PSoC4/ledDimmer.c ****     * Side Effects:
+ 512:Generated_Source\PSoC4/ledDimmer.c ****     *  This function is only available if the PWM mode parameter is set to
+ 513:Generated_Source\PSoC4/ledDimmer.c ****     *  Dither Mode, Center Aligned Mode or One Output Mode
+ 514:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 515:Generated_Source\PSoC4/ledDimmer.c ****     *******************************************************************************/
+ 516:Generated_Source\PSoC4/ledDimmer.c ****     void ledDimmer_WriteCompare(uint16 compare) \
+ 517:Generated_Source\PSoC4/ledDimmer.c ****                                        
+ 518:Generated_Source\PSoC4/ledDimmer.c ****     {
+ 422              		.loc 1 518 0
+ 423              		.cfi_startproc
+ 424              		@ args = 0, pretend = 0, frame = 8
+ 425              		@ frame_needed = 1, uses_anonymous_args = 0
+ 426 0000 80B5     		push	{r7, lr}
+ 427              		.cfi_def_cfa_offset 8
+ 428              		.cfi_offset 7, -8
+ 429              		.cfi_offset 14, -4
+ 430 0002 82B0     		sub	sp, sp, #8
+ 431              		.cfi_def_cfa_offset 16
+ 432 0004 00AF     		add	r7, sp, #0
+ 433              		.cfi_def_cfa_register 7
+ 434 0006 0200     		movs	r2, r0
+ 435 0008 BB1D     		adds	r3, r7, #6
+ 436 000a 1A80     		strh	r2, [r3]
+ 519:Generated_Source\PSoC4/ledDimmer.c ****         #if(ledDimmer_UsingFixedFunction)
+ 520:Generated_Source\PSoC4/ledDimmer.c ****             CY_SET_REG16(ledDimmer_COMPARE1_LSB_PTR, (uint16)compare);
+ 521:Generated_Source\PSoC4/ledDimmer.c ****         #else
+ 522:Generated_Source\PSoC4/ledDimmer.c ****             CY_SET_REG16(ledDimmer_COMPARE1_LSB_PTR, compare);
+ 437              		.loc 1 522 0
+ 438 000c 034A     		ldr	r2, .L28
+ 439 000e BB1D     		adds	r3, r7, #6
+ 440 0010 1B88     		ldrh	r3, [r3]
+ 441 0012 1380     		strh	r3, [r2]
+ 523:Generated_Source\PSoC4/ledDimmer.c ****         #endif /* (ledDimmer_UsingFixedFunction) */
+ 524:Generated_Source\PSoC4/ledDimmer.c **** 
+ 525:Generated_Source\PSoC4/ledDimmer.c ****         #if (ledDimmer_PWMMode == ledDimmer__B_PWM__DITHER)
+ 526:Generated_Source\PSoC4/ledDimmer.c ****             #if(ledDimmer_UsingFixedFunction)
+ 527:Generated_Source\PSoC4/ledDimmer.c ****                 CY_SET_REG16(ledDimmer_COMPARE2_LSB_PTR, (uint16)(compare + 1u));
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 18
+
+
+ 528:Generated_Source\PSoC4/ledDimmer.c ****             #else
+ 529:Generated_Source\PSoC4/ledDimmer.c ****                 CY_SET_REG16(ledDimmer_COMPARE2_LSB_PTR, (compare + 1u));
+ 530:Generated_Source\PSoC4/ledDimmer.c ****             #endif /* (ledDimmer_UsingFixedFunction) */
+ 531:Generated_Source\PSoC4/ledDimmer.c ****         #endif /* (ledDimmer_PWMMode == ledDimmer__B_PWM__DITHER) */
+ 532:Generated_Source\PSoC4/ledDimmer.c ****     }
+ 442              		.loc 1 532 0
+ 443 0014 C046     		nop
+ 444 0016 BD46     		mov	sp, r7
+ 445 0018 02B0     		add	sp, sp, #8
+ 446              		@ sp needed
+ 447 001a 80BD     		pop	{r7, pc}
+ 448              	.L29:
+ 449              		.align	2
+ 450              	.L28:
+ 451 001c 44100F40 		.word	1074729028
+ 452              		.cfi_endproc
+ 453              	.LFE10:
+ 454              		.size	ledDimmer_WriteCompare, .-ledDimmer_WriteCompare
+ 455              		.section	.text.ledDimmer_SetInterruptMode,"ax",%progbits
+ 456              		.align	2
+ 457              		.global	ledDimmer_SetInterruptMode
+ 458              		.code	16
+ 459              		.thumb_func
+ 460              		.type	ledDimmer_SetInterruptMode, %function
+ 461              	ledDimmer_SetInterruptMode:
+ 462              	.LFB11:
+ 533:Generated_Source\PSoC4/ledDimmer.c **** 
+ 534:Generated_Source\PSoC4/ledDimmer.c **** 
+ 535:Generated_Source\PSoC4/ledDimmer.c **** #else
+ 536:Generated_Source\PSoC4/ledDimmer.c **** 
+ 537:Generated_Source\PSoC4/ledDimmer.c **** 
+ 538:Generated_Source\PSoC4/ledDimmer.c ****     /*******************************************************************************
+ 539:Generated_Source\PSoC4/ledDimmer.c ****     * Function Name: ledDimmer_WriteCompare1
+ 540:Generated_Source\PSoC4/ledDimmer.c ****     ********************************************************************************
+ 541:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 542:Generated_Source\PSoC4/ledDimmer.c ****     * Summary:
+ 543:Generated_Source\PSoC4/ledDimmer.c ****     *  This funtion is used to change the compare1 value.  The compare output will
+ 544:Generated_Source\PSoC4/ledDimmer.c ****     *  reflect the new value on the next UDB clock.  The compare output will be
+ 545:Generated_Source\PSoC4/ledDimmer.c ****     *  driven high when the present counter value is less than or less than or
+ 546:Generated_Source\PSoC4/ledDimmer.c ****     *  equal to the compare register, depending on the mode.
+ 547:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 548:Generated_Source\PSoC4/ledDimmer.c ****     * Parameters:
+ 549:Generated_Source\PSoC4/ledDimmer.c ****     *  compare:  New compare value.
+ 550:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 551:Generated_Source\PSoC4/ledDimmer.c ****     * Return:
+ 552:Generated_Source\PSoC4/ledDimmer.c ****     *  None
+ 553:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 554:Generated_Source\PSoC4/ledDimmer.c ****     *******************************************************************************/
+ 555:Generated_Source\PSoC4/ledDimmer.c ****     void ledDimmer_WriteCompare1(uint16 compare) \
+ 556:Generated_Source\PSoC4/ledDimmer.c ****                                         
+ 557:Generated_Source\PSoC4/ledDimmer.c ****     {
+ 558:Generated_Source\PSoC4/ledDimmer.c ****         #if(ledDimmer_UsingFixedFunction)
+ 559:Generated_Source\PSoC4/ledDimmer.c ****             CY_SET_REG16(ledDimmer_COMPARE1_LSB_PTR, (uint16)compare);
+ 560:Generated_Source\PSoC4/ledDimmer.c ****         #else
+ 561:Generated_Source\PSoC4/ledDimmer.c ****             CY_SET_REG16(ledDimmer_COMPARE1_LSB_PTR, compare);
+ 562:Generated_Source\PSoC4/ledDimmer.c ****         #endif /* (ledDimmer_UsingFixedFunction) */
+ 563:Generated_Source\PSoC4/ledDimmer.c ****     }
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 19
+
+
+ 564:Generated_Source\PSoC4/ledDimmer.c **** 
+ 565:Generated_Source\PSoC4/ledDimmer.c **** 
+ 566:Generated_Source\PSoC4/ledDimmer.c ****     /*******************************************************************************
+ 567:Generated_Source\PSoC4/ledDimmer.c ****     * Function Name: ledDimmer_WriteCompare2
+ 568:Generated_Source\PSoC4/ledDimmer.c ****     ********************************************************************************
+ 569:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 570:Generated_Source\PSoC4/ledDimmer.c ****     * Summary:
+ 571:Generated_Source\PSoC4/ledDimmer.c ****     *  This funtion is used to change the compare value, for compare1 output.
+ 572:Generated_Source\PSoC4/ledDimmer.c ****     *  The compare output will reflect the new value on the next UDB clock.
+ 573:Generated_Source\PSoC4/ledDimmer.c ****     *  The compare output will be driven high when the present counter value is
+ 574:Generated_Source\PSoC4/ledDimmer.c ****     *  less than or less than or equal to the compare register, depending on the
+ 575:Generated_Source\PSoC4/ledDimmer.c ****     *  mode.
+ 576:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 577:Generated_Source\PSoC4/ledDimmer.c ****     * Parameters:
+ 578:Generated_Source\PSoC4/ledDimmer.c ****     *  compare:  New compare value.
+ 579:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 580:Generated_Source\PSoC4/ledDimmer.c ****     * Return:
+ 581:Generated_Source\PSoC4/ledDimmer.c ****     *  None
+ 582:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 583:Generated_Source\PSoC4/ledDimmer.c ****     *******************************************************************************/
+ 584:Generated_Source\PSoC4/ledDimmer.c ****     void ledDimmer_WriteCompare2(uint16 compare) \
+ 585:Generated_Source\PSoC4/ledDimmer.c ****                                         
+ 586:Generated_Source\PSoC4/ledDimmer.c ****     {
+ 587:Generated_Source\PSoC4/ledDimmer.c ****         #if(ledDimmer_UsingFixedFunction)
+ 588:Generated_Source\PSoC4/ledDimmer.c ****             CY_SET_REG16(ledDimmer_COMPARE2_LSB_PTR, compare);
+ 589:Generated_Source\PSoC4/ledDimmer.c ****         #else
+ 590:Generated_Source\PSoC4/ledDimmer.c ****             CY_SET_REG16(ledDimmer_COMPARE2_LSB_PTR, compare);
+ 591:Generated_Source\PSoC4/ledDimmer.c ****         #endif /* (ledDimmer_UsingFixedFunction) */
+ 592:Generated_Source\PSoC4/ledDimmer.c ****     }
+ 593:Generated_Source\PSoC4/ledDimmer.c **** #endif /* UseOneCompareMode */
+ 594:Generated_Source\PSoC4/ledDimmer.c **** 
+ 595:Generated_Source\PSoC4/ledDimmer.c **** #if (ledDimmer_DeadBandUsed)
+ 596:Generated_Source\PSoC4/ledDimmer.c **** 
+ 597:Generated_Source\PSoC4/ledDimmer.c **** 
+ 598:Generated_Source\PSoC4/ledDimmer.c ****     /*******************************************************************************
+ 599:Generated_Source\PSoC4/ledDimmer.c ****     * Function Name: ledDimmer_WriteDeadTime
+ 600:Generated_Source\PSoC4/ledDimmer.c ****     ********************************************************************************
+ 601:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 602:Generated_Source\PSoC4/ledDimmer.c ****     * Summary:
+ 603:Generated_Source\PSoC4/ledDimmer.c ****     *  This function writes the dead-band counts to the corresponding register
+ 604:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 605:Generated_Source\PSoC4/ledDimmer.c ****     * Parameters:
+ 606:Generated_Source\PSoC4/ledDimmer.c ****     *  deadtime:  Number of counts for dead time
+ 607:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 608:Generated_Source\PSoC4/ledDimmer.c ****     * Return:
+ 609:Generated_Source\PSoC4/ledDimmer.c ****     *  None
+ 610:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 611:Generated_Source\PSoC4/ledDimmer.c ****     *******************************************************************************/
+ 612:Generated_Source\PSoC4/ledDimmer.c ****     void ledDimmer_WriteDeadTime(uint8 deadtime) 
+ 613:Generated_Source\PSoC4/ledDimmer.c ****     {
+ 614:Generated_Source\PSoC4/ledDimmer.c ****         /* If using the Dead Band 1-255 mode then just write the register */
+ 615:Generated_Source\PSoC4/ledDimmer.c ****         #if(!ledDimmer_DeadBand2_4)
+ 616:Generated_Source\PSoC4/ledDimmer.c ****             CY_SET_REG8(ledDimmer_DEADBAND_COUNT_PTR, deadtime);
+ 617:Generated_Source\PSoC4/ledDimmer.c ****         #else
+ 618:Generated_Source\PSoC4/ledDimmer.c ****             /* Otherwise the data has to be masked and offset */
+ 619:Generated_Source\PSoC4/ledDimmer.c ****             /* Clear existing data */
+ 620:Generated_Source\PSoC4/ledDimmer.c ****             ledDimmer_DEADBAND_COUNT &= ((uint8)(~ledDimmer_DEADBAND_COUNT_MASK));
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 20
+
+
+ 621:Generated_Source\PSoC4/ledDimmer.c **** 
+ 622:Generated_Source\PSoC4/ledDimmer.c ****             /* Set new dead time */
+ 623:Generated_Source\PSoC4/ledDimmer.c ****             #if(ledDimmer_DEADBAND_COUNT_SHIFT)
+ 624:Generated_Source\PSoC4/ledDimmer.c ****                 ledDimmer_DEADBAND_COUNT |= ((uint8)((uint8)deadtime << ledDimmer_DEADBAND_COUNT_SH
+ 625:Generated_Source\PSoC4/ledDimmer.c ****                                                     ledDimmer_DEADBAND_COUNT_MASK;
+ 626:Generated_Source\PSoC4/ledDimmer.c ****             #else
+ 627:Generated_Source\PSoC4/ledDimmer.c ****                 ledDimmer_DEADBAND_COUNT |= deadtime & ledDimmer_DEADBAND_COUNT_MASK;
+ 628:Generated_Source\PSoC4/ledDimmer.c ****             #endif /* (ledDimmer_DEADBAND_COUNT_SHIFT) */
+ 629:Generated_Source\PSoC4/ledDimmer.c **** 
+ 630:Generated_Source\PSoC4/ledDimmer.c ****         #endif /* (!ledDimmer_DeadBand2_4) */
+ 631:Generated_Source\PSoC4/ledDimmer.c ****     }
+ 632:Generated_Source\PSoC4/ledDimmer.c **** 
+ 633:Generated_Source\PSoC4/ledDimmer.c **** 
+ 634:Generated_Source\PSoC4/ledDimmer.c ****     /*******************************************************************************
+ 635:Generated_Source\PSoC4/ledDimmer.c ****     * Function Name: ledDimmer_ReadDeadTime
+ 636:Generated_Source\PSoC4/ledDimmer.c ****     ********************************************************************************
+ 637:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 638:Generated_Source\PSoC4/ledDimmer.c ****     * Summary:
+ 639:Generated_Source\PSoC4/ledDimmer.c ****     *  This function reads the dead-band counts from the corresponding register
+ 640:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 641:Generated_Source\PSoC4/ledDimmer.c ****     * Parameters:
+ 642:Generated_Source\PSoC4/ledDimmer.c ****     *  None
+ 643:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 644:Generated_Source\PSoC4/ledDimmer.c ****     * Return:
+ 645:Generated_Source\PSoC4/ledDimmer.c ****     *  Dead Band Counts
+ 646:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 647:Generated_Source\PSoC4/ledDimmer.c ****     *******************************************************************************/
+ 648:Generated_Source\PSoC4/ledDimmer.c ****     uint8 ledDimmer_ReadDeadTime(void) 
+ 649:Generated_Source\PSoC4/ledDimmer.c ****     {
+ 650:Generated_Source\PSoC4/ledDimmer.c ****         /* If using the Dead Band 1-255 mode then just read the register */
+ 651:Generated_Source\PSoC4/ledDimmer.c ****         #if(!ledDimmer_DeadBand2_4)
+ 652:Generated_Source\PSoC4/ledDimmer.c ****             return (CY_GET_REG8(ledDimmer_DEADBAND_COUNT_PTR));
+ 653:Generated_Source\PSoC4/ledDimmer.c ****         #else
+ 654:Generated_Source\PSoC4/ledDimmer.c **** 
+ 655:Generated_Source\PSoC4/ledDimmer.c ****             /* Otherwise the data has to be masked and offset */
+ 656:Generated_Source\PSoC4/ledDimmer.c ****             #if(ledDimmer_DEADBAND_COUNT_SHIFT)
+ 657:Generated_Source\PSoC4/ledDimmer.c ****                 return ((uint8)(((uint8)(ledDimmer_DEADBAND_COUNT & ledDimmer_DEADBAND_COUNT_MASK))
+ 658:Generated_Source\PSoC4/ledDimmer.c ****                                                                            ledDimmer_DEADBAND_COUNT
+ 659:Generated_Source\PSoC4/ledDimmer.c ****             #else
+ 660:Generated_Source\PSoC4/ledDimmer.c ****                 return (ledDimmer_DEADBAND_COUNT & ledDimmer_DEADBAND_COUNT_MASK);
+ 661:Generated_Source\PSoC4/ledDimmer.c ****             #endif /* (ledDimmer_DEADBAND_COUNT_SHIFT) */
+ 662:Generated_Source\PSoC4/ledDimmer.c ****         #endif /* (!ledDimmer_DeadBand2_4) */
+ 663:Generated_Source\PSoC4/ledDimmer.c ****     }
+ 664:Generated_Source\PSoC4/ledDimmer.c **** #endif /* DeadBandUsed */
+ 665:Generated_Source\PSoC4/ledDimmer.c **** 
+ 666:Generated_Source\PSoC4/ledDimmer.c **** #if (ledDimmer_UseStatus || ledDimmer_UsingFixedFunction)
+ 667:Generated_Source\PSoC4/ledDimmer.c **** 
+ 668:Generated_Source\PSoC4/ledDimmer.c **** 
+ 669:Generated_Source\PSoC4/ledDimmer.c ****     /*******************************************************************************
+ 670:Generated_Source\PSoC4/ledDimmer.c ****     * Function Name: ledDimmer_SetInterruptMode
+ 671:Generated_Source\PSoC4/ledDimmer.c ****     ********************************************************************************
+ 672:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 673:Generated_Source\PSoC4/ledDimmer.c ****     * Summary:
+ 674:Generated_Source\PSoC4/ledDimmer.c ****     *  This function configures the interrupts mask control of theinterrupt
+ 675:Generated_Source\PSoC4/ledDimmer.c ****     *  source status register.
+ 676:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 677:Generated_Source\PSoC4/ledDimmer.c ****     * Parameters:
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 21
+
+
+ 678:Generated_Source\PSoC4/ledDimmer.c ****     *  uint8 interruptMode: Bit field containing the interrupt sources enabled
+ 679:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 680:Generated_Source\PSoC4/ledDimmer.c ****     * Return:
+ 681:Generated_Source\PSoC4/ledDimmer.c ****     *  None
+ 682:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 683:Generated_Source\PSoC4/ledDimmer.c ****     *******************************************************************************/
+ 684:Generated_Source\PSoC4/ledDimmer.c ****     void ledDimmer_SetInterruptMode(uint8 interruptMode) 
+ 685:Generated_Source\PSoC4/ledDimmer.c ****     {
+ 463              		.loc 1 685 0
+ 464              		.cfi_startproc
+ 465              		@ args = 0, pretend = 0, frame = 8
+ 466              		@ frame_needed = 1, uses_anonymous_args = 0
+ 467 0000 80B5     		push	{r7, lr}
+ 468              		.cfi_def_cfa_offset 8
+ 469              		.cfi_offset 7, -8
+ 470              		.cfi_offset 14, -4
+ 471 0002 82B0     		sub	sp, sp, #8
+ 472              		.cfi_def_cfa_offset 16
+ 473 0004 00AF     		add	r7, sp, #0
+ 474              		.cfi_def_cfa_register 7
+ 475 0006 0200     		movs	r2, r0
+ 476 0008 FB1D     		adds	r3, r7, #7
+ 477 000a 1A70     		strb	r2, [r3]
+ 686:Generated_Source\PSoC4/ledDimmer.c ****         CY_SET_REG8(ledDimmer_STATUS_MASK_PTR, interruptMode);
+ 478              		.loc 1 686 0
+ 479 000c 034A     		ldr	r2, .L31
+ 480 000e FB1D     		adds	r3, r7, #7
+ 481 0010 1B78     		ldrb	r3, [r3]
+ 482 0012 1370     		strb	r3, [r2]
+ 687:Generated_Source\PSoC4/ledDimmer.c ****     }
+ 483              		.loc 1 687 0
+ 484 0014 C046     		nop
+ 485 0016 BD46     		mov	sp, r7
+ 486 0018 02B0     		add	sp, sp, #8
+ 487              		@ sp needed
+ 488 001a 80BD     		pop	{r7, pc}
+ 489              	.L32:
+ 490              		.align	2
+ 491              	.L31:
+ 492 001c 83000F40 		.word	1074724995
+ 493              		.cfi_endproc
+ 494              	.LFE11:
+ 495              		.size	ledDimmer_SetInterruptMode, .-ledDimmer_SetInterruptMode
+ 496              		.section	.text.ledDimmer_ReadStatusRegister,"ax",%progbits
+ 497              		.align	2
+ 498              		.global	ledDimmer_ReadStatusRegister
+ 499              		.code	16
+ 500              		.thumb_func
+ 501              		.type	ledDimmer_ReadStatusRegister, %function
+ 502              	ledDimmer_ReadStatusRegister:
+ 503              	.LFB12:
+ 688:Generated_Source\PSoC4/ledDimmer.c **** 
+ 689:Generated_Source\PSoC4/ledDimmer.c **** 
+ 690:Generated_Source\PSoC4/ledDimmer.c ****     /*******************************************************************************
+ 691:Generated_Source\PSoC4/ledDimmer.c ****     * Function Name: ledDimmer_ReadStatusRegister
+ 692:Generated_Source\PSoC4/ledDimmer.c ****     ********************************************************************************
+ 693:Generated_Source\PSoC4/ledDimmer.c ****     *
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 22
+
+
+ 694:Generated_Source\PSoC4/ledDimmer.c ****     * Summary:
+ 695:Generated_Source\PSoC4/ledDimmer.c ****     *  This function returns the current state of the status register.
+ 696:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 697:Generated_Source\PSoC4/ledDimmer.c ****     * Parameters:
+ 698:Generated_Source\PSoC4/ledDimmer.c ****     *  None
+ 699:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 700:Generated_Source\PSoC4/ledDimmer.c ****     * Return:
+ 701:Generated_Source\PSoC4/ledDimmer.c ****     *  uint8 : Current status register value. The status register bits are:
+ 702:Generated_Source\PSoC4/ledDimmer.c ****     *  [7:6] : Unused(0)
+ 703:Generated_Source\PSoC4/ledDimmer.c ****     *  [5]   : Kill event output
+ 704:Generated_Source\PSoC4/ledDimmer.c ****     *  [4]   : FIFO not empty
+ 705:Generated_Source\PSoC4/ledDimmer.c ****     *  [3]   : FIFO full
+ 706:Generated_Source\PSoC4/ledDimmer.c ****     *  [2]   : Terminal count
+ 707:Generated_Source\PSoC4/ledDimmer.c ****     *  [1]   : Compare output 2
+ 708:Generated_Source\PSoC4/ledDimmer.c ****     *  [0]   : Compare output 1
+ 709:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 710:Generated_Source\PSoC4/ledDimmer.c ****     *******************************************************************************/
+ 711:Generated_Source\PSoC4/ledDimmer.c ****     uint8 ledDimmer_ReadStatusRegister(void) 
+ 712:Generated_Source\PSoC4/ledDimmer.c ****     {
+ 504              		.loc 1 712 0
+ 505              		.cfi_startproc
+ 506              		@ args = 0, pretend = 0, frame = 0
+ 507              		@ frame_needed = 1, uses_anonymous_args = 0
+ 508 0000 80B5     		push	{r7, lr}
+ 509              		.cfi_def_cfa_offset 8
+ 510              		.cfi_offset 7, -8
+ 511              		.cfi_offset 14, -4
+ 512 0002 00AF     		add	r7, sp, #0
+ 513              		.cfi_def_cfa_register 7
+ 713:Generated_Source\PSoC4/ledDimmer.c ****         return (CY_GET_REG8(ledDimmer_STATUS_PTR));
+ 514              		.loc 1 713 0
+ 515 0004 024B     		ldr	r3, .L35
+ 516 0006 1B78     		ldrb	r3, [r3]
+ 517 0008 DBB2     		uxtb	r3, r3
+ 714:Generated_Source\PSoC4/ledDimmer.c ****     }
+ 518              		.loc 1 714 0
+ 519 000a 1800     		movs	r0, r3
+ 520 000c BD46     		mov	sp, r7
+ 521              		@ sp needed
+ 522 000e 80BD     		pop	{r7, pc}
+ 523              	.L36:
+ 524              		.align	2
+ 525              	.L35:
+ 526 0010 63000F40 		.word	1074724963
+ 527              		.cfi_endproc
+ 528              	.LFE12:
+ 529              		.size	ledDimmer_ReadStatusRegister, .-ledDimmer_ReadStatusRegister
+ 530              		.section	.text.ledDimmer_ReadControlRegister,"ax",%progbits
+ 531              		.align	2
+ 532              		.global	ledDimmer_ReadControlRegister
+ 533              		.code	16
+ 534              		.thumb_func
+ 535              		.type	ledDimmer_ReadControlRegister, %function
+ 536              	ledDimmer_ReadControlRegister:
+ 537              	.LFB13:
+ 715:Generated_Source\PSoC4/ledDimmer.c **** 
+ 716:Generated_Source\PSoC4/ledDimmer.c **** #endif /* (ledDimmer_UseStatus || ledDimmer_UsingFixedFunction) */
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 23
+
+
+ 717:Generated_Source\PSoC4/ledDimmer.c **** 
+ 718:Generated_Source\PSoC4/ledDimmer.c **** 
+ 719:Generated_Source\PSoC4/ledDimmer.c **** #if (ledDimmer_UseControl)
+ 720:Generated_Source\PSoC4/ledDimmer.c **** 
+ 721:Generated_Source\PSoC4/ledDimmer.c **** 
+ 722:Generated_Source\PSoC4/ledDimmer.c ****     /*******************************************************************************
+ 723:Generated_Source\PSoC4/ledDimmer.c ****     * Function Name: ledDimmer_ReadControlRegister
+ 724:Generated_Source\PSoC4/ledDimmer.c ****     ********************************************************************************
+ 725:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 726:Generated_Source\PSoC4/ledDimmer.c ****     * Summary:
+ 727:Generated_Source\PSoC4/ledDimmer.c ****     *  Returns the current state of the control register. This API is available
+ 728:Generated_Source\PSoC4/ledDimmer.c ****     *  only if the control register is not removed.
+ 729:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 730:Generated_Source\PSoC4/ledDimmer.c ****     * Parameters:
+ 731:Generated_Source\PSoC4/ledDimmer.c ****     *  None
+ 732:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 733:Generated_Source\PSoC4/ledDimmer.c ****     * Return:
+ 734:Generated_Source\PSoC4/ledDimmer.c ****     *  uint8 : Current control register value
+ 735:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 736:Generated_Source\PSoC4/ledDimmer.c ****     *******************************************************************************/
+ 737:Generated_Source\PSoC4/ledDimmer.c ****     uint8 ledDimmer_ReadControlRegister(void) 
+ 738:Generated_Source\PSoC4/ledDimmer.c ****     {
+ 538              		.loc 1 738 0
+ 539              		.cfi_startproc
+ 540              		@ args = 0, pretend = 0, frame = 8
+ 541              		@ frame_needed = 1, uses_anonymous_args = 0
+ 542 0000 80B5     		push	{r7, lr}
+ 543              		.cfi_def_cfa_offset 8
+ 544              		.cfi_offset 7, -8
+ 545              		.cfi_offset 14, -4
+ 546 0002 82B0     		sub	sp, sp, #8
+ 547              		.cfi_def_cfa_offset 16
+ 548 0004 00AF     		add	r7, sp, #0
+ 549              		.cfi_def_cfa_register 7
+ 739:Generated_Source\PSoC4/ledDimmer.c ****         uint8 result;
+ 740:Generated_Source\PSoC4/ledDimmer.c **** 
+ 741:Generated_Source\PSoC4/ledDimmer.c ****         result = CY_GET_REG8(ledDimmer_CONTROL_PTR);
+ 550              		.loc 1 741 0
+ 551 0006 054A     		ldr	r2, .L39
+ 552 0008 FB1D     		adds	r3, r7, #7
+ 553 000a 1278     		ldrb	r2, [r2]
+ 554 000c 1A70     		strb	r2, [r3]
+ 742:Generated_Source\PSoC4/ledDimmer.c ****         return (result);
+ 555              		.loc 1 742 0
+ 556 000e FB1D     		adds	r3, r7, #7
+ 557 0010 1B78     		ldrb	r3, [r3]
+ 743:Generated_Source\PSoC4/ledDimmer.c ****     }
+ 558              		.loc 1 743 0
+ 559 0012 1800     		movs	r0, r3
+ 560 0014 BD46     		mov	sp, r7
+ 561 0016 02B0     		add	sp, sp, #8
+ 562              		@ sp needed
+ 563 0018 80BD     		pop	{r7, pc}
+ 564              	.L40:
+ 565 001a C046     		.align	2
+ 566              	.L39:
+ 567 001c 73000F40 		.word	1074724979
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 24
+
+
+ 568              		.cfi_endproc
+ 569              	.LFE13:
+ 570              		.size	ledDimmer_ReadControlRegister, .-ledDimmer_ReadControlRegister
+ 571              		.section	.text.ledDimmer_WriteControlRegister,"ax",%progbits
+ 572              		.align	2
+ 573              		.global	ledDimmer_WriteControlRegister
+ 574              		.code	16
+ 575              		.thumb_func
+ 576              		.type	ledDimmer_WriteControlRegister, %function
+ 577              	ledDimmer_WriteControlRegister:
+ 578              	.LFB14:
+ 744:Generated_Source\PSoC4/ledDimmer.c **** 
+ 745:Generated_Source\PSoC4/ledDimmer.c **** 
+ 746:Generated_Source\PSoC4/ledDimmer.c ****     /*******************************************************************************
+ 747:Generated_Source\PSoC4/ledDimmer.c ****     * Function Name: ledDimmer_WriteControlRegister
+ 748:Generated_Source\PSoC4/ledDimmer.c ****     ********************************************************************************
+ 749:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 750:Generated_Source\PSoC4/ledDimmer.c ****     * Summary:
+ 751:Generated_Source\PSoC4/ledDimmer.c ****     *  Sets the bit field of the control register. This API is available only if
+ 752:Generated_Source\PSoC4/ledDimmer.c ****     *  the control register is not removed.
+ 753:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 754:Generated_Source\PSoC4/ledDimmer.c ****     * Parameters:
+ 755:Generated_Source\PSoC4/ledDimmer.c ****     *  uint8 control: Control register bit field, The status register bits are:
+ 756:Generated_Source\PSoC4/ledDimmer.c ****     *  [7]   : PWM Enable
+ 757:Generated_Source\PSoC4/ledDimmer.c ****     *  [6]   : Reset
+ 758:Generated_Source\PSoC4/ledDimmer.c ****     *  [5:3] : Compare Mode2
+ 759:Generated_Source\PSoC4/ledDimmer.c ****     *  [2:0] : Compare Mode2
+ 760:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 761:Generated_Source\PSoC4/ledDimmer.c ****     * Return:
+ 762:Generated_Source\PSoC4/ledDimmer.c ****     *  None
+ 763:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 764:Generated_Source\PSoC4/ledDimmer.c ****     *******************************************************************************/
+ 765:Generated_Source\PSoC4/ledDimmer.c ****     void ledDimmer_WriteControlRegister(uint8 control) 
+ 766:Generated_Source\PSoC4/ledDimmer.c ****     {
+ 579              		.loc 1 766 0
+ 580              		.cfi_startproc
+ 581              		@ args = 0, pretend = 0, frame = 8
+ 582              		@ frame_needed = 1, uses_anonymous_args = 0
+ 583 0000 80B5     		push	{r7, lr}
+ 584              		.cfi_def_cfa_offset 8
+ 585              		.cfi_offset 7, -8
+ 586              		.cfi_offset 14, -4
+ 587 0002 82B0     		sub	sp, sp, #8
+ 588              		.cfi_def_cfa_offset 16
+ 589 0004 00AF     		add	r7, sp, #0
+ 590              		.cfi_def_cfa_register 7
+ 591 0006 0200     		movs	r2, r0
+ 592 0008 FB1D     		adds	r3, r7, #7
+ 593 000a 1A70     		strb	r2, [r3]
+ 767:Generated_Source\PSoC4/ledDimmer.c ****         CY_SET_REG8(ledDimmer_CONTROL_PTR, control);
+ 594              		.loc 1 767 0
+ 595 000c 034A     		ldr	r2, .L42
+ 596 000e FB1D     		adds	r3, r7, #7
+ 597 0010 1B78     		ldrb	r3, [r3]
+ 598 0012 1370     		strb	r3, [r2]
+ 768:Generated_Source\PSoC4/ledDimmer.c ****     }
+ 599              		.loc 1 768 0
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 25
+
+
+ 600 0014 C046     		nop
+ 601 0016 BD46     		mov	sp, r7
+ 602 0018 02B0     		add	sp, sp, #8
+ 603              		@ sp needed
+ 604 001a 80BD     		pop	{r7, pc}
+ 605              	.L43:
+ 606              		.align	2
+ 607              	.L42:
+ 608 001c 73000F40 		.word	1074724979
+ 609              		.cfi_endproc
+ 610              	.LFE14:
+ 611              		.size	ledDimmer_WriteControlRegister, .-ledDimmer_WriteControlRegister
+ 612              		.section	.text.ledDimmer_ReadCapture,"ax",%progbits
+ 613              		.align	2
+ 614              		.global	ledDimmer_ReadCapture
+ 615              		.code	16
+ 616              		.thumb_func
+ 617              		.type	ledDimmer_ReadCapture, %function
+ 618              	ledDimmer_ReadCapture:
+ 619              	.LFB15:
+ 769:Generated_Source\PSoC4/ledDimmer.c **** 
+ 770:Generated_Source\PSoC4/ledDimmer.c **** #endif /* (ledDimmer_UseControl) */
+ 771:Generated_Source\PSoC4/ledDimmer.c **** 
+ 772:Generated_Source\PSoC4/ledDimmer.c **** 
+ 773:Generated_Source\PSoC4/ledDimmer.c **** #if (!ledDimmer_UsingFixedFunction)
+ 774:Generated_Source\PSoC4/ledDimmer.c **** 
+ 775:Generated_Source\PSoC4/ledDimmer.c **** 
+ 776:Generated_Source\PSoC4/ledDimmer.c ****     /*******************************************************************************
+ 777:Generated_Source\PSoC4/ledDimmer.c ****     * Function Name: ledDimmer_ReadCapture
+ 778:Generated_Source\PSoC4/ledDimmer.c ****     ********************************************************************************
+ 779:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 780:Generated_Source\PSoC4/ledDimmer.c ****     * Summary:
+ 781:Generated_Source\PSoC4/ledDimmer.c ****     *  Reads the capture value from the capture FIFO.
+ 782:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 783:Generated_Source\PSoC4/ledDimmer.c ****     * Parameters:
+ 784:Generated_Source\PSoC4/ledDimmer.c ****     *  None
+ 785:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 786:Generated_Source\PSoC4/ledDimmer.c ****     * Return:
+ 787:Generated_Source\PSoC4/ledDimmer.c ****     *  uint8/uint16: The current capture value
+ 788:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 789:Generated_Source\PSoC4/ledDimmer.c ****     *******************************************************************************/
+ 790:Generated_Source\PSoC4/ledDimmer.c ****     uint16 ledDimmer_ReadCapture(void) 
+ 791:Generated_Source\PSoC4/ledDimmer.c ****     {
+ 620              		.loc 1 791 0
+ 621              		.cfi_startproc
+ 622              		@ args = 0, pretend = 0, frame = 0
+ 623              		@ frame_needed = 1, uses_anonymous_args = 0
+ 624 0000 80B5     		push	{r7, lr}
+ 625              		.cfi_def_cfa_offset 8
+ 626              		.cfi_offset 7, -8
+ 627              		.cfi_offset 14, -4
+ 628 0002 00AF     		add	r7, sp, #0
+ 629              		.cfi_def_cfa_register 7
+ 792:Generated_Source\PSoC4/ledDimmer.c ****         return (CY_GET_REG16(ledDimmer_CAPTURE_LSB_PTR));
+ 630              		.loc 1 792 0
+ 631 0004 024B     		ldr	r3, .L46
+ 632 0006 1B88     		ldrh	r3, [r3]
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 26
+
+
+ 633 0008 9BB2     		uxth	r3, r3
+ 793:Generated_Source\PSoC4/ledDimmer.c ****     }
+ 634              		.loc 1 793 0
+ 635 000a 1800     		movs	r0, r3
+ 636 000c BD46     		mov	sp, r7
+ 637              		@ sp needed
+ 638 000e 80BD     		pop	{r7, pc}
+ 639              	.L47:
+ 640              		.align	2
+ 641              	.L46:
+ 642 0010 A4100F40 		.word	1074729124
+ 643              		.cfi_endproc
+ 644              	.LFE15:
+ 645              		.size	ledDimmer_ReadCapture, .-ledDimmer_ReadCapture
+ 646              		.section	.text.ledDimmer_ReadCompare,"ax",%progbits
+ 647              		.align	2
+ 648              		.global	ledDimmer_ReadCompare
+ 649              		.code	16
+ 650              		.thumb_func
+ 651              		.type	ledDimmer_ReadCompare, %function
+ 652              	ledDimmer_ReadCompare:
+ 653              	.LFB16:
+ 794:Generated_Source\PSoC4/ledDimmer.c **** 
+ 795:Generated_Source\PSoC4/ledDimmer.c **** #endif /* (!ledDimmer_UsingFixedFunction) */
+ 796:Generated_Source\PSoC4/ledDimmer.c **** 
+ 797:Generated_Source\PSoC4/ledDimmer.c **** 
+ 798:Generated_Source\PSoC4/ledDimmer.c **** #if (ledDimmer_UseOneCompareMode)
+ 799:Generated_Source\PSoC4/ledDimmer.c **** 
+ 800:Generated_Source\PSoC4/ledDimmer.c **** 
+ 801:Generated_Source\PSoC4/ledDimmer.c ****     /*******************************************************************************
+ 802:Generated_Source\PSoC4/ledDimmer.c ****     * Function Name: ledDimmer_ReadCompare
+ 803:Generated_Source\PSoC4/ledDimmer.c ****     ********************************************************************************
+ 804:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 805:Generated_Source\PSoC4/ledDimmer.c ****     * Summary:
+ 806:Generated_Source\PSoC4/ledDimmer.c ****     *  Reads the compare value for the compare output when the PWM Mode parameter is
+ 807:Generated_Source\PSoC4/ledDimmer.c ****     *  set to Dither mode, Center Aligned mode, or One Output mode.
+ 808:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 809:Generated_Source\PSoC4/ledDimmer.c ****     * Parameters:
+ 810:Generated_Source\PSoC4/ledDimmer.c ****     *  None
+ 811:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 812:Generated_Source\PSoC4/ledDimmer.c ****     * Return:
+ 813:Generated_Source\PSoC4/ledDimmer.c ****     *  uint8/uint16: Current compare value
+ 814:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 815:Generated_Source\PSoC4/ledDimmer.c ****     *******************************************************************************/
+ 816:Generated_Source\PSoC4/ledDimmer.c ****     uint16 ledDimmer_ReadCompare(void) 
+ 817:Generated_Source\PSoC4/ledDimmer.c ****     {
+ 654              		.loc 1 817 0
+ 655              		.cfi_startproc
+ 656              		@ args = 0, pretend = 0, frame = 0
+ 657              		@ frame_needed = 1, uses_anonymous_args = 0
+ 658 0000 80B5     		push	{r7, lr}
+ 659              		.cfi_def_cfa_offset 8
+ 660              		.cfi_offset 7, -8
+ 661              		.cfi_offset 14, -4
+ 662 0002 00AF     		add	r7, sp, #0
+ 663              		.cfi_def_cfa_register 7
+ 818:Generated_Source\PSoC4/ledDimmer.c ****         #if(ledDimmer_UsingFixedFunction)
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 27
+
+
+ 819:Generated_Source\PSoC4/ledDimmer.c ****             return ((uint16)CY_GET_REG16(ledDimmer_COMPARE1_LSB_PTR));
+ 820:Generated_Source\PSoC4/ledDimmer.c ****         #else
+ 821:Generated_Source\PSoC4/ledDimmer.c ****             return (CY_GET_REG16(ledDimmer_COMPARE1_LSB_PTR));
+ 664              		.loc 1 821 0
+ 665 0004 024B     		ldr	r3, .L50
+ 666 0006 1B88     		ldrh	r3, [r3]
+ 667 0008 9BB2     		uxth	r3, r3
+ 822:Generated_Source\PSoC4/ledDimmer.c ****         #endif /* (ledDimmer_UsingFixedFunction) */
+ 823:Generated_Source\PSoC4/ledDimmer.c ****     }
+ 668              		.loc 1 823 0
+ 669 000a 1800     		movs	r0, r3
+ 670 000c BD46     		mov	sp, r7
+ 671              		@ sp needed
+ 672 000e 80BD     		pop	{r7, pc}
+ 673              	.L51:
+ 674              		.align	2
+ 675              	.L50:
+ 676 0010 44100F40 		.word	1074729028
+ 677              		.cfi_endproc
+ 678              	.LFE16:
+ 679              		.size	ledDimmer_ReadCompare, .-ledDimmer_ReadCompare
+ 680              		.section	.text.ledDimmer_ReadPeriod,"ax",%progbits
+ 681              		.align	2
+ 682              		.global	ledDimmer_ReadPeriod
+ 683              		.code	16
+ 684              		.thumb_func
+ 685              		.type	ledDimmer_ReadPeriod, %function
+ 686              	ledDimmer_ReadPeriod:
+ 687              	.LFB17:
+ 824:Generated_Source\PSoC4/ledDimmer.c **** 
+ 825:Generated_Source\PSoC4/ledDimmer.c **** #else
+ 826:Generated_Source\PSoC4/ledDimmer.c **** 
+ 827:Generated_Source\PSoC4/ledDimmer.c **** 
+ 828:Generated_Source\PSoC4/ledDimmer.c ****     /*******************************************************************************
+ 829:Generated_Source\PSoC4/ledDimmer.c ****     * Function Name: ledDimmer_ReadCompare1
+ 830:Generated_Source\PSoC4/ledDimmer.c ****     ********************************************************************************
+ 831:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 832:Generated_Source\PSoC4/ledDimmer.c ****     * Summary:
+ 833:Generated_Source\PSoC4/ledDimmer.c ****     *  Reads the compare value for the compare1 output.
+ 834:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 835:Generated_Source\PSoC4/ledDimmer.c ****     * Parameters:
+ 836:Generated_Source\PSoC4/ledDimmer.c ****     *  None
+ 837:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 838:Generated_Source\PSoC4/ledDimmer.c ****     * Return:
+ 839:Generated_Source\PSoC4/ledDimmer.c ****     *  uint8/uint16: Current compare value.
+ 840:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 841:Generated_Source\PSoC4/ledDimmer.c ****     *******************************************************************************/
+ 842:Generated_Source\PSoC4/ledDimmer.c ****     uint16 ledDimmer_ReadCompare1(void) 
+ 843:Generated_Source\PSoC4/ledDimmer.c ****     {
+ 844:Generated_Source\PSoC4/ledDimmer.c ****         return (CY_GET_REG16(ledDimmer_COMPARE1_LSB_PTR));
+ 845:Generated_Source\PSoC4/ledDimmer.c ****     }
+ 846:Generated_Source\PSoC4/ledDimmer.c **** 
+ 847:Generated_Source\PSoC4/ledDimmer.c **** 
+ 848:Generated_Source\PSoC4/ledDimmer.c ****     /*******************************************************************************
+ 849:Generated_Source\PSoC4/ledDimmer.c ****     * Function Name: ledDimmer_ReadCompare2
+ 850:Generated_Source\PSoC4/ledDimmer.c ****     ********************************************************************************
+ 851:Generated_Source\PSoC4/ledDimmer.c ****     *
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 28
+
+
+ 852:Generated_Source\PSoC4/ledDimmer.c ****     * Summary:
+ 853:Generated_Source\PSoC4/ledDimmer.c ****     *  Reads the compare value for the compare2 output.
+ 854:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 855:Generated_Source\PSoC4/ledDimmer.c ****     * Parameters:
+ 856:Generated_Source\PSoC4/ledDimmer.c ****     *  None
+ 857:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 858:Generated_Source\PSoC4/ledDimmer.c ****     * Return:
+ 859:Generated_Source\PSoC4/ledDimmer.c ****     *  uint8/uint16: Current compare value.
+ 860:Generated_Source\PSoC4/ledDimmer.c ****     *
+ 861:Generated_Source\PSoC4/ledDimmer.c ****     *******************************************************************************/
+ 862:Generated_Source\PSoC4/ledDimmer.c ****     uint16 ledDimmer_ReadCompare2(void) 
+ 863:Generated_Source\PSoC4/ledDimmer.c ****     {
+ 864:Generated_Source\PSoC4/ledDimmer.c ****         return (CY_GET_REG16(ledDimmer_COMPARE2_LSB_PTR));
+ 865:Generated_Source\PSoC4/ledDimmer.c ****     }
+ 866:Generated_Source\PSoC4/ledDimmer.c **** 
+ 867:Generated_Source\PSoC4/ledDimmer.c **** #endif /* (ledDimmer_UseOneCompareMode) */
+ 868:Generated_Source\PSoC4/ledDimmer.c **** 
+ 869:Generated_Source\PSoC4/ledDimmer.c **** 
+ 870:Generated_Source\PSoC4/ledDimmer.c **** /*******************************************************************************
+ 871:Generated_Source\PSoC4/ledDimmer.c **** * Function Name: ledDimmer_ReadPeriod
+ 872:Generated_Source\PSoC4/ledDimmer.c **** ********************************************************************************
+ 873:Generated_Source\PSoC4/ledDimmer.c **** *
+ 874:Generated_Source\PSoC4/ledDimmer.c **** * Summary:
+ 875:Generated_Source\PSoC4/ledDimmer.c **** *  Reads the period value used by the PWM hardware.
+ 876:Generated_Source\PSoC4/ledDimmer.c **** *
+ 877:Generated_Source\PSoC4/ledDimmer.c **** * Parameters:
+ 878:Generated_Source\PSoC4/ledDimmer.c **** *  None
+ 879:Generated_Source\PSoC4/ledDimmer.c **** *
+ 880:Generated_Source\PSoC4/ledDimmer.c **** * Return:
+ 881:Generated_Source\PSoC4/ledDimmer.c **** *  uint8/16: Period value
+ 882:Generated_Source\PSoC4/ledDimmer.c **** *
+ 883:Generated_Source\PSoC4/ledDimmer.c **** *******************************************************************************/
+ 884:Generated_Source\PSoC4/ledDimmer.c **** uint16 ledDimmer_ReadPeriod(void) 
+ 885:Generated_Source\PSoC4/ledDimmer.c **** {
+ 688              		.loc 1 885 0
+ 689              		.cfi_startproc
+ 690              		@ args = 0, pretend = 0, frame = 0
+ 691              		@ frame_needed = 1, uses_anonymous_args = 0
+ 692 0000 80B5     		push	{r7, lr}
+ 693              		.cfi_def_cfa_offset 8
+ 694              		.cfi_offset 7, -8
+ 695              		.cfi_offset 14, -4
+ 696 0002 00AF     		add	r7, sp, #0
+ 697              		.cfi_def_cfa_register 7
+ 886:Generated_Source\PSoC4/ledDimmer.c ****     #if(ledDimmer_UsingFixedFunction)
+ 887:Generated_Source\PSoC4/ledDimmer.c ****         return ((uint16)CY_GET_REG16(ledDimmer_PERIOD_LSB_PTR));
+ 888:Generated_Source\PSoC4/ledDimmer.c ****     #else
+ 889:Generated_Source\PSoC4/ledDimmer.c ****         return (CY_GET_REG16(ledDimmer_PERIOD_LSB_PTR));
+ 698              		.loc 1 889 0
+ 699 0004 024B     		ldr	r3, .L54
+ 700 0006 1B88     		ldrh	r3, [r3]
+ 701 0008 9BB2     		uxth	r3, r3
+ 890:Generated_Source\PSoC4/ledDimmer.c ****     #endif /* (ledDimmer_UsingFixedFunction) */
+ 891:Generated_Source\PSoC4/ledDimmer.c **** }
+ 702              		.loc 1 891 0
+ 703 000a 1800     		movs	r0, r3
+ 704 000c BD46     		mov	sp, r7
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 29
+
+
+ 705              		@ sp needed
+ 706 000e 80BD     		pop	{r7, pc}
+ 707              	.L55:
+ 708              		.align	2
+ 709              	.L54:
+ 710 0010 84100F40 		.word	1074729092
+ 711              		.cfi_endproc
+ 712              	.LFE17:
+ 713              		.size	ledDimmer_ReadPeriod, .-ledDimmer_ReadPeriod
+ 714              		.text
+ 715              	.Letext0:
+ 716              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 717              		.section	.debug_info,"",%progbits
+ 718              	.Ldebug_info0:
+ 719 0000 A3020000 		.4byte	0x2a3
+ 720 0004 0400     		.2byte	0x4
+ 721 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 722 000a 04       		.byte	0x4
+ 723 000b 01       		.uleb128 0x1
+ 724 000c 4E010000 		.4byte	.LASF41
+ 725 0010 0C       		.byte	0xc
+ 726 0011 03020000 		.4byte	.LASF42
+ 727 0015 66000000 		.4byte	.LASF43
+ 728 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 729 001d 00000000 		.4byte	0
+ 730 0021 00000000 		.4byte	.Ldebug_line0
+ 731 0025 02       		.uleb128 0x2
+ 732 0026 01       		.byte	0x1
+ 733 0027 06       		.byte	0x6
+ 734 0028 25030000 		.4byte	.LASF0
+ 735 002c 02       		.uleb128 0x2
+ 736 002d 01       		.byte	0x1
+ 737 002e 08       		.byte	0x8
+ 738 002f 1B010000 		.4byte	.LASF1
+ 739 0033 02       		.uleb128 0x2
+ 740 0034 02       		.byte	0x2
+ 741 0035 05       		.byte	0x5
+ 742 0036 EB020000 		.4byte	.LASF2
+ 743 003a 02       		.uleb128 0x2
+ 744 003b 02       		.byte	0x2
+ 745 003c 07       		.byte	0x7
+ 746 003d 9D000000 		.4byte	.LASF3
+ 747 0041 02       		.uleb128 0x2
+ 748 0042 04       		.byte	0x4
+ 749 0043 05       		.byte	0x5
+ 750 0044 F5020000 		.4byte	.LASF4
+ 751 0048 02       		.uleb128 0x2
+ 752 0049 04       		.byte	0x4
+ 753 004a 07       		.byte	0x7
+ 754 004b 2E010000 		.4byte	.LASF5
+ 755 004f 02       		.uleb128 0x2
+ 756 0050 08       		.byte	0x8
+ 757 0051 05       		.byte	0x5
+ 758 0052 B6020000 		.4byte	.LASF6
+ 759 0056 02       		.uleb128 0x2
+ 760 0057 08       		.byte	0x8
+ 761 0058 07       		.byte	0x7
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 30
+
+
+ 762 0059 7B020000 		.4byte	.LASF7
+ 763 005d 03       		.uleb128 0x3
+ 764 005e 04       		.byte	0x4
+ 765 005f 05       		.byte	0x5
+ 766 0060 696E7400 		.ascii	"int\000"
+ 767 0064 02       		.uleb128 0x2
+ 768 0065 04       		.byte	0x4
+ 769 0066 07       		.byte	0x7
+ 770 0067 5A020000 		.4byte	.LASF8
+ 771 006b 04       		.uleb128 0x4
+ 772 006c 40010000 		.4byte	.LASF9
+ 773 0070 02       		.byte	0x2
+ 774 0071 D201     		.2byte	0x1d2
+ 775 0073 2C000000 		.4byte	0x2c
+ 776 0077 04       		.uleb128 0x4
+ 777 0078 2D020000 		.4byte	.LASF10
+ 778 007c 02       		.byte	0x2
+ 779 007d D301     		.2byte	0x1d3
+ 780 007f 3A000000 		.4byte	0x3a
+ 781 0083 02       		.uleb128 0x2
+ 782 0084 04       		.byte	0x4
+ 783 0085 04       		.byte	0x4
+ 784 0086 F6000000 		.4byte	.LASF11
+ 785 008a 02       		.uleb128 0x2
+ 786 008b 08       		.byte	0x8
+ 787 008c 04       		.byte	0x4
+ 788 008d 26020000 		.4byte	.LASF12
+ 789 0091 02       		.uleb128 0x2
+ 790 0092 01       		.byte	0x1
+ 791 0093 08       		.byte	0x8
+ 792 0094 FE020000 		.4byte	.LASF13
+ 793 0098 04       		.uleb128 0x4
+ 794 0099 29010000 		.4byte	.LASF14
+ 795 009d 02       		.byte	0x2
+ 796 009e 7C02     		.2byte	0x27c
+ 797 00a0 A4000000 		.4byte	0xa4
+ 798 00a4 05       		.uleb128 0x5
+ 799 00a5 6B000000 		.4byte	0x6b
+ 800 00a9 04       		.uleb128 0x4
+ 801 00aa 00000000 		.4byte	.LASF15
+ 802 00ae 02       		.byte	0x2
+ 803 00af 7D02     		.2byte	0x27d
+ 804 00b1 B5000000 		.4byte	0xb5
+ 805 00b5 05       		.uleb128 0x5
+ 806 00b6 77000000 		.4byte	0x77
+ 807 00ba 02       		.uleb128 0x2
+ 808 00bb 08       		.byte	0x8
+ 809 00bc 04       		.byte	0x4
+ 810 00bd 19030000 		.4byte	.LASF16
+ 811 00c1 02       		.uleb128 0x2
+ 812 00c2 04       		.byte	0x4
+ 813 00c3 07       		.byte	0x7
+ 814 00c4 AD020000 		.4byte	.LASF17
+ 815 00c8 06       		.uleb128 0x6
+ 816 00c9 34020000 		.4byte	.LASF20
+ 817 00cd 01       		.byte	0x1
+ 818 00ce 37       		.byte	0x37
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 31
+
+
+ 819 00cf 00000000 		.4byte	.LFB2
+ 820 00d3 24000000 		.4byte	.LFE2-.LFB2
+ 821 00d7 01       		.uleb128 0x1
+ 822 00d8 9C       		.byte	0x9c
+ 823 00d9 07       		.uleb128 0x7
+ 824 00da 9E020000 		.4byte	.LASF23
+ 825 00de 01       		.byte	0x1
+ 826 00df 54       		.byte	0x54
+ 827 00e0 00000000 		.4byte	.LFB3
+ 828 00e4 A0000000 		.4byte	.LFE3-.LFB3
+ 829 00e8 01       		.uleb128 0x1
+ 830 00e9 9C       		.byte	0x9c
+ 831 00ea 0B010000 		.4byte	0x10b
+ 832 00ee 08       		.uleb128 0x8
+ 833 00ef 99020000 		.4byte	.LASF18
+ 834 00f3 01       		.byte	0x1
+ 835 00f4 57       		.byte	0x57
+ 836 00f5 6B000000 		.4byte	0x6b
+ 837 00f9 02       		.uleb128 0x2
+ 838 00fa 91       		.byte	0x91
+ 839 00fb 6F       		.sleb128 -17
+ 840 00fc 08       		.uleb128 0x8
+ 841 00fd D2020000 		.4byte	.LASF19
+ 842 0101 01       		.byte	0x1
+ 843 0102 5D       		.byte	0x5d
+ 844 0103 6B000000 		.4byte	0x6b
+ 845 0107 02       		.uleb128 0x2
+ 846 0108 91       		.byte	0x91
+ 847 0109 6E       		.sleb128 -18
+ 848 010a 00       		.byte	0
+ 849 010b 09       		.uleb128 0x9
+ 850 010c B0000000 		.4byte	.LASF21
+ 851 0110 01       		.byte	0x1
+ 852 0111 C7       		.byte	0xc7
+ 853 0112 00000000 		.4byte	.LFB4
+ 854 0116 20000000 		.4byte	.LFE4-.LFB4
+ 855 011a 01       		.uleb128 0x1
+ 856 011b 9C       		.byte	0x9c
+ 857 011c 09       		.uleb128 0x9
+ 858 011d 24000000 		.4byte	.LASF22
+ 859 0121 01       		.byte	0x1
+ 860 0122 E9       		.byte	0xe9
+ 861 0123 00000000 		.4byte	.LFB5
+ 862 0127 20000000 		.4byte	.LFE5-.LFB5
+ 863 012b 01       		.uleb128 0x1
+ 864 012c 9C       		.byte	0x9c
+ 865 012d 0A       		.uleb128 0xa
+ 866 012e 04010000 		.4byte	.LASF24
+ 867 0132 01       		.byte	0x1
+ 868 0133 9301     		.2byte	0x193
+ 869 0135 00000000 		.4byte	.LFB6
+ 870 0139 20000000 		.4byte	.LFE6-.LFB6
+ 871 013d 01       		.uleb128 0x1
+ 872 013e 9C       		.byte	0x9c
+ 873 013f 53010000 		.4byte	0x153
+ 874 0143 0B       		.uleb128 0xb
+ 875 0144 FC000000 		.4byte	.LASF27
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 32
+
+
+ 876 0148 01       		.byte	0x1
+ 877 0149 9301     		.2byte	0x193
+ 878 014b 77000000 		.4byte	0x77
+ 879 014f 02       		.uleb128 0x2
+ 880 0150 91       		.byte	0x91
+ 881 0151 76       		.sleb128 -10
+ 882 0152 00       		.byte	0
+ 883 0153 0C       		.uleb128 0xc
+ 884 0154 E0000000 		.4byte	.LASF33
+ 885 0158 01       		.byte	0x1
+ 886 0159 A901     		.2byte	0x1a9
+ 887 015b 77000000 		.4byte	0x77
+ 888 015f 00000000 		.4byte	.LFB7
+ 889 0163 1C000000 		.4byte	.LFE7-.LFB7
+ 890 0167 01       		.uleb128 0x1
+ 891 0168 9C       		.byte	0x9c
+ 892 0169 0D       		.uleb128 0xd
+ 893 016a 67020000 		.4byte	.LASF25
+ 894 016e 01       		.byte	0x1
+ 895 016f C501     		.2byte	0x1c5
+ 896 0171 00000000 		.4byte	.LFB8
+ 897 0175 1E000000 		.4byte	.LFE8-.LFB8
+ 898 0179 01       		.uleb128 0x1
+ 899 017a 9C       		.byte	0x9c
+ 900 017b 0A       		.uleb128 0xa
+ 901 017c 44020000 		.4byte	.LASF26
+ 902 0180 01       		.byte	0x1
+ 903 0181 E201     		.2byte	0x1e2
+ 904 0183 00000000 		.4byte	.LFB9
+ 905 0187 20000000 		.4byte	.LFE9-.LFB9
+ 906 018b 01       		.uleb128 0x1
+ 907 018c 9C       		.byte	0x9c
+ 908 018d A1010000 		.4byte	0x1a1
+ 909 0191 0B       		.uleb128 0xb
+ 910 0192 96000000 		.4byte	.LASF28
+ 911 0196 01       		.byte	0x1
+ 912 0197 E201     		.2byte	0x1e2
+ 913 0199 77000000 		.4byte	0x77
+ 914 019d 02       		.uleb128 0x2
+ 915 019e 91       		.byte	0x91
+ 916 019f 76       		.sleb128 -10
+ 917 01a0 00       		.byte	0
+ 918 01a1 0A       		.uleb128 0xa
+ 919 01a2 39030000 		.4byte	.LASF29
+ 920 01a6 01       		.byte	0x1
+ 921 01a7 0402     		.2byte	0x204
+ 922 01a9 00000000 		.4byte	.LFB10
+ 923 01ad 20000000 		.4byte	.LFE10-.LFB10
+ 924 01b1 01       		.uleb128 0x1
+ 925 01b2 9C       		.byte	0x9c
+ 926 01b3 C7010000 		.4byte	0x1c7
+ 927 01b7 0B       		.uleb128 0xb
+ 928 01b8 31030000 		.4byte	.LASF30
+ 929 01bc 01       		.byte	0x1
+ 930 01bd 0402     		.2byte	0x204
+ 931 01bf 77000000 		.4byte	0x77
+ 932 01c3 02       		.uleb128 0x2
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 33
+
+
+ 933 01c4 91       		.byte	0x91
+ 934 01c5 76       		.sleb128 -10
+ 935 01c6 00       		.byte	0
+ 936 01c7 0A       		.uleb128 0xa
+ 937 01c8 50030000 		.4byte	.LASF31
+ 938 01cc 01       		.byte	0x1
+ 939 01cd AC02     		.2byte	0x2ac
+ 940 01cf 00000000 		.4byte	.LFB11
+ 941 01d3 20000000 		.4byte	.LFE11-.LFB11
+ 942 01d7 01       		.uleb128 0x1
+ 943 01d8 9C       		.byte	0x9c
+ 944 01d9 ED010000 		.4byte	0x1ed
+ 945 01dd 0B       		.uleb128 0xb
+ 946 01de C4020000 		.4byte	.LASF32
+ 947 01e2 01       		.byte	0x1
+ 948 01e3 AC02     		.2byte	0x2ac
+ 949 01e5 6B000000 		.4byte	0x6b
+ 950 01e9 02       		.uleb128 0x2
+ 951 01ea 91       		.byte	0x91
+ 952 01eb 77       		.sleb128 -9
+ 953 01ec 00       		.byte	0
+ 954 01ed 0C       		.uleb128 0xc
+ 955 01ee 49000000 		.4byte	.LASF34
+ 956 01f2 01       		.byte	0x1
+ 957 01f3 C702     		.2byte	0x2c7
+ 958 01f5 6B000000 		.4byte	0x6b
+ 959 01f9 00000000 		.4byte	.LFB12
+ 960 01fd 14000000 		.4byte	.LFE12-.LFB12
+ 961 0201 01       		.uleb128 0x1
+ 962 0202 9C       		.byte	0x9c
+ 963 0203 0E       		.uleb128 0xe
+ 964 0204 06000000 		.4byte	.LASF44
+ 965 0208 01       		.byte	0x1
+ 966 0209 E102     		.2byte	0x2e1
+ 967 020b 6B000000 		.4byte	0x6b
+ 968 020f 00000000 		.4byte	.LFB13
+ 969 0213 20000000 		.4byte	.LFE13-.LFB13
+ 970 0217 01       		.uleb128 0x1
+ 971 0218 9C       		.byte	0x9c
+ 972 0219 2D020000 		.4byte	0x22d
+ 973 021d 0F       		.uleb128 0xf
+ 974 021e 92020000 		.4byte	.LASF35
+ 975 0222 01       		.byte	0x1
+ 976 0223 E302     		.2byte	0x2e3
+ 977 0225 6B000000 		.4byte	0x6b
+ 978 0229 02       		.uleb128 0x2
+ 979 022a 91       		.byte	0x91
+ 980 022b 77       		.sleb128 -9
+ 981 022c 00       		.byte	0
+ 982 022d 0A       		.uleb128 0xa
+ 983 022e C1000000 		.4byte	.LASF36
+ 984 0232 01       		.byte	0x1
+ 985 0233 FD02     		.2byte	0x2fd
+ 986 0235 00000000 		.4byte	.LFB14
+ 987 0239 20000000 		.4byte	.LFE14-.LFB14
+ 988 023d 01       		.uleb128 0x1
+ 989 023e 9C       		.byte	0x9c
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 34
+
+
+ 990 023f 53020000 		.4byte	0x253
+ 991 0243 0B       		.uleb128 0xb
+ 992 0244 46010000 		.4byte	.LASF37
+ 993 0248 01       		.byte	0x1
+ 994 0249 FD02     		.2byte	0x2fd
+ 995 024b 6B000000 		.4byte	0x6b
+ 996 024f 02       		.uleb128 0x2
+ 997 0250 91       		.byte	0x91
+ 998 0251 77       		.sleb128 -9
+ 999 0252 00       		.byte	0
+ 1000 0253 0C       		.uleb128 0xc
+ 1001 0254 33000000 		.4byte	.LASF38
+ 1002 0258 01       		.byte	0x1
+ 1003 0259 1603     		.2byte	0x316
+ 1004 025b 77000000 		.4byte	0x77
+ 1005 025f 00000000 		.4byte	.LFB15
+ 1006 0263 14000000 		.4byte	.LFE15-.LFB15
+ 1007 0267 01       		.uleb128 0x1
+ 1008 0268 9C       		.byte	0x9c
+ 1009 0269 0C       		.uleb128 0xc
+ 1010 026a 03030000 		.4byte	.LASF39
+ 1011 026e 01       		.byte	0x1
+ 1012 026f 3003     		.2byte	0x330
+ 1013 0271 77000000 		.4byte	0x77
+ 1014 0275 00000000 		.4byte	.LFB16
+ 1015 0279 14000000 		.4byte	.LFE16-.LFB16
+ 1016 027d 01       		.uleb128 0x1
+ 1017 027e 9C       		.byte	0x9c
+ 1018 027f 0C       		.uleb128 0xc
+ 1019 0280 DC010000 		.4byte	.LASF40
+ 1020 0284 01       		.byte	0x1
+ 1021 0285 7403     		.2byte	0x374
+ 1022 0287 77000000 		.4byte	0x77
+ 1023 028b 00000000 		.4byte	.LFB17
+ 1024 028f 14000000 		.4byte	.LFE17-.LFB17
+ 1025 0293 01       		.uleb128 0x1
+ 1026 0294 9C       		.byte	0x9c
+ 1027 0295 10       		.uleb128 0x10
+ 1028 0296 F1010000 		.4byte	.LASF45
+ 1029 029a 01       		.byte	0x1
+ 1030 029b 20       		.byte	0x20
+ 1031 029c 6B000000 		.4byte	0x6b
+ 1032 02a0 05       		.uleb128 0x5
+ 1033 02a1 03       		.byte	0x3
+ 1034 02a2 00000000 		.4byte	ledDimmer_initVar
+ 1035 02a6 00       		.byte	0
+ 1036              		.section	.debug_abbrev,"",%progbits
+ 1037              	.Ldebug_abbrev0:
+ 1038 0000 01       		.uleb128 0x1
+ 1039 0001 11       		.uleb128 0x11
+ 1040 0002 01       		.byte	0x1
+ 1041 0003 25       		.uleb128 0x25
+ 1042 0004 0E       		.uleb128 0xe
+ 1043 0005 13       		.uleb128 0x13
+ 1044 0006 0B       		.uleb128 0xb
+ 1045 0007 03       		.uleb128 0x3
+ 1046 0008 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 35
+
+
+ 1047 0009 1B       		.uleb128 0x1b
+ 1048 000a 0E       		.uleb128 0xe
+ 1049 000b 55       		.uleb128 0x55
+ 1050 000c 17       		.uleb128 0x17
+ 1051 000d 11       		.uleb128 0x11
+ 1052 000e 01       		.uleb128 0x1
+ 1053 000f 10       		.uleb128 0x10
+ 1054 0010 17       		.uleb128 0x17
+ 1055 0011 00       		.byte	0
+ 1056 0012 00       		.byte	0
+ 1057 0013 02       		.uleb128 0x2
+ 1058 0014 24       		.uleb128 0x24
+ 1059 0015 00       		.byte	0
+ 1060 0016 0B       		.uleb128 0xb
+ 1061 0017 0B       		.uleb128 0xb
+ 1062 0018 3E       		.uleb128 0x3e
+ 1063 0019 0B       		.uleb128 0xb
+ 1064 001a 03       		.uleb128 0x3
+ 1065 001b 0E       		.uleb128 0xe
+ 1066 001c 00       		.byte	0
+ 1067 001d 00       		.byte	0
+ 1068 001e 03       		.uleb128 0x3
+ 1069 001f 24       		.uleb128 0x24
+ 1070 0020 00       		.byte	0
+ 1071 0021 0B       		.uleb128 0xb
+ 1072 0022 0B       		.uleb128 0xb
+ 1073 0023 3E       		.uleb128 0x3e
+ 1074 0024 0B       		.uleb128 0xb
+ 1075 0025 03       		.uleb128 0x3
+ 1076 0026 08       		.uleb128 0x8
+ 1077 0027 00       		.byte	0
+ 1078 0028 00       		.byte	0
+ 1079 0029 04       		.uleb128 0x4
+ 1080 002a 16       		.uleb128 0x16
+ 1081 002b 00       		.byte	0
+ 1082 002c 03       		.uleb128 0x3
+ 1083 002d 0E       		.uleb128 0xe
+ 1084 002e 3A       		.uleb128 0x3a
+ 1085 002f 0B       		.uleb128 0xb
+ 1086 0030 3B       		.uleb128 0x3b
+ 1087 0031 05       		.uleb128 0x5
+ 1088 0032 49       		.uleb128 0x49
+ 1089 0033 13       		.uleb128 0x13
+ 1090 0034 00       		.byte	0
+ 1091 0035 00       		.byte	0
+ 1092 0036 05       		.uleb128 0x5
+ 1093 0037 35       		.uleb128 0x35
+ 1094 0038 00       		.byte	0
+ 1095 0039 49       		.uleb128 0x49
+ 1096 003a 13       		.uleb128 0x13
+ 1097 003b 00       		.byte	0
+ 1098 003c 00       		.byte	0
+ 1099 003d 06       		.uleb128 0x6
+ 1100 003e 2E       		.uleb128 0x2e
+ 1101 003f 00       		.byte	0
+ 1102 0040 3F       		.uleb128 0x3f
+ 1103 0041 19       		.uleb128 0x19
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 36
+
+
+ 1104 0042 03       		.uleb128 0x3
+ 1105 0043 0E       		.uleb128 0xe
+ 1106 0044 3A       		.uleb128 0x3a
+ 1107 0045 0B       		.uleb128 0xb
+ 1108 0046 3B       		.uleb128 0x3b
+ 1109 0047 0B       		.uleb128 0xb
+ 1110 0048 27       		.uleb128 0x27
+ 1111 0049 19       		.uleb128 0x19
+ 1112 004a 11       		.uleb128 0x11
+ 1113 004b 01       		.uleb128 0x1
+ 1114 004c 12       		.uleb128 0x12
+ 1115 004d 06       		.uleb128 0x6
+ 1116 004e 40       		.uleb128 0x40
+ 1117 004f 18       		.uleb128 0x18
+ 1118 0050 9642     		.uleb128 0x2116
+ 1119 0052 19       		.uleb128 0x19
+ 1120 0053 00       		.byte	0
+ 1121 0054 00       		.byte	0
+ 1122 0055 07       		.uleb128 0x7
+ 1123 0056 2E       		.uleb128 0x2e
+ 1124 0057 01       		.byte	0x1
+ 1125 0058 3F       		.uleb128 0x3f
+ 1126 0059 19       		.uleb128 0x19
+ 1127 005a 03       		.uleb128 0x3
+ 1128 005b 0E       		.uleb128 0xe
+ 1129 005c 3A       		.uleb128 0x3a
+ 1130 005d 0B       		.uleb128 0xb
+ 1131 005e 3B       		.uleb128 0x3b
+ 1132 005f 0B       		.uleb128 0xb
+ 1133 0060 27       		.uleb128 0x27
+ 1134 0061 19       		.uleb128 0x19
+ 1135 0062 11       		.uleb128 0x11
+ 1136 0063 01       		.uleb128 0x1
+ 1137 0064 12       		.uleb128 0x12
+ 1138 0065 06       		.uleb128 0x6
+ 1139 0066 40       		.uleb128 0x40
+ 1140 0067 18       		.uleb128 0x18
+ 1141 0068 9642     		.uleb128 0x2116
+ 1142 006a 19       		.uleb128 0x19
+ 1143 006b 01       		.uleb128 0x1
+ 1144 006c 13       		.uleb128 0x13
+ 1145 006d 00       		.byte	0
+ 1146 006e 00       		.byte	0
+ 1147 006f 08       		.uleb128 0x8
+ 1148 0070 34       		.uleb128 0x34
+ 1149 0071 00       		.byte	0
+ 1150 0072 03       		.uleb128 0x3
+ 1151 0073 0E       		.uleb128 0xe
+ 1152 0074 3A       		.uleb128 0x3a
+ 1153 0075 0B       		.uleb128 0xb
+ 1154 0076 3B       		.uleb128 0x3b
+ 1155 0077 0B       		.uleb128 0xb
+ 1156 0078 49       		.uleb128 0x49
+ 1157 0079 13       		.uleb128 0x13
+ 1158 007a 02       		.uleb128 0x2
+ 1159 007b 18       		.uleb128 0x18
+ 1160 007c 00       		.byte	0
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 37
+
+
+ 1161 007d 00       		.byte	0
+ 1162 007e 09       		.uleb128 0x9
+ 1163 007f 2E       		.uleb128 0x2e
+ 1164 0080 00       		.byte	0
+ 1165 0081 3F       		.uleb128 0x3f
+ 1166 0082 19       		.uleb128 0x19
+ 1167 0083 03       		.uleb128 0x3
+ 1168 0084 0E       		.uleb128 0xe
+ 1169 0085 3A       		.uleb128 0x3a
+ 1170 0086 0B       		.uleb128 0xb
+ 1171 0087 3B       		.uleb128 0x3b
+ 1172 0088 0B       		.uleb128 0xb
+ 1173 0089 27       		.uleb128 0x27
+ 1174 008a 19       		.uleb128 0x19
+ 1175 008b 11       		.uleb128 0x11
+ 1176 008c 01       		.uleb128 0x1
+ 1177 008d 12       		.uleb128 0x12
+ 1178 008e 06       		.uleb128 0x6
+ 1179 008f 40       		.uleb128 0x40
+ 1180 0090 18       		.uleb128 0x18
+ 1181 0091 9742     		.uleb128 0x2117
+ 1182 0093 19       		.uleb128 0x19
+ 1183 0094 00       		.byte	0
+ 1184 0095 00       		.byte	0
+ 1185 0096 0A       		.uleb128 0xa
+ 1186 0097 2E       		.uleb128 0x2e
+ 1187 0098 01       		.byte	0x1
+ 1188 0099 3F       		.uleb128 0x3f
+ 1189 009a 19       		.uleb128 0x19
+ 1190 009b 03       		.uleb128 0x3
+ 1191 009c 0E       		.uleb128 0xe
+ 1192 009d 3A       		.uleb128 0x3a
+ 1193 009e 0B       		.uleb128 0xb
+ 1194 009f 3B       		.uleb128 0x3b
+ 1195 00a0 05       		.uleb128 0x5
+ 1196 00a1 27       		.uleb128 0x27
+ 1197 00a2 19       		.uleb128 0x19
+ 1198 00a3 11       		.uleb128 0x11
+ 1199 00a4 01       		.uleb128 0x1
+ 1200 00a5 12       		.uleb128 0x12
+ 1201 00a6 06       		.uleb128 0x6
+ 1202 00a7 40       		.uleb128 0x40
+ 1203 00a8 18       		.uleb128 0x18
+ 1204 00a9 9742     		.uleb128 0x2117
+ 1205 00ab 19       		.uleb128 0x19
+ 1206 00ac 01       		.uleb128 0x1
+ 1207 00ad 13       		.uleb128 0x13
+ 1208 00ae 00       		.byte	0
+ 1209 00af 00       		.byte	0
+ 1210 00b0 0B       		.uleb128 0xb
+ 1211 00b1 05       		.uleb128 0x5
+ 1212 00b2 00       		.byte	0
+ 1213 00b3 03       		.uleb128 0x3
+ 1214 00b4 0E       		.uleb128 0xe
+ 1215 00b5 3A       		.uleb128 0x3a
+ 1216 00b6 0B       		.uleb128 0xb
+ 1217 00b7 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 38
+
+
+ 1218 00b8 05       		.uleb128 0x5
+ 1219 00b9 49       		.uleb128 0x49
+ 1220 00ba 13       		.uleb128 0x13
+ 1221 00bb 02       		.uleb128 0x2
+ 1222 00bc 18       		.uleb128 0x18
+ 1223 00bd 00       		.byte	0
+ 1224 00be 00       		.byte	0
+ 1225 00bf 0C       		.uleb128 0xc
+ 1226 00c0 2E       		.uleb128 0x2e
+ 1227 00c1 00       		.byte	0
+ 1228 00c2 3F       		.uleb128 0x3f
+ 1229 00c3 19       		.uleb128 0x19
+ 1230 00c4 03       		.uleb128 0x3
+ 1231 00c5 0E       		.uleb128 0xe
+ 1232 00c6 3A       		.uleb128 0x3a
+ 1233 00c7 0B       		.uleb128 0xb
+ 1234 00c8 3B       		.uleb128 0x3b
+ 1235 00c9 05       		.uleb128 0x5
+ 1236 00ca 27       		.uleb128 0x27
+ 1237 00cb 19       		.uleb128 0x19
+ 1238 00cc 49       		.uleb128 0x49
+ 1239 00cd 13       		.uleb128 0x13
+ 1240 00ce 11       		.uleb128 0x11
+ 1241 00cf 01       		.uleb128 0x1
+ 1242 00d0 12       		.uleb128 0x12
+ 1243 00d1 06       		.uleb128 0x6
+ 1244 00d2 40       		.uleb128 0x40
+ 1245 00d3 18       		.uleb128 0x18
+ 1246 00d4 9742     		.uleb128 0x2117
+ 1247 00d6 19       		.uleb128 0x19
+ 1248 00d7 00       		.byte	0
+ 1249 00d8 00       		.byte	0
+ 1250 00d9 0D       		.uleb128 0xd
+ 1251 00da 2E       		.uleb128 0x2e
+ 1252 00db 00       		.byte	0
+ 1253 00dc 3F       		.uleb128 0x3f
+ 1254 00dd 19       		.uleb128 0x19
+ 1255 00de 03       		.uleb128 0x3
+ 1256 00df 0E       		.uleb128 0xe
+ 1257 00e0 3A       		.uleb128 0x3a
+ 1258 00e1 0B       		.uleb128 0xb
+ 1259 00e2 3B       		.uleb128 0x3b
+ 1260 00e3 05       		.uleb128 0x5
+ 1261 00e4 27       		.uleb128 0x27
+ 1262 00e5 19       		.uleb128 0x19
+ 1263 00e6 11       		.uleb128 0x11
+ 1264 00e7 01       		.uleb128 0x1
+ 1265 00e8 12       		.uleb128 0x12
+ 1266 00e9 06       		.uleb128 0x6
+ 1267 00ea 40       		.uleb128 0x40
+ 1268 00eb 18       		.uleb128 0x18
+ 1269 00ec 9642     		.uleb128 0x2116
+ 1270 00ee 19       		.uleb128 0x19
+ 1271 00ef 00       		.byte	0
+ 1272 00f0 00       		.byte	0
+ 1273 00f1 0E       		.uleb128 0xe
+ 1274 00f2 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 39
+
+
+ 1275 00f3 01       		.byte	0x1
+ 1276 00f4 3F       		.uleb128 0x3f
+ 1277 00f5 19       		.uleb128 0x19
+ 1278 00f6 03       		.uleb128 0x3
+ 1279 00f7 0E       		.uleb128 0xe
+ 1280 00f8 3A       		.uleb128 0x3a
+ 1281 00f9 0B       		.uleb128 0xb
+ 1282 00fa 3B       		.uleb128 0x3b
+ 1283 00fb 05       		.uleb128 0x5
+ 1284 00fc 27       		.uleb128 0x27
+ 1285 00fd 19       		.uleb128 0x19
+ 1286 00fe 49       		.uleb128 0x49
+ 1287 00ff 13       		.uleb128 0x13
+ 1288 0100 11       		.uleb128 0x11
+ 1289 0101 01       		.uleb128 0x1
+ 1290 0102 12       		.uleb128 0x12
+ 1291 0103 06       		.uleb128 0x6
+ 1292 0104 40       		.uleb128 0x40
+ 1293 0105 18       		.uleb128 0x18
+ 1294 0106 9742     		.uleb128 0x2117
+ 1295 0108 19       		.uleb128 0x19
+ 1296 0109 01       		.uleb128 0x1
+ 1297 010a 13       		.uleb128 0x13
+ 1298 010b 00       		.byte	0
+ 1299 010c 00       		.byte	0
+ 1300 010d 0F       		.uleb128 0xf
+ 1301 010e 34       		.uleb128 0x34
+ 1302 010f 00       		.byte	0
+ 1303 0110 03       		.uleb128 0x3
+ 1304 0111 0E       		.uleb128 0xe
+ 1305 0112 3A       		.uleb128 0x3a
+ 1306 0113 0B       		.uleb128 0xb
+ 1307 0114 3B       		.uleb128 0x3b
+ 1308 0115 05       		.uleb128 0x5
+ 1309 0116 49       		.uleb128 0x49
+ 1310 0117 13       		.uleb128 0x13
+ 1311 0118 02       		.uleb128 0x2
+ 1312 0119 18       		.uleb128 0x18
+ 1313 011a 00       		.byte	0
+ 1314 011b 00       		.byte	0
+ 1315 011c 10       		.uleb128 0x10
+ 1316 011d 34       		.uleb128 0x34
+ 1317 011e 00       		.byte	0
+ 1318 011f 03       		.uleb128 0x3
+ 1319 0120 0E       		.uleb128 0xe
+ 1320 0121 3A       		.uleb128 0x3a
+ 1321 0122 0B       		.uleb128 0xb
+ 1322 0123 3B       		.uleb128 0x3b
+ 1323 0124 0B       		.uleb128 0xb
+ 1324 0125 49       		.uleb128 0x49
+ 1325 0126 13       		.uleb128 0x13
+ 1326 0127 3F       		.uleb128 0x3f
+ 1327 0128 19       		.uleb128 0x19
+ 1328 0129 02       		.uleb128 0x2
+ 1329 012a 18       		.uleb128 0x18
+ 1330 012b 00       		.byte	0
+ 1331 012c 00       		.byte	0
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 40
+
+
+ 1332 012d 00       		.byte	0
+ 1333              		.section	.debug_aranges,"",%progbits
+ 1334 0000 94000000 		.4byte	0x94
+ 1335 0004 0200     		.2byte	0x2
+ 1336 0006 00000000 		.4byte	.Ldebug_info0
+ 1337 000a 04       		.byte	0x4
+ 1338 000b 00       		.byte	0
+ 1339 000c 0000     		.2byte	0
+ 1340 000e 0000     		.2byte	0
+ 1341 0010 00000000 		.4byte	.LFB2
+ 1342 0014 24000000 		.4byte	.LFE2-.LFB2
+ 1343 0018 00000000 		.4byte	.LFB3
+ 1344 001c A0000000 		.4byte	.LFE3-.LFB3
+ 1345 0020 00000000 		.4byte	.LFB4
+ 1346 0024 20000000 		.4byte	.LFE4-.LFB4
+ 1347 0028 00000000 		.4byte	.LFB5
+ 1348 002c 20000000 		.4byte	.LFE5-.LFB5
+ 1349 0030 00000000 		.4byte	.LFB6
+ 1350 0034 20000000 		.4byte	.LFE6-.LFB6
+ 1351 0038 00000000 		.4byte	.LFB7
+ 1352 003c 1C000000 		.4byte	.LFE7-.LFB7
+ 1353 0040 00000000 		.4byte	.LFB8
+ 1354 0044 1E000000 		.4byte	.LFE8-.LFB8
+ 1355 0048 00000000 		.4byte	.LFB9
+ 1356 004c 20000000 		.4byte	.LFE9-.LFB9
+ 1357 0050 00000000 		.4byte	.LFB10
+ 1358 0054 20000000 		.4byte	.LFE10-.LFB10
+ 1359 0058 00000000 		.4byte	.LFB11
+ 1360 005c 20000000 		.4byte	.LFE11-.LFB11
+ 1361 0060 00000000 		.4byte	.LFB12
+ 1362 0064 14000000 		.4byte	.LFE12-.LFB12
+ 1363 0068 00000000 		.4byte	.LFB13
+ 1364 006c 20000000 		.4byte	.LFE13-.LFB13
+ 1365 0070 00000000 		.4byte	.LFB14
+ 1366 0074 20000000 		.4byte	.LFE14-.LFB14
+ 1367 0078 00000000 		.4byte	.LFB15
+ 1368 007c 14000000 		.4byte	.LFE15-.LFB15
+ 1369 0080 00000000 		.4byte	.LFB16
+ 1370 0084 14000000 		.4byte	.LFE16-.LFB16
+ 1371 0088 00000000 		.4byte	.LFB17
+ 1372 008c 14000000 		.4byte	.LFE17-.LFB17
+ 1373 0090 00000000 		.4byte	0
+ 1374 0094 00000000 		.4byte	0
+ 1375              		.section	.debug_ranges,"",%progbits
+ 1376              	.Ldebug_ranges0:
+ 1377 0000 00000000 		.4byte	.LFB2
+ 1378 0004 24000000 		.4byte	.LFE2
+ 1379 0008 00000000 		.4byte	.LFB3
+ 1380 000c A0000000 		.4byte	.LFE3
+ 1381 0010 00000000 		.4byte	.LFB4
+ 1382 0014 20000000 		.4byte	.LFE4
+ 1383 0018 00000000 		.4byte	.LFB5
+ 1384 001c 20000000 		.4byte	.LFE5
+ 1385 0020 00000000 		.4byte	.LFB6
+ 1386 0024 20000000 		.4byte	.LFE6
+ 1387 0028 00000000 		.4byte	.LFB7
+ 1388 002c 1C000000 		.4byte	.LFE7
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 41
+
+
+ 1389 0030 00000000 		.4byte	.LFB8
+ 1390 0034 1E000000 		.4byte	.LFE8
+ 1391 0038 00000000 		.4byte	.LFB9
+ 1392 003c 20000000 		.4byte	.LFE9
+ 1393 0040 00000000 		.4byte	.LFB10
+ 1394 0044 20000000 		.4byte	.LFE10
+ 1395 0048 00000000 		.4byte	.LFB11
+ 1396 004c 20000000 		.4byte	.LFE11
+ 1397 0050 00000000 		.4byte	.LFB12
+ 1398 0054 14000000 		.4byte	.LFE12
+ 1399 0058 00000000 		.4byte	.LFB13
+ 1400 005c 20000000 		.4byte	.LFE13
+ 1401 0060 00000000 		.4byte	.LFB14
+ 1402 0064 20000000 		.4byte	.LFE14
+ 1403 0068 00000000 		.4byte	.LFB15
+ 1404 006c 14000000 		.4byte	.LFE15
+ 1405 0070 00000000 		.4byte	.LFB16
+ 1406 0074 14000000 		.4byte	.LFE16
+ 1407 0078 00000000 		.4byte	.LFB17
+ 1408 007c 14000000 		.4byte	.LFE17
+ 1409 0080 00000000 		.4byte	0
+ 1410 0084 00000000 		.4byte	0
+ 1411              		.section	.debug_line,"",%progbits
+ 1412              	.Ldebug_line0:
+ 1413 0000 89010000 		.section	.debug_str,"MS",%progbits,1
+ 1413      02004600 
+ 1413      00000201 
+ 1413      FB0E0D00 
+ 1413      01010101 
+ 1414              	.LASF15:
+ 1415 0000 72656731 		.ascii	"reg16\000"
+ 1415      3600
+ 1416              	.LASF44:
+ 1417 0006 6C656444 		.ascii	"ledDimmer_ReadControlRegister\000"
+ 1417      696D6D65 
+ 1417      725F5265 
+ 1417      6164436F 
+ 1417      6E74726F 
+ 1418              	.LASF22:
+ 1419 0024 6C656444 		.ascii	"ledDimmer_Stop\000"
+ 1419      696D6D65 
+ 1419      725F5374 
+ 1419      6F7000
+ 1420              	.LASF38:
+ 1421 0033 6C656444 		.ascii	"ledDimmer_ReadCapture\000"
+ 1421      696D6D65 
+ 1421      725F5265 
+ 1421      61644361 
+ 1421      70747572 
+ 1422              	.LASF34:
+ 1423 0049 6C656444 		.ascii	"ledDimmer_ReadStatusRegister\000"
+ 1423      696D6D65 
+ 1423      725F5265 
+ 1423      61645374 
+ 1423      61747573 
+ 1424              	.LASF43:
+ 1425 0066 433A5C63 		.ascii	"C:\\cypressWorkspace\\CY8C_149KIT\\BLEModule.cydsn\000"
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 42
+
+
+ 1425      79707265 
+ 1425      7373576F 
+ 1425      726B7370 
+ 1425      6163655C 
+ 1426              	.LASF28:
+ 1427 0096 70657269 		.ascii	"period\000"
+ 1427      6F6400
+ 1428              	.LASF3:
+ 1429 009d 73686F72 		.ascii	"short unsigned int\000"
+ 1429      7420756E 
+ 1429      7369676E 
+ 1429      65642069 
+ 1429      6E7400
+ 1430              	.LASF21:
+ 1431 00b0 6C656444 		.ascii	"ledDimmer_Enable\000"
+ 1431      696D6D65 
+ 1431      725F456E 
+ 1431      61626C65 
+ 1431      00
+ 1432              	.LASF36:
+ 1433 00c1 6C656444 		.ascii	"ledDimmer_WriteControlRegister\000"
+ 1433      696D6D65 
+ 1433      725F5772 
+ 1433      69746543 
+ 1433      6F6E7472 
+ 1434              	.LASF33:
+ 1435 00e0 6C656444 		.ascii	"ledDimmer_ReadCounter\000"
+ 1435      696D6D65 
+ 1435      725F5265 
+ 1435      6164436F 
+ 1435      756E7465 
+ 1436              	.LASF11:
+ 1437 00f6 666C6F61 		.ascii	"float\000"
+ 1437      7400
+ 1438              	.LASF27:
+ 1439 00fc 636F756E 		.ascii	"counter\000"
+ 1439      74657200 
+ 1440              	.LASF24:
+ 1441 0104 6C656444 		.ascii	"ledDimmer_WriteCounter\000"
+ 1441      696D6D65 
+ 1441      725F5772 
+ 1441      69746543 
+ 1441      6F756E74 
+ 1442              	.LASF1:
+ 1443 011b 756E7369 		.ascii	"unsigned char\000"
+ 1443      676E6564 
+ 1443      20636861 
+ 1443      7200
+ 1444              	.LASF14:
+ 1445 0129 72656738 		.ascii	"reg8\000"
+ 1445      00
+ 1446              	.LASF5:
+ 1447 012e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1447      20756E73 
+ 1447      69676E65 
+ 1447      6420696E 
+ 1447      7400
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 43
+
+
+ 1448              	.LASF9:
+ 1449 0140 75696E74 		.ascii	"uint8\000"
+ 1449      3800
+ 1450              	.LASF37:
+ 1451 0146 636F6E74 		.ascii	"control\000"
+ 1451      726F6C00 
+ 1452              	.LASF41:
+ 1453 014e 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1453      43313120 
+ 1453      352E342E 
+ 1453      31203230 
+ 1453      31363036 
+ 1454 0181 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1454      20726576 
+ 1454      6973696F 
+ 1454      6E203233 
+ 1454      37373135 
+ 1455 01b4 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1455      66756E63 
+ 1455      74696F6E 
+ 1455      2D736563 
+ 1455      74696F6E 
+ 1456              	.LASF40:
+ 1457 01dc 6C656444 		.ascii	"ledDimmer_ReadPeriod\000"
+ 1457      696D6D65 
+ 1457      725F5265 
+ 1457      61645065 
+ 1457      72696F64 
+ 1458              	.LASF45:
+ 1459 01f1 6C656444 		.ascii	"ledDimmer_initVar\000"
+ 1459      696D6D65 
+ 1459      725F696E 
+ 1459      69745661 
+ 1459      7200
+ 1460              	.LASF42:
+ 1461 0203 47656E65 		.ascii	"Generated_Source\\PSoC4\\ledDimmer.c\000"
+ 1461      72617465 
+ 1461      645F536F 
+ 1461      75726365 
+ 1461      5C50536F 
+ 1462              	.LASF12:
+ 1463 0226 646F7562 		.ascii	"double\000"
+ 1463      6C6500
+ 1464              	.LASF10:
+ 1465 022d 75696E74 		.ascii	"uint16\000"
+ 1465      313600
+ 1466              	.LASF20:
+ 1467 0234 6C656444 		.ascii	"ledDimmer_Start\000"
+ 1467      696D6D65 
+ 1467      725F5374 
+ 1467      61727400 
+ 1468              	.LASF26:
+ 1469 0244 6C656444 		.ascii	"ledDimmer_WritePeriod\000"
+ 1469      696D6D65 
+ 1469      725F5772 
+ 1469      69746550 
+ 1469      6572696F 
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 44
+
+
+ 1470              	.LASF8:
+ 1471 025a 756E7369 		.ascii	"unsigned int\000"
+ 1471      676E6564 
+ 1471      20696E74 
+ 1471      00
+ 1472              	.LASF25:
+ 1473 0267 6C656444 		.ascii	"ledDimmer_ClearFIFO\000"
+ 1473      696D6D65 
+ 1473      725F436C 
+ 1473      65617246 
+ 1473      49464F00 
+ 1474              	.LASF7:
+ 1475 027b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1475      206C6F6E 
+ 1475      6720756E 
+ 1475      7369676E 
+ 1475      65642069 
+ 1476              	.LASF35:
+ 1477 0292 72657375 		.ascii	"result\000"
+ 1477      6C7400
+ 1478              	.LASF18:
+ 1479 0299 6374726C 		.ascii	"ctrl\000"
+ 1479      00
+ 1480              	.LASF23:
+ 1481 029e 6C656444 		.ascii	"ledDimmer_Init\000"
+ 1481      696D6D65 
+ 1481      725F496E 
+ 1481      697400
+ 1482              	.LASF17:
+ 1483 02ad 73697A65 		.ascii	"sizetype\000"
+ 1483      74797065 
+ 1483      00
+ 1484              	.LASF6:
+ 1485 02b6 6C6F6E67 		.ascii	"long long int\000"
+ 1485      206C6F6E 
+ 1485      6720696E 
+ 1485      7400
+ 1486              	.LASF32:
+ 1487 02c4 696E7465 		.ascii	"interruptMode\000"
+ 1487      72727570 
+ 1487      744D6F64 
+ 1487      6500
+ 1488              	.LASF19:
+ 1489 02d2 6C656444 		.ascii	"ledDimmer_interruptState\000"
+ 1489      696D6D65 
+ 1489      725F696E 
+ 1489      74657272 
+ 1489      75707453 
+ 1490              	.LASF2:
+ 1491 02eb 73686F72 		.ascii	"short int\000"
+ 1491      7420696E 
+ 1491      7400
+ 1492              	.LASF4:
+ 1493 02f5 6C6F6E67 		.ascii	"long int\000"
+ 1493      20696E74 
+ 1493      00
+ 1494              	.LASF13:
+ARM GAS  C:\Users\Muneeb\AppData\Local\Temp\ccEHy26d.s 			page 45
+
+
+ 1495 02fe 63686172 		.ascii	"char\000"
+ 1495      00
+ 1496              	.LASF39:
+ 1497 0303 6C656444 		.ascii	"ledDimmer_ReadCompare\000"
+ 1497      696D6D65 
+ 1497      725F5265 
+ 1497      6164436F 
+ 1497      6D706172 
+ 1498              	.LASF16:
+ 1499 0319 6C6F6E67 		.ascii	"long double\000"
+ 1499      20646F75 
+ 1499      626C6500 
+ 1500              	.LASF0:
+ 1501 0325 7369676E 		.ascii	"signed char\000"
+ 1501      65642063 
+ 1501      68617200 
+ 1502              	.LASF30:
+ 1503 0331 636F6D70 		.ascii	"compare\000"
+ 1503      61726500 
+ 1504              	.LASF29:
+ 1505 0339 6C656444 		.ascii	"ledDimmer_WriteCompare\000"
+ 1505      696D6D65 
+ 1505      725F5772 
+ 1505      69746543 
+ 1505      6F6D7061 
+ 1506              	.LASF31:
+ 1507 0350 6C656444 		.ascii	"ledDimmer_SetInterruptMode\000"
+ 1507      696D6D65 
+ 1507      725F5365 
+ 1507      74496E74 
+ 1507      65727275 
+ 1508              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,0 +1,8 @@
+C:\Users\munee\OneDrive\Documents\cypress\CY8C_149KIT\BLEModule.cydsn\BLEModule.cyprj|9f8940ea-cfb9-4961-b989-41b5f34ccd4e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|d0bab3e1-173c-403f-94c2-d3cbfa170f03
+C:\Users\munee\OneDrive\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|10067fdc-583c-4c25-b097-fa1b29c4078e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|4c31b8c0-a1f1-4aa3-8f73-e77a6952d70e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|6c1f6a5e-cc4c-47dd-8e69-c7050c607429
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|e0f5c78a-0c48-4292-a0d7-acbd46b8f4ec
+C:\Users\munee\OneDrive\Documents\cypress\CY8C_149KIT\DebugUARTBridge.cydsn\DebugUARTBridge.cyprj|06a8f694-74d8-4be1-be27-987385119aa2
+C:\Users\munee\OneDrive\Documents\cypress\CY8C_149KIT\HomeAutomation.cydsn\HomeAutomation.cyprj|8856dcbf-4b82-4253-824a-e597ad3b374b

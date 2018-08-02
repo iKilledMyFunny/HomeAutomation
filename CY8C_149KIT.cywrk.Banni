@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="CY8C_149KIT\BLEModule\Source Files\main.c">
+<ExpandedNodeIds>
+<v>CY8C_149KIT</v>
+<v>CY8C_149KIT\BLEModule</v>
+<v>CY8C_149KIT\BLEModule\TopDesign</v>
+<v>CY8C_149KIT\BLEModule\BLEModule.cydwr</v>
+<v>CY8C_149KIT\BLEModule\Header Files</v>
+<v>CY8C_149KIT\BLEModule\Source Files</v>
+<v>CY8C_149KIT\BLEModule\Generated_Source</v>
+<v>CY8C_149KIT\DebugUARTBridge\TopDesign</v>
+<v>CY8C_149KIT\DebugUARTBridge\DebugUARTBridge.cydwr</v>
+<v>CY8C_149KIT\DebugUARTBridge\DebugUARTBridge.cydwr\Pins</v>
+<v>CY8C_149KIT\DebugUARTBridge\DebugUARTBridge.cydwr\Analog</v>
+<v>CY8C_149KIT\DebugUARTBridge\DebugUARTBridge.cydwr\Clocks</v>
+<v>CY8C_149KIT\DebugUARTBridge\DebugUARTBridge.cydwr\Interrupts</v>
+<v>CY8C_149KIT\DebugUARTBridge\DebugUARTBridge.cydwr\System</v>
+<v>CY8C_149KIT\DebugUARTBridge\DebugUARTBridge.cydwr\Directives</v>
+<v>CY8C_149KIT\DebugUARTBridge\DebugUARTBridge.cydwr\Flash Security</v>
+<v>CY8C_149KIT\DebugUARTBridge\Header Files</v>
+<v>CY8C_149KIT\DebugUARTBridge\Header Files\cyapicallbacks.h</v>
+<v>CY8C_149KIT\DebugUARTBridge\Source Files</v>
+<v>CY8C_149KIT\DebugUARTBridge\Source Files\main.c</v>
+<v>CY8C_149KIT\DebugUARTBridge\Generated_Source</v>
+<v>CY8C_149KIT\DebugUARTBridge\Generated_Source\PSoC4</v>
+<v>CY8C_149KIT\HomeAutomation</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>CY8C_149KIT</v>
+<v>CY8C_149KIT\BLEModule</v>
+<v>CY8C_149KIT\BLEModule\TopDesign</v>
+<v>CY8C_149KIT\BLEModule\BLEModule.cydwr</v>
+<v>CY8C_149KIT\BLEModule\BLEModule.cydwr\Pins</v>
+<v>CY8C_149KIT\BLEModule\BLEModule.cydwr\Analog</v>
+<v>CY8C_149KIT\BLEModule\BLEModule.cydwr\Clocks</v>
+<v>CY8C_149KIT\BLEModule\BLEModule.cydwr\Interrupts</v>
+<v>CY8C_149KIT\BLEModule\BLEModule.cydwr\System</v>
+<v>CY8C_149KIT\BLEModule\BLEModule.cydwr\Directives</v>
+<v>CY8C_149KIT\BLEModule\BLEModule.cydwr\Flash Security</v>
+<v>CY8C_149KIT\BLEModule\Header Files</v>
+<v>CY8C_149KIT\BLEModule\Header Files\cyapicallbacks.h</v>
+<v>CY8C_149KIT\BLEModule\Header Files\tiny_printf.h</v>
+<v>CY8C_149KIT\BLEModule\Source Files</v>
+<v>CY8C_149KIT\BLEModule\Source Files\main.c</v>
+<v>CY8C_149KIT\BLEModule\Source Files\tiny_printf.c</v>
+<v>CY8C_149KIT\BLEModule\Generated_Source</v>
+<v>CY8C_149KIT\BLEModule\Generated_Source\PSoC4</v>
+<v>CY8C_149KIT\DebugUARTBridge</v>
+<v>CY8C_149KIT\HomeAutomation</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>CY8C_149KIT</v>
+<v>CY8C_149KIT\DebugUARTBridge</v>
+<v>CY8C_149KIT\DebugUARTBridge\TopDesign</v>
+<v>CY8C_149KIT\DebugUARTBridge\TopDesign\TopDesign.cysch</v>
+<v>CY8C_149KIT\HomeAutomation</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>CY8C_149KIT</v>
+<v>CY8C_149KIT\DebugUARTBridge</v>
+<v>CY8C_149KIT\DebugUARTBridge\TopDesign</v>
+<v>CY8C_149KIT\DebugUARTBridge\TopDesign\TopDesign.cysch</v>
+<v>CY8C_149KIT\HomeAutomation</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>CY8C_149KIT</v>
+<v>CY8C_149KIT\BLEModule</v>
+<v>CY8C_149KIT\BLEModule\CortexM0</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_1.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_1_bless_isr.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_1_custom.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_1_eventHandler.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_1_gatt.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_1_HAL_INT.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_1_HAL_PVT.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\Clock_2.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\Cm0Start.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_BOOT.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_PM.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_rx.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_rx_PM.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_SCBCLK.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_SPI_UART.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_SPI_UART_INT.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_tx.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_tx_PM.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_UART.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_UART_BOOT.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLFClk.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\DebounceTimer.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\DebounceTimer_PM.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\debounceTimerIntr.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\input_sw.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\input_sw_PM.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\LED.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\LED_PM.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\sw_interrupt.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\tiny_printf.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\BLEModule.elf</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\BLEModule.hex</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\BLEModule.map</v>
+<v>CY8C_149KIT\BLEModule\BLEModule.gpdsc</v>
+<v>CY8C_149KIT\DebugUARTBridge</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\Cm0plusStart.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\CyDMA.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\CyLFClk.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\from_ble.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\from_ble_BOOT.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\from_ble_PM.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\from_ble_rx.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\from_ble_rx_PM.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\from_ble_SCBCLK.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\from_ble_SPI_UART.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\from_ble_SPI_UART_INT.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\from_ble_tx.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\from_ble_tx_PM.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\from_ble_UART.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\from_ble_UART_BOOT.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\to_comp.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\to_comp_BOOT.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\to_comp_PM.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\to_comp_rx.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\to_comp_rx_PM.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\to_comp_SCBCLK.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\to_comp_SPI_UART.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\to_comp_SPI_UART_INT.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\to_comp_tx.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\to_comp_tx_PM.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\to_comp_UART.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\Listing Files\to_comp_UART_BOOT.lst</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\DebugUARTBridge.elf</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\DebugUARTBridge.hex</v>
+<v>CY8C_149KIT\DebugUARTBridge\CortexM0p\ARM_GCC_541\Debug\DebugUARTBridge.map</v>
+<v>CY8C_149KIT\DebugUARTBridge\DebugUARTBridge.gpdsc</v>
+<v>CY8C_149KIT\DebugUARTBridge\DebugUARTBridge.rpt</v>
+<v>CY8C_149KIT\DebugUARTBridge\DebugUARTBridge_timing.html</v>
+<v>CY8C_149KIT\HomeAutomation</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>CY8C_149KIT</v>
+<v>CY8C_149KIT\BLEModule</v>
+<v>CY8C_149KIT\BLEModule\CortexM0</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_1.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_1_bless_isr.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_1_custom.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_1_eventHandler.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_1_gatt.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_1_HAL_INT.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_1_HAL_PVT.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\Clock_2.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\Cm0Start.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_BOOT.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_PM.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_rx.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_rx_PM.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_SCBCLK.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_SPI_UART.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_SPI_UART_INT.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_tx.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_tx_PM.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_UART.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\console_UART_BOOT.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLFClk.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\DebounceTimer.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\DebounceTimer_PM.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\debounceTimerIntr.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\input_sw.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\input_sw_PM.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\LED.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\LED_PM.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\sw_interrupt.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\Listing Files\tiny_printf.lst</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\BLEModule.elf</v>
+<v>CY8C_149KIT\BLEModule\CortexM0\ARM_GCC_541\Debug\BLEModule.hex</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>CY8C_149KIT</v>
+<v>CY8C_149KIT\BLEModule\PSoC 4 Architecture TRM</v>
+<v>CY8C_149KIT\BLEModule\PRoC BLE Family Datasheet</v>
+<v>CY8C_149KIT\BLEModule\System Reference Guides</v>
+<v>CY8C_149KIT\BLEModule\System Reference Guides\cy_boot_v5_60</v>
+<v>CY8C_149KIT\BLEModule\System Reference Guides\cy_lfclk_v1_20</v>
+<v>CY8C_149KIT\BLEModule\Project Datasheet</v>
+<v>CY8C_149KIT\BLEModule\BLE_v3_40.pdf</v>
+<v>CY8C_149KIT\BLEModule\cy_clock_v2_20</v>
+<v>CY8C_149KIT\BLEModule\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>CY8C_149KIT\BLEModule\cy_isr_v1_70</v>
+<v>CY8C_149KIT\BLEModule\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
+<v>CY8C_149KIT\BLEModule\cy_pins_v2_20</v>
+<v>CY8C_149KIT\BLEModule\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>CY8C_149KIT\BLEModule\SCB_P4_v4_0.pdf</v>
+<v>CY8C_149KIT\BLEModule\TCPWM_P4_v2_10.pdf</v>
+<v>CY8C_149KIT\DebugUARTBridge</v>
+<v>CY8C_149KIT\DebugUARTBridge\PSoC 4 Architecture TRM</v>
+<v>CY8C_149KIT\DebugUARTBridge\System Reference Guides</v>
+<v>CY8C_149KIT\DebugUARTBridge\System Reference Guides\cy_boot_v5_70</v>
+<v>CY8C_149KIT\DebugUARTBridge\System Reference Guides\cy_dmac_v1_10</v>
+<v>CY8C_149KIT\DebugUARTBridge\System Reference Guides\cy_lfclk_v1_20</v>
+<v>CY8C_149KIT\DebugUARTBridge\SCB_P4_v4_0</v>
+<v>CY8C_149KIT\DebugUARTBridge\SCB_P4_v4_0\SCB_P4_v4_0.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>CY8C_149KIT</v>
+<v>CY8C_149KIT\BLEModule</v>
+<v>CY8C_149KIT\DebugUARTBridge</v>
+<v>CY8C_149KIT\DebugUARTBridge\PSoC 4 Architecture TRM</v>
+<v>CY8C_149KIT\DebugUARTBridge\System Reference Guides</v>
+<v>CY8C_149KIT\DebugUARTBridge\System Reference Guides\cy_boot_v5_70</v>
+<v>CY8C_149KIT\DebugUARTBridge\System Reference Guides\cy_dmac_v1_10</v>
+<v>CY8C_149KIT\DebugUARTBridge\System Reference Guides\cy_lfclk_v1_20</v>
+<v>CY8C_149KIT\DebugUARTBridge\SCB_P4_v4_0</v>
+<v>CY8C_149KIT\DebugUARTBridge\SCB_P4_v4_0\SCB_P4_v4_0.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+<dataGuid v="5f2be1a5-0687-4501-bb8c-cf21cb8211bf">
+<CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf type_name="CyDesigner.Common.ProjMgmt.GUI.CyBookmarkData" version="1">
+<indicators />
+</CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded>
+<project v=".\HomeAutomation.cydsn\HomeAutomation.cyprj" />
+</Unloaded>
+<OpenDocs>
+<name v=".\HomeAutomation.cydsn\HomeAutomation.cydwr" />
+<name v=".\DebugUARTBridge.cydsn\DebugUARTBridge.cydwr" />
+<name v=".\BLEModule.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\HomeAutomation.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\BLEModule.cydsn\BLEModule.cydwr" />
+<name v=".\BLEModule.cydsn\main.c" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1157, 711" SelectedTabbedMdiWindow="dccfeef6-05ef-440c-8651-a2c014fa2fe3"><DocumentWindow Key="C:\Users\munee\OneDrive\Documents\cypress\CY8C_149KIT\HomeAutomation.cydsn\HomeAutomation.cydwr" Guid="829865a7-5b6d-434f-8ae8-8e354f30ee26" /><DocumentWindow Key="C:\Users\munee\OneDrive\Documents\cypress\CY8C_149KIT\DebugUARTBridge.cydsn\DebugUARTBridge.cydwr" Guid="fcb5d0fa-231c-4576-929a-c0212b54b9a2" /><DocumentWindow Key="C:\Users\munee\OneDrive\Documents\cypress\CY8C_149KIT\BLEModule.cydsn\TopDesign\TopDesign.cysch" Guid="21386b49-87e3-4cac-94e1-8c7de535248b" /><DocumentWindow Key="C:\Users\munee\OneDrive\Documents\cypress\CY8C_149KIT\HomeAutomation.cydsn\TopDesign\TopDesign.cysch" Guid="95168e19-589d-412f-940a-db62a2d921cc" /><DocumentWindow Key="C:\Users\munee\OneDrive\Documents\cypress\CY8C_149KIT\BLEModule.cydsn\BLEModule.cydwr" Guid="af688a5d-0479-493c-8173-a6ddaf05a0d8" /><DocumentWindow Key="C:\Users\munee\OneDrive\Documents\cypress\CY8C_149KIT\BLEModule.cydsn\main.c" Guid="dccfeef6-05ef-440c-8651-a2c014fa2fe3" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

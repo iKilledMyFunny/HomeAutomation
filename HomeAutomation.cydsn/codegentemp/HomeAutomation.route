@@ -1,0 +1,30 @@
+net \bridging_console:rx_wire\
+	term   ":ioport7:pin0.fb"
+	switch ":ioport7:pin0.fb==>:ioport7:smartio_mux_out0.direct_in"
+	switch ":ioport7:smartio_mux_out0.smartio_mux_out==>:ioport7:hsiom_in0.hsiom0_in"
+	switch ":ioport7:hsiom_in0.fixed_ACT_1==>:m0s8scbcell_3__uart_rx__hsiom_permute.ioport7__fixed_out_p0_ACT_1"
+	switch ":m0s8scbcell_3__uart_rx__hsiom_permute.m0s8scbcell_3__uart_rx==>:m0s8scbcell_3.uart_rx"
+	term   ":m0s8scbcell_3.uart_rx"
+end \bridging_console:rx_wire\
+net \bridging_console:tx_wire\
+	term   ":m0s8scbcell_3.uart_tx"
+	switch ":m0s8scbcell_3.uart_tx==>:ioport7:hsiom_out1.fixed_ACT_1"
+	switch ":ioport7:hsiom_out1.hsiom1_out==>:ioport7:smartio_mux_in1.direct_out"
+	switch ":ioport7:smartio_mux_in1.smartio_mux_in==>:ioport7:pin1.pin_input"
+	term   ":ioport7:pin1.pin_input"
+end \bridging_console:tx_wire\
+net \console:rx_wire\
+	term   ":ioport1:pin0.fb"
+	switch ":ioport1:pin0.fb==>:ioport1:smartio_mux_out0.direct_in"
+	switch ":ioport1:smartio_mux_out0.smartio_mux_out==>:ioport1:hsiom_in0.hsiom0_in"
+	switch ":ioport1:hsiom_in0.fixed_ACT_1==>:m0s8scbcell_0__uart_rx__hsiom_permute.ioport1__fixed_out_p0_ACT_1"
+	switch ":m0s8scbcell_0__uart_rx__hsiom_permute.m0s8scbcell_0__uart_rx==>:m0s8scbcell_0.uart_rx"
+	term   ":m0s8scbcell_0.uart_rx"
+end \console:rx_wire\
+net \console:tx_wire\
+	term   ":m0s8scbcell_0.uart_tx"
+	switch ":m0s8scbcell_0.uart_tx==>:ioport1:hsiom_out1.fixed_ACT_1"
+	switch ":ioport1:hsiom_out1.hsiom1_out==>:ioport1:smartio_mux_in1.direct_out"
+	switch ":ioport1:smartio_mux_in1.smartio_mux_in==>:ioport1:pin1.pin_input"
+	term   ":ioport1:pin1.pin_input"
+end \console:tx_wire\
